@@ -1,0 +1,3 @@
+Ollama mistral
+Fuzzy text
+no hypergraph
