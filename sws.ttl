@@ -1,0 +1,923 @@
+@prefix : <http://www.sws.org/sws#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix esco: <http://data.europa.eu/esco/model#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa#> .
+@base <http://www.sws.org/sws> .
+
+<http://www.sws.org/sws> rdf:type owl:Ontology ;
+                          owl:versionIRI <http://www.sws.org/sws/1.1.7> ;
+                          rdfs:label "sws ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdf:type owl:AnnotationProperty ;
+             rdfs:label "comment" .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#langString
+rdf:langString rdf:type rdfs:Datatype ;
+               rdfs:label "langString" .
+
+
+###  http://www.w3.org/2001/XMLSchema#double
+xsd:double rdf:type rdfs:Datatype ;
+           rdfs:label "double" .
+
+
+###  http://www.w3.org/2001/XMLSchema#int
+xsd:int rdf:type rdfs:Datatype ;
+        rdfs:label "int" .
+
+
+###  http://www.w3.org/2001/XMLSchema#integer
+xsd:integer rdf:type rdfs:Datatype ;
+            rdfs:label "integer" .
+
+
+###  http://www.w3.org/2001/XMLSchema#string
+xsd:string rdf:type rdfs:Datatype ;
+           rdfs:label "string" .
+
+
+###  http://www.w3.org/2002/07/owl#real
+owl:real rdf:type rdfs:Datatype ;
+         rdfs:label "real" .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.sws.org/sws#actorHasPerformanceDimension
+:actorHasPerformanceDimension rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :hasPerformanceDimension ;
+                              rdfs:domain :Actor ;
+                              rdfs:range :Performance ;
+                              rdfs:label "actorHasPerformanceDimension" .
+
+
+###  http://www.sws.org/sws#assignedTo
+:assignedTo rdf:type owl:ObjectProperty ;
+            rdfs:domain :Task ;
+            rdfs:range :Actor ;
+            rdfs:label "assignedTo" .
+
+
+###  http://www.sws.org/sws#confidenceAssessmentHas
+:confidenceAssessmentHas rdf:type owl:ObjectProperty ;
+                         rdfs:label "confidenceAssessmentHas" .
+
+
+###  http://www.sws.org/sws#confidenceAssessmentHasActor
+:confidenceAssessmentHasActor rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :confidenceAssessmentHas ;
+                              rdfs:domain :ConfidenceAssessment ;
+                              rdfs:range :Actor ;
+                              rdfs:label "confidenceAssessmentHasActor" .
+
+
+###  http://www.sws.org/sws#confidenceAssessmentHasTask
+:confidenceAssessmentHasTask rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :confidenceAssessmentHas ;
+                             rdfs:domain :ConfidenceAssessment ;
+                             rdfs:range :Task ;
+                             rdfs:label "confidenceAssessmentHasTask" .
+
+
+###  http://www.sws.org/sws#hasActorStatus
+:hasActorStatus rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasStatus ;
+                rdfs:domain :Actor ;
+                rdfs:range :ActorStatus ;
+                rdfs:label "hasActorStatus" .
+
+
+###  http://www.sws.org/sws#hasConstraint
+:hasConstraint rdf:type owl:ObjectProperty ;
+               rdfs:range :Constraint ;
+               rdfs:label "hasConstraint" .
+
+
+###  http://www.sws.org/sws#hasDecisionStatus
+:hasDecisionStatus rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasStatus ;
+                   rdfs:domain :Decision ;
+                   rdfs:range :DecisionStatus ;
+                   rdfs:label "hasDecisionStatus" .
+
+
+###  http://www.sws.org/sws#hasDigitalTwin
+:hasDigitalTwin rdf:type owl:ObjectProperty ;
+                rdfs:domain :Actor ;
+                rdfs:range :DigitalTwin ;
+                rdfs:label "hasDigitalTwin" .
+
+
+###  http://www.sws.org/sws#hasPerformanceDimension
+:hasPerformanceDimension rdf:type owl:ObjectProperty ;
+                         rdfs:range :Performance ;
+                         rdfs:label "hasPerformanceDimension" .
+
+
+###  http://www.sws.org/sws#hasSkill
+:hasSkill rdf:type owl:ObjectProperty ;
+          rdfs:domain :Actor ;
+          rdfs:range esco:Skill ;
+          rdfs:label "hasSkill" .
+
+
+###  http://www.sws.org/sws#hasStatus
+:hasStatus rdf:type owl:ObjectProperty ;
+           rdfs:label "hasStatus" .
+
+
+###  http://www.sws.org/sws#hasTask
+:hasTask rdf:type owl:ObjectProperty ;
+         rdfs:domain :Schedule ;
+         rdfs:range :Task ;
+         rdfs:label "hasTask" .
+
+
+###  http://www.sws.org/sws#hasTaskStatus
+:hasTaskStatus rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasStatus ;
+               rdfs:domain :Task ;
+               rdfs:range :TaskStatus ;
+               rdfs:label "hasTaskStatus" .
+
+
+###  http://www.sws.org/sws#isAllocatedTo
+:isAllocatedTo rdf:type owl:ObjectProperty ;
+               rdfs:domain :Resource ;
+               rdfs:range :Task ;
+               rdfs:label "isAllocatedTo" .
+
+
+###  http://www.sws.org/sws#isObservedBy
+:isObservedBy rdf:type owl:ObjectProperty ;
+              owl:inverseOf :observes ;
+              rdfs:domain :NonHumanActor ;
+              rdfs:range sosa:Sensor ;
+              rdfs:label "isObservedBy" .
+
+
+###  http://www.sws.org/sws#monitorsActor
+:monitorsActor rdf:type owl:ObjectProperty ;
+               rdfs:domain :DigitalTwin ;
+               rdfs:range :Actor ;
+               rdfs:label "monitorsActor" .
+
+
+###  http://www.sws.org/sws#observes
+:observes rdf:type owl:ObjectProperty ;
+          rdfs:domain sosa:Sensor ;
+          rdfs:range :NonHumanActor ;
+          rdfs:label "observes" .
+
+
+###  http://www.sws.org/sws#requiresResource
+:requiresResource rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Task ;
+                  rdfs:range :Resource ;
+                  rdfs:label "requiresResource" .
+
+
+###  http://www.sws.org/sws#requiresSkill
+:requiresSkill rdf:type owl:ObjectProperty ;
+               rdfs:domain :Task ;
+               rdfs:range esco:Skill ;
+               rdfs:label "requiresSkill" .
+
+
+###  http://www.sws.org/sws#scheduleHasConstraint
+:scheduleHasConstraint rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :hasConstraint ;
+                       rdfs:domain :Schedule ;
+                       rdfs:range :Constraint ;
+                       rdfs:label "scheduleHasConstraint" .
+
+
+###  http://www.sws.org/sws#scheduleHasPerformanceDimension
+:scheduleHasPerformanceDimension rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :hasPerformanceDimension ;
+                                 rdfs:domain :Schedule ;
+                                 rdfs:range :Performance ;
+                                 rdfs:label "scheduleHasPerformanceDimension" .
+
+
+###  http://www.sws.org/sws#taskHasConstraint
+:taskHasConstraint rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasConstraint ;
+                   rdfs:domain :Task ;
+                   rdfs:range :Constraint ;
+                   rdfs:label "taskHasConstraint" .
+
+
+###  http://www.sws.org/sws#taskHasPerformanceDimension
+:taskHasPerformanceDimension rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :hasPerformanceDimension ;
+                             rdfs:domain :Task ;
+                             rdfs:range :Performance ;
+                             rdfs:label "taskHasPerformanceDimension" .
+
+
+###  http://www.sws.org/sws#triggersSliding
+:triggersSliding rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Context ;
+                 rdfs:range :Schedule ;
+                 rdfs:label "triggersSliding" .
+
+
+###  http://www.sws.org/sws#usesResource
+:usesResource rdf:type owl:ObjectProperty ;
+              rdfs:domain :Actor ;
+              rdfs:range :Resource ;
+              rdfs:label "usesResource" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.sws.org/sws#hasActorRole
+:hasActorRole rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Actor ;
+              rdfs:range xsd:string ;
+              rdfs:label "hasActorRole" .
+
+
+###  http://www.sws.org/sws#hasActorStatusDescriptor
+:hasActorStatusDescriptor rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :ActorStatus ;
+                          rdfs:range xsd:string ;
+                          rdfs:label "hasActorStatusDescriptor" .
+
+
+###  http://www.sws.org/sws#hasConfidence
+:hasConfidence rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ConfidenceAssessment ;
+               rdfs:range xsd:decimal ;
+               rdfs:label "hasConfidence" .
+
+
+###  http://www.sws.org/sws#hasDecisionStatusDescriptor
+:hasDecisionStatusDescriptor rdf:type owl:DatatypeProperty ;
+                             rdfs:domain :DecisionStatus ;
+                             rdfs:range xsd:string ;
+                             rdfs:label "hasDecisionStatusDescriptor" .
+
+
+###  http://www.sws.org/sws#hasOperationalPerformanceScore
+:hasOperationalPerformanceScore rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :hasPerformanceScore ;
+                                rdfs:domain :Operational ;
+                                rdfs:range xsd:decimal ;
+                                rdfs:label "hasOperationalPerformanceScore" .
+
+
+###  http://www.sws.org/sws#hasPerformanceScore
+:hasPerformanceScore rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Performance ;
+                     rdfs:range xsd:decimal ;
+                     rdfs:label "hasPerformanceScore" .
+
+
+###  http://www.sws.org/sws#hasPriorityLevel
+:hasPriorityLevel rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Task ;
+                  rdfs:range xsd:int ;
+                  rdfs:label "hasPriorityLevel" .
+
+
+###  http://www.sws.org/sws#hasSensorValue
+:hasSensorValue rdf:type owl:DatatypeProperty ;
+                rdfs:domain sosa:Sensor ;
+                rdfs:range owl:real ;
+                rdfs:label "hasSensorValue" .
+
+
+###  http://www.sws.org/sws#hasSkillLevel
+:hasSkillLevel rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Actor ;
+               rdfs:range xsd:integer ;
+               rdfs:label "hasSkillLevel" .
+
+
+###  http://www.sws.org/sws#hasSocialPerformanceScore
+:hasSocialPerformanceScore rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :hasPerformanceScore ;
+                           rdfs:domain :Social ;
+                           rdfs:range xsd:decimal ;
+                           rdfs:label "hasSocialPerformanceScore" .
+
+
+###  http://www.sws.org/sws#hasTaskComplexity
+:hasTaskComplexity rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Task ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "hasTaskComplexity" .
+
+
+###  http://www.sws.org/sws#hasTaskStatusDescriptor
+:hasTaskStatusDescriptor rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :TaskStatus ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "hasTaskStatusDescriptor" .
+
+
+###  http://www.sws.org/sws#hasTechnicalPerformanceScore
+:hasTechnicalPerformanceScore rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :hasPerformanceScore ;
+                              rdfs:domain :Technical ;
+                              rdfs:range xsd:decimal ;
+                              rdfs:label "hasTechnicalPerformanceScore" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.europa.eu/esco/model#Skill
+esco:Skill rdf:type owl:Class ;
+           rdfs:comment "A capability or competence possessed by an actor, based on the ESCO taxonomy." ;
+           rdfs:label "Skill" .
+
+
+###  http://www.sws.org/sws#AIAcceptance
+:AIAcceptance rdf:type owl:Class ;
+              rdfs:subClassOf :Social ;
+              rdfs:comment "AI acceptance measurements quantify the degree to which human actors (usually workers) accept the AI agents’ presence in a work environment." ;
+              rdfs:label "AIAcceptance" .
+
+
+###  http://www.sws.org/sws#Accuracy
+:Accuracy rdf:type owl:Class ;
+          rdfs:subClassOf :Technical ;
+          rdfs:comment "Accuracy meatrics measure the degree to which an AI model generates a correct output for the problem given the available data." ;
+          rdfs:label "Accuracy" .
+
+
+###  http://www.sws.org/sws#Actor
+:Actor rdf:type owl:Class ;
+       rdfs:comment "Represents an entity capable of performing tasks or making decisions." ;
+       rdfs:label "Actor" .
+
+
+###  http://www.sws.org/sws#ActorStatus
+:ActorStatus rdf:type owl:Class ;
+             rdfs:subClassOf :Status ;
+             rdfs:label "ActorStatus" .
+
+
+###  http://www.sws.org/sws#Agency
+:Agency rdf:type owl:Class ;
+        rdfs:subClassOf :Social ;
+        rdfs:comment "Agency metrics traditionally measure the discretion of human agents when making decisions to carry out work (human agency)." ;
+        rdfs:label "Agency" .
+
+
+###  http://www.sws.org/sws#ConfidenceAssessment
+:ConfidenceAssessment rdf:type owl:Class ;
+                      rdfs:label "ConfidenceAssessment" .
+
+
+###  http://www.sws.org/sws#Constraint
+:Constraint rdf:type owl:Class ;
+            rdfs:comment "Defines any limitation, requirement, or boundary condition that affects task execution and must not be violated by a schedule." ;
+            rdfs:label "Constraint" .
+
+
+###  http://www.sws.org/sws#Context
+:Context rdf:type owl:Class ;
+         rdfs:comment "Any information that can be used to characterize the situation of an entity." ;
+         rdfs:label "Context" .
+
+
+###  http://www.sws.org/sws#ContinuantResource
+:ContinuantResource rdf:type owl:Class ;
+                    rdfs:subClassOf :Resource ;
+                    owl:disjointWith :OccurrentResource ;
+                    rdfs:comment "Resources that continue to persist through time while maintaining their identity. (IFO/BFO)" ;
+                    rdfs:label "ContinuantResource" .
+
+
+###  http://www.sws.org/sws#CostBenefitRatios
+:CostBenefitRatios rdf:type owl:Class ;
+                   rdfs:subClassOf :Operational ;
+                   rdfs:comment "The cost/benefit ratios are measures associating the costs relative to the benefits of a process and are indicative of the potential profit margins of operations." ;
+                   rdfs:label "CostBenefitRatios" .
+
+
+###  http://www.sws.org/sws#Costs
+:Costs rdf:type owl:Class ;
+       rdfs:subClassOf :Operational ;
+       rdfs:comment "Cost metrics measure the costs associated with a process." ;
+       rdfs:label "Costs" .
+
+
+###  http://www.sws.org/sws#CycleTime
+:CycleTime rdf:type owl:Class ;
+           rdfs:subClassOf :Operational ;
+           rdfs:comment "Cycle time indicators measure the elapsed time between initiating and completing a task, process, or machine operation." ;
+           rdfs:label "CycleTime" .
+
+
+###  http://www.sws.org/sws#Decision
+:Decision rdf:type owl:Class ;
+          rdfs:comment "Representing the conclusion or choice among alternatives to allocate tasks, adjust schedules, or adaptive strategies" ;
+          rdfs:label "Decision" .
+
+
+###  http://www.sws.org/sws#DecisionStatus
+:DecisionStatus rdf:type owl:Class ;
+                rdfs:subClassOf :Status ;
+                rdfs:label "DecisionStatus" .
+
+
+###  http://www.sws.org/sws#DeliveryReliability
+:DeliveryReliability rdf:type owl:Class ;
+                     rdfs:subClassOf :Operational ;
+                     rdfs:comment "Delivery reliability metrics measure a supplier’s capacity to serve customers on time." ;
+                     rdfs:label "DeliveryReliability" .
+
+
+###  http://www.sws.org/sws#DependentContinuants
+:DependentContinuants rdf:type owl:Class ;
+                      rdfs:subClassOf :ContinuantResource ;
+                      rdfs:comment "cannot exist without an independent continuant. (qualities of a product)" ;
+                      rdfs:label "DependentContinuants" .
+
+
+###  http://www.sws.org/sws#DeploymentCosts
+:DeploymentCosts rdf:type owl:Class ;
+                 rdfs:subClassOf :Operational ;
+                 rdfs:comment "Indicators measuring the cost of deploying a solution in an operational environment." ;
+                 rdfs:label "DeploymentCosts" .
+
+
+###  http://www.sws.org/sws#DerivedContext
+:DerivedContext rdf:type owl:Class ;
+                rdfs:subClassOf :Context ;
+                rdfs:comment "Context inferred from raw data or calculated through processing, reasoning, or interpretations. (e.g., Workload)" ;
+                rdfs:label "DerivedContext" .
+
+
+###  http://www.sws.org/sws#DigitalTwin
+:DigitalTwin rdf:type owl:Class ;
+             rdfs:comment "The real-time digital representation of a physical actor, environment, or process." ;
+             rdfs:label "DigitalTwin" .
+
+
+###  http://www.sws.org/sws#DigitalTwinDecision
+:DigitalTwinDecision rdf:type owl:Class ;
+                     rdfs:subClassOf :Decision ;
+                     rdfs:comment "A decision made by DigitalTwin" ;
+                     rdfs:label "DigitalTwinDecision" .
+
+
+###  http://www.sws.org/sws#EaseOfUse
+:EaseOfUse rdf:type owl:Class ;
+           rdfs:subClassOf :Social ;
+           rdfs:comment "Ease of use metrics measure the accessibility of a system’s functionalities to a user and the ease of learning to use the system effectively and efficiently." ;
+           rdfs:label "EaseOfUse" .
+
+
+###  http://www.sws.org/sws#EnvironmentalSustainability
+:EnvironmentalSustainability rdf:type owl:Class ;
+                             rdfs:subClassOf :Operational ;
+                             rdfs:comment "Environmental sustainability metrics measure the environmental impact of a process." ;
+                             rdfs:label "EnvironmentalSustainability" .
+
+
+###  http://www.sws.org/sws#Explainability
+:Explainability rdf:type owl:Class ;
+                rdfs:subClassOf :Social ;
+                rdfs:comment "Explainability refers to the capacity of a system to provide humans with comprehensible explanations of its decisions and the rationale of its actions (outcome-centric understandability)." ;
+                rdfs:label "Explainability" .
+
+
+###  http://www.sws.org/sws#Fairness
+:Fairness rdf:type owl:Class ;
+          rdfs:subClassOf :Social ;
+          rdfs:comment "Fairness assessments quantify a system’s non-discrimination capabilities." ;
+          rdfs:label "Fairness" .
+
+
+###  http://www.sws.org/sws#FeedbackFromOthers
+:FeedbackFromOthers rdf:type owl:Class ;
+                    rdfs:subClassOf :Social ;
+                    rdfs:comment "Feedback metrics measure the degree of feedback provided to a worker in a work environment." ;
+                    rdfs:label "FeedbackFromOthers" .
+
+
+###  http://www.sws.org/sws#Flexibility
+:Flexibility rdf:type owl:Class ;
+             rdfs:subClassOf :Operational ;
+             rdfs:comment "Flexibility measures capture the degree to which processes can be modified to address changes in operational requirements." ;
+             rdfs:label "Flexibility" .
+
+
+###  http://www.sws.org/sws#HardConstraint
+:HardConstraint rdf:type owl:Class ;
+                rdfs:subClassOf :Constraint ;
+                rdfs:comment "A non-negotiable constraint that must always be satisfied by any schedule" ;
+                rdfs:label "HardConstraint" .
+
+
+###  http://www.sws.org/sws#HumanActor
+:HumanActor rdf:type owl:Class ;
+            rdfs:subClassOf :Actor ;
+            owl:disjointWith :NonHumanActor ;
+            rdfs:comment "A subclass of Actor representing a human entity involved in performing tasks or making decisions" ;
+            rdfs:label "HumanActor" .
+
+
+###  http://www.sws.org/sws#HumanDecision
+:HumanDecision rdf:type owl:Class ;
+               rdfs:subClassOf :Decision ;
+               rdfs:comment "A decision made solely by a human actor" ;
+               rdfs:label "HumanDecision" .
+
+
+###  http://www.sws.org/sws#Inclusivity
+:Inclusivity rdf:type owl:Class ;
+             rdfs:subClassOf :Social ;
+             rdfs:comment "Inclusivity indicators quantify the practice of providing equal access to opportunities and resources for users, especially users belonging to minority groups or traditionally misrepresented groups." ;
+             rdfs:label "Inclusivity" .
+
+
+###  http://www.sws.org/sws#IndependentContinuants
+:IndependentContinuants rdf:type owl:Class ;
+                        rdfs:subClassOf :ContinuantResource ;
+                        rdfs:comment "Do not depend on other resources for their existence. (e.g., person, machine, product)" ;
+                        rdfs:label "IndependentContinuants" .
+
+
+###  http://www.sws.org/sws#InformationProcessingNeeds
+:InformationProcessingNeeds rdf:type owl:Class ;
+                            rdfs:subClassOf :Social ;
+                            rdfs:comment "Information processing measures quantify the requirements of interpreting, gathering, and synthesising information for decision-making purposes." ;
+                            rdfs:label "InformationProcessingNeeds" .
+
+
+###  http://www.sws.org/sws#Interdependence
+:Interdependence rdf:type owl:Class ;
+                 rdfs:subClassOf :Social ;
+                 rdfs:comment "Interdependence indicators measure the degree to which a process' (human) actors depend on each other." ;
+                 rdfs:label "Interdependence" .
+
+
+###  http://www.sws.org/sws#Interpretability
+:Interpretability rdf:type owl:Class ;
+                  rdfs:subClassOf :Social ;
+                  rdfs:comment "Interpretability metrics measure the ability to translate a system’s working principles into human-understandable language (model design-centric understandability)." ;
+                  rdfs:label "Interpretability" .
+
+
+###  http://www.sws.org/sws#JointDecision
+:JointDecision rdf:type owl:Class ;
+               rdfs:subClassOf :Decision ;
+               rdfs:comment "A decision made through collaboration between human and non-human actors" ;
+               rdfs:label "JointDecision" .
+
+
+###  http://www.sws.org/sws#Latency
+:Latency rdf:type owl:Class ;
+         rdfs:subClassOf :Technical ;
+         rdfs:comment "Latency measures a system’s responsiveness, typically in terms of the time it takes to process one unit of data." ;
+         rdfs:label "Latency" .
+
+
+###  http://www.sws.org/sws#MentalDemands
+:MentalDemands rdf:type owl:Class ;
+               rdfs:subClassOf :Social ;
+               rdfs:comment "Mental demands measurements quantify the cognitive costs associated with performing a task." ;
+               rdfs:label "MentalDemands" .
+
+
+###  http://www.sws.org/sws#NonDerivedContext
+:NonDerivedContext rdf:type owl:Class ;
+                   rdfs:subClassOf :Context ;
+                   rdfs:comment "Raw or directly observable contextual information (e.g., Temperature, Heart Rate)" ;
+                   rdfs:label "NonDerivedContext" .
+
+
+###  http://www.sws.org/sws#NonHumanActor
+:NonHumanActor rdf:type owl:Class ;
+               rdfs:subClassOf :Actor ;
+               rdfs:comment "A subclass of Actor representing artificial or automated entities, such as robots, AI or software, capable of performing tasks or making decisions." ;
+               rdfs:label "NonHumanActor" .
+
+
+###  http://www.sws.org/sws#OccurrentResource
+:OccurrentResource rdf:type owl:Class ;
+                   rdfs:subClassOf :Resource ;
+                   rdfs:comment """Resources occur, happen or unfold in time. (IFO/BFO)
+
+Occurrents can be entities that
+1. are a part of time, such as a time instant or time period
+2. exist in time by occurring or happening such as a manufacturing process
+3. represent a boundary of an occurrence or happening such as the beginning of a process.
+
+ref:The Industrial Ontologies Foundry (IOF) Core Ontology""" ;
+                   rdfs:label "OccurrentResource" .
+
+
+###  http://www.sws.org/sws#Operational
+:Operational rdf:type owl:Class ;
+             rdfs:subClassOf :Performance ;
+             rdfs:comment "Operational evaluation metrics are used to measure the economic performance of operational units." ;
+             rdfs:label "Operational" .
+
+
+###  http://www.sws.org/sws#PerceivedQuality
+:PerceivedQuality rdf:type owl:Class ;
+                  rdfs:subClassOf :Operational ;
+                  rdfs:comment "Perceived quality metrics measure the perceived satisfaction with a process’ output." ;
+                  rdfs:label "PerceivedQuality" .
+
+
+###  http://www.sws.org/sws#Performance
+:Performance rdf:type owl:Class ;
+             rdfs:label "Performance" .
+
+
+###  http://www.sws.org/sws#PhysicalDemands
+:PhysicalDemands rdf:type owl:Class ;
+                 rdfs:subClassOf :Social ;
+                 rdfs:comment "Physical demands measurements quantify the physical efforts associated with performing a work task." ;
+                 rdfs:label "PhysicalDemands" .
+
+
+###  http://www.sws.org/sws#PhysicalErgonomics
+:PhysicalErgonomics rdf:type owl:Class ;
+                    rdfs:subClassOf :Social ;
+                    rdfs:comment "Physical ergonomics indicators reflect how a task or process allows workers to maintain correct postures and proper movements." ;
+                    rdfs:label "PhysicalErgonomics" .
+
+
+###  http://www.sws.org/sws#Privacy
+:Privacy rdf:type owl:Class ;
+         rdfs:subClassOf :Social ;
+         rdfs:comment "Privacy indicators measure a system’s capacity to ensure informational privacy." ;
+         rdfs:label "Privacy" .
+
+
+###  http://www.sws.org/sws#ProblemSolving
+:ProblemSolving rdf:type owl:Class ;
+                rdfs:subClassOf :Social ;
+                rdfs:comment "Problem-solving indicators assess the degree of innovativeness required for completing a task." ;
+                rdfs:label "ProblemSolving" .
+
+
+###  http://www.sws.org/sws#Productivity
+:Productivity rdf:type owl:Class ;
+              rdfs:subClassOf :Operational ;
+              rdfs:comment "Productivity metrics measure the efficiency of a production process." ;
+              rdfs:label "Productivity" .
+
+
+###  http://www.sws.org/sws#Quality
+:Quality rdf:type owl:Class ;
+         rdfs:subClassOf :Operational ;
+         rdfs:comment "Quality metrics measure the degree to which a process meets the demanded specifications or requirements." ;
+         rdfs:label "Quality" .
+
+
+###  http://www.sws.org/sws#Reliability
+:Reliability rdf:type owl:Class ;
+             rdfs:subClassOf :Technical ;
+             rdfs:comment "Reliability metrics evaluate whether the AI system behaves according to its design intentions." ;
+             rdfs:label "Reliability" .
+
+
+###  http://www.sws.org/sws#Resource
+:Resource rdf:type owl:Class ;
+          rdfs:label "Resource" .
+
+
+###  http://www.sws.org/sws#ReturnOnInvestment
+:ReturnOnInvestment rdf:type owl:Class ;
+                    rdfs:subClassOf :Operational ;
+                    rdfs:comment "Return on investment is an investment’s profitability measure." ;
+                    rdfs:label "ReturnOnInvestment" .
+
+
+###  http://www.sws.org/sws#Robustness
+:Robustness rdf:type owl:Class ;
+            rdfs:subClassOf :Technical ;
+            rdfs:comment "Robustness measures the ability of an AI system to perform in varying circumstances, e.g., in variations in the input data and context." ;
+            rdfs:label "Robustness" .
+
+
+###  http://www.sws.org/sws#RoutingFlexibility
+:RoutingFlexibility rdf:type owl:Class ;
+                    rdfs:subClassOf :Operational ;
+                    rdfs:comment "Routing flexibility measures assess the capability of a process to complete an operation in multiple ways." ;
+                    rdfs:label "RoutingFlexibility" .
+
+
+###  http://www.sws.org/sws#Safety
+:Safety rdf:type owl:Class ;
+        rdfs:subClassOf :Technical ;
+        rdfs:comment "Safety refers to a system’s capability to minimise unintentional harm stemming either from unexpected system actions or misuse of human operators." ;
+        rdfs:label "Safety" .
+
+
+###  http://www.sws.org/sws#Satisfaction
+:Satisfaction rdf:type owl:Class ;
+              rdfs:subClassOf :Social ;
+              rdfs:comment "Satisfaction metrics measure an operator’s contentment with a process’ performance." ;
+              rdfs:label "Satisfaction" .
+
+
+###  http://www.sws.org/sws#Scalability
+:Scalability rdf:type owl:Class ;
+             rdfs:subClassOf :Technical ;
+             rdfs:comment "Scalability concerns a system’s ability to maintain its operational capacities in response to changes (typically up-scaling) of processing and input data demands." ;
+             rdfs:label "Scalability" .
+
+
+###  http://www.sws.org/sws#Schedule
+:Schedule rdf:type owl:Class ;
+          rdfs:label "Schedule" .
+
+
+###  http://www.sws.org/sws#Security
+:Security rdf:type owl:Class ;
+          rdfs:subClassOf :Technical ;
+          rdfs:comment "Security refers to a system’s ability to prevent unintended execution, unauthorised access, and data leakage." ;
+          rdfs:label "Security" .
+
+
+###  http://www.sws.org/sws#SkillVariety
+:SkillVariety rdf:type owl:Class ;
+              rdfs:subClassOf :Social ;
+              rdfs:comment "Skill variety metrics measure the range of skills needed for a task or process." ;
+              rdfs:label "SkillVariety" .
+
+
+###  http://www.sws.org/sws#Social
+:Social rdf:type owl:Class ;
+        rdfs:subClassOf :Performance ;
+        rdfs:comment "Social indicators measure qualitative and quantitative aspects of work design from a human involvement perspective." ;
+        rdfs:label "Social" .
+
+
+###  http://www.sws.org/sws#SoftConstraint
+:SoftConstraint rdf:type owl:Class ;
+                rdfs:subClassOf :Constraint ;
+                rdfs:comment "A preferred constraint that may be relaxed if necessary to accommodate a schedule" ;
+                rdfs:label "SoftConstraint" .
+
+
+###  http://www.sws.org/sws#Status
+:Status rdf:type owl:Class ;
+        rdfs:label "Status" .
+
+
+###  http://www.sws.org/sws#Stress
+:Stress rdf:type owl:Class ;
+        rdfs:subClassOf :Social ;
+        rdfs:comment "Stress indicators measure the degree of mental or emotional strain resulting from demanding work circumstances." ;
+        rdfs:label "Stress" .
+
+
+###  http://www.sws.org/sws#Task
+:Task rdf:type owl:Class ;
+      rdfs:label "Task" .
+
+
+###  http://www.sws.org/sws#TaskStatus
+:TaskStatus rdf:type owl:Class ;
+            rdfs:subClassOf :Status ;
+            rdfs:label "TaskStatus" .
+
+
+###  http://www.sws.org/sws#TaskVariety
+:TaskVariety rdf:type owl:Class ;
+             rdfs:subClassOf :Social ;
+             rdfs:comment "Task variety metrics quantify the variability and range of performed tasks." ;
+             rdfs:label "TaskVariety" .
+
+
+###  http://www.sws.org/sws#Technical
+:Technical rdf:type owl:Class ;
+           rdfs:subClassOf :Performance ;
+           rdfs:comment "Technical evaluation metrics are used to assess the performance of AI components in terms of their technical capabilities." ;
+           rdfs:label "Technical" .
+
+
+###  http://www.sws.org/sws#WorkConditions
+:WorkConditions rdf:type owl:Class ;
+                rdfs:subClassOf :Social ;
+                rdfs:comment "Work condition metrics assess the appropriateness and appeal of the environment where a task is performed." ;
+                rdfs:label "WorkConditions" .
+
+
+###  http://www.w3.org/ns/sosa#Sensor
+sosa:Sensor rdf:type owl:Class ;
+            rdfs:comment """Sensors respond to a Stimulus, e.g., a change in the environment, or Input data composed from the Results of prior Observations, and generate a Result.
+
+https://www.w3.org/TR/vocab-ssn/#SOSASensor""" ;
+            rdfs:label "Sensor" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.sws.org/sws#AcceptDecision
+:AcceptDecision rdf:type owl:NamedIndividual ,
+                         :DecisionStatus ;
+                rdfs:label "AcceptDecision" .
+
+
+###  http://www.sws.org/sws#ActorAvailable
+:ActorAvailable rdf:type owl:NamedIndividual ,
+                         :ActorStatus ;
+                rdfs:label "ActorAvailable" .
+
+
+###  http://www.sws.org/sws#ActorBusy
+:ActorBusy rdf:type owl:NamedIndividual ,
+                    :ActorStatus ;
+           rdfs:label "ActorBusy" .
+
+
+###  http://www.sws.org/sws#ActorUnavailable
+:ActorUnavailable rdf:type owl:NamedIndividual ,
+                           :ActorStatus ;
+                  rdfs:label "ActorUnavailable" .
+
+
+###  http://www.sws.org/sws#AdmissibleSchedule
+:AdmissibleSchedule rdf:type owl:NamedIndividual ,
+                             :Schedule ;
+                    rdfs:label "AdmissibleSchedule" .
+
+
+###  http://www.sws.org/sws#MasterSchedule
+:MasterSchedule rdf:type owl:NamedIndividual ,
+                         :Schedule ;
+                rdfs:label "MasterSchedule" .
+
+
+###  http://www.sws.org/sws#RejectDecision
+:RejectDecision rdf:type owl:NamedIndividual ,
+                         :DecisionStatus ;
+                rdfs:label "RejectDecision" .
+
+
+###  http://www.sws.org/sws#TaskCompleted
+:TaskCompleted rdf:type owl:NamedIndividual ,
+                        :TaskStatus ;
+               rdfs:label "TaskCompleted" .
+
+
+###  http://www.sws.org/sws#TaskInProgress
+:TaskInProgress rdf:type owl:NamedIndividual ,
+                         :TaskStatus ;
+                rdfs:label "TaskInProgress" .
+
+
+###  http://www.sws.org/sws#TaskPending
+:TaskPending rdf:type owl:NamedIndividual ,
+                      :TaskStatus ;
+             rdfs:label "TaskPending" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( esco:Skill
+                :Actor
+                :ConfidenceAssessment
+                :Constraint
+                :Context
+                :Decision
+                :DigitalTwin
+                :Performance
+                :Resource
+                :Schedule
+                :Status
+                :Task
+                sosa:Sensor
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26) https://github.com/owlcs/owlapi

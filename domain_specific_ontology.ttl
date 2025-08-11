@@ -1,0 +1,25 @@
+@prefix ind: <http://www.sws.org/sws#> .
+
+ind:54125c26fda347ec07047aa150af26ae ind:cd5a93deadaeee82dcbfdcf5b96b985c "70%" .
+
+ind:675a280f1a1fb9a5e0c895bcce270b54 ind:059e2dc8bf00b32299876add9a890585 "Operational Equipment Effectiveness (OEE)" ;
+    ind:980b74378a16a436d9de071b99d47b91 "high turnover rate among employees" .
+
+ind:8c33654d28050b6f2685c337011b57d8 ind:00c4399954a1b273578c213eb4109848 "Links specific maintenance and repair operations to different types of failures" ;
+    ind:11fb8c94233c9226b70a1689bcc7ae1f "Collects feedback from users and adapts based on this input" ;
+    ind:4685ba063ef367790f1ededf97ea9e66 "Provides targeted instructions to operators" ;
+    ind:b09de49daf9c0b1382093519bd741691 "Assists operators in planning their daily or shift activities" ;
+    ind:e523be6e8d3b7e112f654b4c607e7a30 "Captures knowledge from experienced workers" .
+
+ind:8cbfcfb99f63ca6080bc2ec728f48e85 ind:40ccd1749b42123596b41101f91ec113 "necessity" .
+
+ind:a07507f7b31cc08f4ef1eaa76c7573aa ind:c382b910783e03bdf55d03ab6f655d62 "AI-powered digital production assistant" .
+
+ind:b3c5827f54218753bb2c3338236446c2 ind:7ef71ca1561ec39c314099ab206df680 ind:620878e84a84d2787c6da1bebe7581f8,
+        ind:c732e83c590cd250a0b13448e64c9076,
+        ind:ce0753439f8f59cb64b709130b645173 .
+
+ind:b5f5623b6137a89a1dadf079a5e92266 ind:67daf92c833c41c95db874e18fcb2786 "determining how to effectively and legally monitor operator actions. Possible methods include recording via cameras, using sensors or wearables, or having operators orally or in writing document their tasks." .
+
+ind:d9f0f1bcdba15f08dc2c02fbd3aec8d9 ind:830e08f937e948e59a48f4fb1dc2623a "objective and subjective elements" .
+

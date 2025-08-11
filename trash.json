@@ -1,0 +1,17 @@
+
+role='assistant', content=' [\n  
+{ "subject": "Manufacturing Pilot", "attribute": "hasPerformanceDimension", "value": "Operational Equipment Effectiveness (OEE)" },\n  
+{ "subject": "Packaging material production lines", "attribute": "isObservedBy", "value": "AI-powered digital production assistant" },\n  
+{ "subject": "Operators", "attribute": "hasRole", "value": "Line Supervisor" },\n  
+{ "subject": "Operators", "attribute": "hasRole", "value": "Machine Attendant" },\n  
+{ "subject": "Operators", "attribute": "hasRole", "value": "Machine Maintainer" },\n  
+{ "subject": "Manufacturing Pilot", "attribute": "aimsToAddress", "value": "high turnover rate among employees" },\n  
+{ "subject": "AI-powered digital production assistant", "attribute": "function1", "value": "Captures knowledge from experienced workers" },\n  
+{ "subject": "AI-powered digital production assistant", "attribute": "function2", "value": "Links specific maintenance and repair operations to different types of failures" },\n  
+{ "subject": "AI-powered digital production assistant", "attribute": "function3", "value": "Provides targeted instructions to operators" },\n  
+{ "subject": "AI-powered digital production assistant", "attribute": "function4", "value": "Collects feedback from users and adapts based on this input" },\n  
+{ "subject": "AI-powered digital production assistant", "attribute": "function5", "value": "Assists operators in planning their daily or shift activities" },\n  
+{ "subject": "Challenge", "attribute": "description", "value": "determining how to effectively and legally monitor operator actions. Possible methods include recording via cameras, using sensors or wearables, or having operators orally or in writing document their tasks." },\n  
+{ "subject": "Human behaviour", "attribute": "modelling challenge", "value": "objective and subjective elements" },\n  
+{ "subject": "Manufacturing sector", "attribute": "percentageOfTasksPerformedManually", "value": "70%" },\n  
+{ "subject": "Industry 5.0 paradigm", "attribute": "humanElementInDTs", "value": "necessity" }\n]'
