@@ -1,0 +1,47 @@
+label,freq,best_align,parent_iri
+AI4Work,7,0.39243645258803866,http://www.sws.org/sws#Task
+AI4Work components,7,0.4181276059150696,http://www.sws.org/sws#HumanActor
+AI,7,0.5106132794478361,http://www.sws.org/sws#AIAcceptance
+SWS Management,5,0.4492683543608739,http://www.sws.org/sws#Operational
+HDT,4,0.42565458320909083,http://www.sws.org/sws#HardConstraint
+virtual assistant,4,0.45072125254479134,http://www.sws.org/sws#HumanActor
+SWS Management component,4,0.46168447895483533,http://www.sws.org/sws#Task
+manufacturing,4,0.47415166840408796,http://www.sws.org/sws#Productivity
+Operators,4,0.4989755305231258,http://www.sws.org/sws#Operational
+human,4,0.5195775070916051,http://www.sws.org/sws#HumanActor
+fuzzy logic,3,0.42737765554512774,http://www.sws.org/sws#Decision
+AI4Work initiative,3,0.43768125772476196,http://www.sws.org/sws#Task
+automation,3,0.44782265668565574,http://www.sws.org/sws#Productivity
+Human-Centred Digital Twins,3,0.4619899561133566,http://www.sws.org/sws#DigitalTwin
+AI agents,3,0.46964149212837225,http://www.sws.org/sws#Agency
+construction,3,0.4753922599392968,http://www.sws.org/sws#WorkConditions
+digital twins,3,0.4764830467741141,http://www.sws.org/sws#DigitalTwin
+AI4WORK,3,0.48445647418498994,http://www.sws.org/sws#Task
+Process,3,0.5366655962807791,http://www.sws.org/sws#Status
+Data persistence module,2,0.396558011174202,http://www.sws.org/sws#Scalability
+Early Prototype,2,0.40698365567715516,http://www.sws.org/sws#Operational
+fuzzy rules,2,0.41315703166855705,http://www.sws.org/sws#SoftConstraint
+External system,2,0.41431461681019177,http://www.sws.org/sws#Technical
+enterprises,2,0.4176504760980606,http://www.sws.org/sws#Operational
+DTs,2,0.42694888969262446,http://www.sws.org/sws#DigitalTwin
+e-commerce sector,2,0.42765369039994705,http://www.sws.org/sws#DigitalTwin
+Virtual Assistant,2,0.42826976725610644,http://www.sws.org/sws#HumanActor
+agriculture,2,0.43594482262929285,http://www.sws.org/sws#Productivity
+SWS,2,0.4370489609241486,http://www.sws.org/sws#Status
+traditional manufacturing,2,0.4419202297566885,http://www.sws.org/sws#Technical
+Labour,2,0.4472334497786583,http://www.sws.org/sws#Productivity
+logistics,2,0.4485259217875345,http://www.sws.org/sws#DeliveryReliability
+Energy consumption,2,0.45396234260665047,http://www.sws.org/sws#Productivity
+OEE,2,0.4595411053725651,http://www.sws.org/sws#Status
+specific AI,2,0.4625891788026034,http://www.sws.org/sws#AIAcceptance
+IMA E-CO Flex machine,2,0.4733529416608139,http://www.sws.org/sws#Flexibility
+AI System,2,0.4868739634752274,http://www.sws.org/sws#AIAcceptance
+E-CO Flex machine,2,0.48780438566207884,http://www.sws.org/sws#Flexibility
+human resources,2,0.49351008473298486,http://www.sws.org/sws#Resource
+virtual environment,2,0.5055814797228033,http://www.sws.org/sws#PhysicalErgonomics
+Digital Assistant,2,0.5071755558252335,http://www.sws.org/sws#DigitalTwin
+Troubleshooting Tool,2,0.5087372760957396,http://www.sws.org/sws#ProblemSolving
+UC-MAN-3,2,0.5284003134568532,http://www.sws.org/sws#HumanActor
+[52],2,0.5431967462301255,http://www.sws.org/sws#Status
+[53],2,0.5438014085292816,http://www.sws.org/sws#Status
+[54],2,0.5492159779071808,http://www.sws.org/sws#Status

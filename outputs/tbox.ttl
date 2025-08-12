@@ -1,0 +1,36 @@
+@prefix : <http://example.org/onto#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:53 a owl:Class ; rdfs:label "[53]" .
+:54 a owl:Class ; rdfs:label "[54]" .
+:55 a owl:Class ; rdfs:label "[55]" .
+:56 a owl:Class ; rdfs:label "[56]" .
+:57 a owl:Class ; rdfs:label "[57]" .
+:58 a owl:Class ; rdfs:label "[58]" .
+:CPS_with_AI_agents_exhibiting_autonomous_behaviour a owl:Class ; rdfs:label "CPS with AI agents exhibiting autonomous behaviour" .
+:post_application_operators_surveys a owl:Class ; rdfs:label "post-application operators' surveys" .
+:qualitative_user_assessments a owl:Class ; rdfs:label "qualitative user assessments" .
+
+:AI_agents a owl:Class ; rdfs:label "AI agents" .
+:absenteeism_due_to_health_issues a owl:Class ; rdfs:label "absenteeism due to health issues" .
+:in_work_injuries a owl:Class ; rdfs:label "in-work injuries" .
+:qualitative_user_assessments a owl:Class ; rdfs:label "qualitative user assessments" .
+
+:Electric_actuator a owl:Class ; rdfs:label "Electric actuator" .
+:Electrical_components a owl:Class ; rdfs:label "Electrical components" .
+:Machine a owl:Class ; rdfs:label "Machine" .
+:Machine_PLC_programmable_logic_controller a owl:Class ; rdfs:label "Machine PLC (programmable logic controller)" .
+:Mechanical_components a owl:Class ; rdfs:label "Mechanical components" .
+:Motion_drives a owl:Class ; rdfs:label "Motion drives" .
+:Optical_sensors a owl:Class ; rdfs:label "Optical sensors" .
+:Physical_feedback a owl:Class ; rdfs:label "Physical feedback" .
+:Pneumatic_gripping_systems a owl:Class ; rdfs:label "Pneumatic gripping systems" .
+:Pressure_transducers a owl:Class ; rdfs:label "Pressure transducers" .
+:Software_components a owl:Class ; rdfs:label "Software components" .
+
+:Industry_5_0_paradigm a owl:Class ; rdfs:label "Industry 5.0 paradigm" .
+:physical_parameters a owl:Class ; rdfs:label "physical parameters" .
+
+:Mental_or_emotional_strain a owl:Class ; rdfs:label "Mental or emotional strain" .
+:State_Trait_Anxiety_Inventory_STAI a owl:Class ; rdfs:label "State-Trait Anxiety Inventory (STAI)" .

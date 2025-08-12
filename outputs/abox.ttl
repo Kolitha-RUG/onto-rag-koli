@@ -1,0 +1,100 @@
+@prefix : <http://example.org/onto#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:Situation_16a673da a :ClinicalSituation .
+:34274f74_Mental_or_emotional_stra a <http://example.org/onto#Mental_or_emotional_strain> ; rdfs:label "Mental or emotional strain" .
+:47ad0588_Qualitative_user_assessm a <http://www.sws.org/sws#Stress> ; rdfs:label "Qualitative user assessment" .
+:c1f212b4_Wearable_devices a <http://www.sws.org/sws#Stress> ; rdfs:label "Wearable devices" .
+:65807792_Human_actors_perspective a <http://www.sws.org/sws#Stress> ; rdfs:label "Human actors' perspective" .
+:732d7942_State_Trait_Anxiety_Inve a <http://example.org/onto#State_Trait_Anxiety_Inventory_STAI> ; rdfs:label "State-Trait Anxiety Inventory (STAI)" .
+:dae11961_Perceived_Stress_Scale_P a <http://www.sws.org/sws#Stress> ; rdfs:label "Perceived Stress Scale (PSS)" .
+:Situation_16a673da <http://www.sws.org/sws#observes> :34274f74_Mental_or_emotional_stra .
+:Situation_16a673da <http://www.sws.org/sws#usesResource> :47ad0588_Qualitative_user_assessm .
+:Situation_16a673da <http://www.sws.org/sws#triggersSliding> :c1f212b4_Wearable_devices .
+:Situation_16a673da <http://www.sws.org/sws#observes> :65807792_Human_actors_perspective .
+:Situation_16a673da <http://www.sws.org/sws#hasSensorValue> :732d7942_State_Trait_Anxiety_Inve .
+:Situation_16a673da <http://www.sws.org/sws#hasSensorValue> :dae11961_Perceived_Stress_Scale_P .
+:Situation_16a673da rdfs:comment "Stress KPIs" .
+
+:Situation_be2f0654 a :ClinicalSituation .
+:9552f7e6_Industry_5_0_paradigm a <http://example.org/onto#Industry_5_0_paradigm> ; rdfs:label "Industry 5.0 paradigm" .
+:c207a65b_DTs a <http://www.sws.org/sws#DigitalTwin> ; rdfs:label "DTs" .
+:15a3699d_human_actor a <http://www.sws.org/sws#Actor> ; rdfs:label "human actor" .
+:be7e7596_physical_parameters a <http://example.org/onto#physical_parameters> ; rdfs:label "physical parameters" .
+:b4054c69_industrial_DT a <http://www.sws.org/sws#DigitalTwinDecision> ; rdfs:label "industrial DT" .
+:Situation_be2f0654 <http://www.sws.org/sws#hasTask> :9552f7e6_Industry_5_0_paradigm .
+:Situation_be2f0654 <http://www.sws.org/sws#assignedTo> :c207a65b_DTs .
+:Situation_be2f0654 <http://www.sws.org/sws#actorHasPerformanceDimension> :15a3699d_human_actor .
+:Situation_be2f0654 <http://www.sws.org/sws#hasPerformanceDimension> :be7e7596_physical_parameters .
+:Situation_be2f0654 <http://www.sws.org/sws#hasConstraint> :b4054c69_industrial_DT .
+:Situation_be2f0654 rdfs:comment "(a) Create digital twins of humans in DTs, including physical parameters and potential data connections monitoring their physical state." .
+
+:Situation_305cfdd1 a :ClinicalSituation .
+:e1d933f7_Machine a <http://example.org/onto#Machine> ; rdfs:label "Machine" .
+:4c00d81e_Mechanical_components a <http://example.org/onto#Mechanical_components> ; rdfs:label "Mechanical components" .
+:dab13fe6_Electrical_components a <http://example.org/onto#Electrical_components> ; rdfs:label "Electrical components" .
+:ff33b7a9_Software_components a <http://example.org/onto#Software_components> ; rdfs:label "Software components" .
+:fe76de5e_Machine_PLC_programmable a <http://example.org/onto#Machine_PLC_programmable_logic_controller> ; rdfs:label "Machine PLC (programmable logic controller)" .
+:910d5186_Electric_actuator a <http://example.org/onto#Electric_actuator> ; rdfs:label "Electric actuator" .
+:87ff9c3a_Physical_feedback a <http://example.org/onto#Physical_feedback> ; rdfs:label "Physical feedback" .
+:9e9b304c_Motion_drives a <http://example.org/onto#Motion_drives> ; rdfs:label "Motion drives" .
+:2e224fbe_Optical_sensors a <http://example.org/onto#Optical_sensors> ; rdfs:label "Optical sensors" .
+:bc0c68aa_Pneumatic_gripping_syste a <http://example.org/onto#Pneumatic_gripping_systems> ; rdfs:label "Pneumatic gripping systems" .
+:f7cb4c5b_Pressure_transducers a <http://example.org/onto#Pressure_transducers> ; rdfs:label "Pressure transducers" .
+:Situation_305cfdd1 <http://www.sws.org/sws#observes> :e1d933f7_Machine .
+:Situation_305cfdd1 <http://www.sws.org/sws#monitorsActor> :4c00d81e_Mechanical_components .
+:Situation_305cfdd1 <http://www.sws.org/sws#monitorsActor> :dab13fe6_Electrical_components .
+:Situation_305cfdd1 <http://www.sws.org/sws#monitorsActor> :ff33b7a9_Software_components .
+:Situation_305cfdd1 <http://www.sws.org/sws#triggersSliding> :fe76de5e_Machine_PLC_programmable .
+:Situation_305cfdd1 <http://www.sws.org/sws#monitorsActor> :910d5186_Electric_actuator .
+:Situation_305cfdd1 <http://www.sws.org/sws#confidenceAssessmentHasActor> :87ff9c3a_Physical_feedback .
+:Situation_305cfdd1 <http://www.sws.org/sws#monitorsActor> :9e9b304c_Motion_drives .
+:Situation_305cfdd1 <http://www.sws.org/sws#observes> :2e224fbe_Optical_sensors .
+:Situation_305cfdd1 <http://www.sws.org/sws#triggersSliding> :bc0c68aa_Pneumatic_gripping_syste .
+:Situation_305cfdd1 <http://www.sws.org/sws#observes> :f7cb4c5b_Pressure_transducers .
+:Situation_305cfdd1 rdfs:comment "Machine components and their control" .
+
+:Situation_24e6eee9 a :ClinicalSituation .
+:650b920a_Agency a <http://www.sws.org/sws#Agency> ; rdfs:label "Agency" .
+:3136c138_human_agency a <http://www.sws.org/sws#Agency> ; rdfs:label "human agency" .
+:e4ea48b3_qualitative_user_assessm a <http://example.org/onto#qualitative_user_assessments> ; rdfs:label "qualitative user assessments" .
+:ab4b826f_53 a <http://example.org/onto#53> ; rdfs:label "[53]" .
+:8ba3ee1d_54 a <http://example.org/onto#54> ; rdfs:label "[54]" .
+:709e2842_55 a <http://example.org/onto#55> ; rdfs:label "[55]" .
+:d5f6ddc8_56 a <http://example.org/onto#56> ; rdfs:label "[56]" .
+:ab2e9ab0_57 a <http://example.org/onto#57> ; rdfs:label "[57]" .
+:c6c9e711_58 a <http://example.org/onto#58> ; rdfs:label "[58]" .
+:da970c51_CPS_with_AI_agents_exhib a <http://example.org/onto#CPS_with_AI_agents_exhibiting_autonomous_behaviour> ; rdfs:label "CPS with AI agents exhibiting autonomous behaviour" .
+:68509bd2_pre_application_agency_m a <http://www.sws.org/sws#Agency> ; rdfs:label "pre-application agency metrics" .
+:9d1b9775_post_application_operato a <http://example.org/onto#post_application_operators_surveys> ; rdfs:label "post-application operators' surveys" .
+:b47592b4_technical_agency a <http://www.sws.org/sws#Agency> ; rdfs:label "technical agency" .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasSensorValue> :650b920a_Agency .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasTask> :3136c138_human_agency .
+:Situation_24e6eee9 <http://www.sws.org/sws#usesResource> :e4ea48b3_qualitative_user_assessm .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasActorStatus> :ab4b826f_53 .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasActorStatus> :8ba3ee1d_54 .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasActorStatus> :709e2842_55 .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasActorStatus> :d5f6ddc8_56 .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasActorStatus> :ab2e9ab0_57 .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasActorStatus> :c6c9e711_58 .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasConstraint> :da970c51_CPS_with_AI_agents_exhib .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasSensorValue> :68509bd2_pre_application_agency_m .
+:Situation_24e6eee9 <http://www.sws.org/sws#usesResource> :9d1b9775_post_application_operato .
+:Situation_24e6eee9 <http://www.sws.org/sws#hasTask> :b47592b4_technical_agency .
+:Situation_24e6eee9 rdfs:comment "Agency. Agency metrics traditionally measure the discretion of human agents when making decisions to carry out work (human agency). Agency can be measured via qualitative user assessments, e.g., questionnaires, interviews, and focus groups [53], [54], [55], [56], [57], [58]. For CPS with AI agents exhibiting autonomous behaviour, pre-application agency metrics and post-application operators' surveys can be used to evaluate the ability of AI actors to take over tasks requiring decision-making autonomy (technical agency)." .
+
+:Situation_2aa5b706 a :ClinicalSituation .
+:5ade51d5_physical_ergonomics_KPIs a <http://www.sws.org/sws#Task> ; rdfs:label "physical ergonomics KPIs" .
+:829ad7c6_qualitative_user_assessm a <http://example.org/onto#qualitative_user_assessments> ; rdfs:label "qualitative user assessments" .
+:5f9120c0_absenteeism_due_to_healt a <http://example.org/onto#absenteeism_due_to_health_issues> ; rdfs:label "absenteeism due to health issues" .
+:5737819d_in_work_injuries a <http://example.org/onto#in_work_injuries> ; rdfs:label "in-work injuries" .
+:484ce95a_AI_agents a <http://example.org/onto#AI_agents> ; rdfs:label "AI agents" .
+:3e4adb5f_healthcare_and_education a <http://www.sws.org/sws#PhysicalErgonomics> ; rdfs:label "healthcare and education pilots" .
+:Situation_2aa5b706 <http://www.sws.org/sws#requiresSkill> :5ade51d5_physical_ergonomics_KPIs .
+:Situation_2aa5b706 <http://www.sws.org/sws#triggersSliding> :829ad7c6_qualitative_user_assessm .
+:Situation_2aa5b706 <http://www.sws.org/sws#observes> :5f9120c0_absenteeism_due_to_healt .
+:Situation_2aa5b706 <http://www.sws.org/sws#observes> :5737819d_in_work_injuries .
+:Situation_2aa5b706 <http://www.sws.org/sws#confidenceAssessmentHasActor> :484ce95a_AI_agents .
+:Situation_2aa5b706 <http://www.sws.org/sws#observes> :3e4adb5f_healthcare_and_education .
+:Situation_2aa5b706 rdfs:comment "Physical ergonomics" .
