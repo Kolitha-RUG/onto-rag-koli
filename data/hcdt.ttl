@@ -1,0 +1,634 @@
+@prefix : <http://www.kolitha.com/hcdt/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.kolitha.com/hcdt/> .
+
+<http://www.kolitha.com/hcdt> rdf:type owl:Ontology ;
+                               owl:versionIRI <http://www.kolitha.com/hcdt> ;
+                               rdfs:comment "A conceptual model for describing Human-Centered Digital Twin Characteristics, Functions and components" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://ontologydesignpatterns.org/opla-sd#entityPosition
+<http://ontologydesignpatterns.org/opla-sd#entityPosition> rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-sd#entityPositionX
+<http://ontologydesignpatterns.org/opla-sd#entityPositionX> rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-sd#entityPositionY
+<http://ontologydesignpatterns.org/opla-sd#entityPositionY> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.kolitha.com/hcdt/experiences
+:experiences rdf:type owl:ObjectProperty ;
+             rdfs:domain :HumanActor ;
+             rdfs:range <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.kolitha.com/hcdt/hasAction
+:hasAction rdf:type owl:ObjectProperty ;
+           rdfs:domain :DigitalTwinInstance ;
+           rdfs:range :Action .
+
+
+###  http://www.kolitha.com/hcdt/hasDigitalTwin
+:hasDigitalTwin rdf:type owl:ObjectProperty ;
+                rdfs:domain :HumanActor ;
+                rdfs:range :HumanDigitalTwin .
+
+
+###  http://www.kolitha.com/hcdt/hasLatency
+:hasLatency rdf:type owl:ObjectProperty ;
+            rdfs:domain :sosa:Sensor ;
+            rdfs:range :ssn-system:Latency .
+
+
+###  http://www.kolitha.com/hcdt/hasSkill
+:hasSkill rdf:type owl:ObjectProperty ;
+          rdfs:domain :Actor .
+
+
+###  http://www.kolitha.com/hcdt/hasStatus
+:hasStatus rdf:type owl:ObjectProperty ;
+           rdfs:domain :Actor ;
+           rdfs:range :Status .
+
+
+###  http://www.kolitha.com/hcdt/hasVisualization
+:hasVisualization rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Data ,
+                              :DigitalTwinInstance ;
+                  rdfs:range :Visualization .
+
+
+###  http://www.kolitha.com/hcdt/interactsWith
+:interactsWith rdf:type owl:ObjectProperty ;
+               rdfs:domain :User ;
+               rdfs:range :Interface .
+
+
+###  http://www.kolitha.com/hcdt/isDisplayedOn
+:isDisplayedOn rdf:type owl:ObjectProperty ;
+               rdfs:domain :Visualization ;
+               rdfs:range :Interface .
+
+
+###  http://www.kolitha.com/hcdt/observesActor
+:observesActor rdf:type owl:ObjectProperty ;
+               rdfs:domain :sosa:Sensor ;
+               rdfs:range :Actor .
+
+
+###  http://www.kolitha.com/hcdt/observesHumanCentricityFactor
+:observesHumanCentricityFactor rdf:type owl:ObjectProperty ;
+                               rdfs:domain :sosa:Sensor ;
+                               rdfs:range <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.kolitha.com/hcdt/providesContextFor
+:providesContextFor rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Context ;
+                    rdfs:range :DigitalTwinInstance .
+
+
+###  http://www.kolitha.com/hcdt/receiveData
+:receiveData rdf:type owl:ObjectProperty ;
+             owl:inverseOf :sendData ;
+             rdfs:domain :Data ;
+             rdfs:range :sosa:Sensor .
+
+
+###  http://www.kolitha.com/hcdt/sendData
+:sendData rdf:type owl:ObjectProperty ;
+          rdfs:domain :sosa:Sensor ;
+          rdfs:range :Data .
+
+
+###  http://www.kolitha.com/hcdt/updateContext
+:updateContext rdf:type owl:ObjectProperty ;
+               rdfs:domain :Data ;
+               rdfs:range :Context .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.kolitha.com/hcdt/hasLatencyValue
+:hasLatencyValue rdf:type owl:DatatypeProperty .
+
+
+###  http://www.kolitha.com/hcdt/hasStatusCode
+:hasStatusCode rdf:type owl:DatatypeProperty .
+
+
+###  http://www.kolitha.com/hcdt/hasTimestamp
+:hasTimestamp rdf:type owl:DatatypeProperty .
+
+
+###  http://www.kolitha.com/hcdt/hasUpdateFrequency
+:hasUpdateFrequency rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.kolitha.com/hcdt/Action
+:Action rdf:type owl:Class ;
+        rdfs:comment """Describes the intended use and operational behaviour of digital twins
+through the functions or tasks they perform within the system.""" .
+
+
+###  http://www.kolitha.com/hcdt/Actor
+:Actor rdf:type owl:Class ;
+       rdfs:comment "Represents an entity capable of performing tasks or making decisions." .
+
+
+###  http://www.kolitha.com/hcdt/Context
+:Context rdf:type owl:Class ;
+         rdfs:comment "Any information that can be used to characterize the situation of an entity." .
+
+
+###  http://www.kolitha.com/hcdt/ControlAction
+:ControlAction rdf:type owl:Class ;
+               rdfs:subClassOf :Action .
+
+
+###  http://www.kolitha.com/hcdt/Data
+:Data rdf:type owl:Class ;
+      rdfs:comment "A collection of facts and statistics, including real-time and historical information, used for reference, analysis, and reasoning." .
+
+
+###  http://www.kolitha.com/hcdt/DataVisualization
+:DataVisualization rdf:type owl:Class ;
+                   rdfs:subClassOf :Visualization .
+
+
+###  http://www.kolitha.com/hcdt/DecisionAction
+:DecisionAction rdf:type owl:Class ;
+                rdfs:subClassOf :Action .
+
+
+###  http://www.kolitha.com/hcdt/DerivedContext
+:DerivedContext rdf:type owl:Class ;
+                rdfs:subClassOf :Context ;
+                rdfs:comment "Context inferred from raw data or calculated through processing, reasoning, or interpretations. (e.g., Workload)" .
+
+
+###  http://www.kolitha.com/hcdt/DetectionAction
+:DetectionAction rdf:type owl:Class ;
+                 rdfs:subClassOf :Action .
+
+
+###  http://www.kolitha.com/hcdt/DigitalModel
+:DigitalModel rdf:type owl:Class ;
+              rdfs:subClassOf :Visualization .
+
+
+###  http://www.kolitha.com/hcdt/DigitalTwinInstance
+:DigitalTwinInstance rdf:type owl:Class ;
+                     rdfs:comment "Represents digital counterparts of real-world entities. Subclasses include HumanDigitalTwin, ProcessDigitalTwin, etc." .
+
+
+###  http://www.kolitha.com/hcdt/HistoricalData
+:HistoricalData rdf:type owl:Class ;
+                rdfs:subClassOf :Data .
+
+
+###  http://www.kolitha.com/hcdt/HumanActor
+:HumanActor rdf:type owl:Class ;
+            rdfs:subClassOf :Actor ;
+            owl:disjointWith :NonHumanActor ;
+            rdfs:comment "A subclass of Actor representing a human entity involved in performing tasks or making decisions" .
+
+
+###  http://www.kolitha.com/hcdt/HumanDigitalTwin
+:HumanDigitalTwin rdf:type owl:Class ;
+                  rdfs:subClassOf :DigitalTwinInstance .
+
+
+###  http://www.kolitha.com/hcdt/Interface
+:Interface rdf:type owl:Class ;
+           rdfs:comment "The point of interaction and communication" .
+
+
+###  http://www.kolitha.com/hcdt/MonitoringAction
+:MonitoringAction rdf:type owl:Class ;
+                  rdfs:subClassOf :Action .
+
+
+###  http://www.kolitha.com/hcdt/NonDerivedContext
+:NonDerivedContext rdf:type owl:Class ;
+                   rdfs:subClassOf :Context ;
+                   rdfs:comment "Raw or directly observable contextual information (e.g., Temperature, Heart Rate)" .
+
+
+###  http://www.kolitha.com/hcdt/NonHumanActor
+:NonHumanActor rdf:type owl:Class ;
+               rdfs:subClassOf :Actor ;
+               rdfs:comment "A subclass of Actor representing artificial or automated entities, such as robots, AI or software, capable of performing tasks or making decisions." .
+
+
+###  http://www.kolitha.com/hcdt/PredictionAction
+:PredictionAction rdf:type owl:Class ;
+                  rdfs:subClassOf :Action .
+
+
+###  http://www.kolitha.com/hcdt/ProcessDigitalTwin
+:ProcessDigitalTwin rdf:type owl:Class ;
+                    rdfs:subClassOf :DigitalTwinInstance .
+
+
+###  http://www.kolitha.com/hcdt/ProductDigitalTwin
+:ProductDigitalTwin rdf:type owl:Class ;
+                    rdfs:subClassOf :DigitalTwinInstance .
+
+
+###  http://www.kolitha.com/hcdt/RealTimeData
+:RealTimeData rdf:type owl:Class ;
+              rdfs:subClassOf :Data .
+
+
+###  http://www.kolitha.com/hcdt/Safety
+:Safety rdf:type owl:Class ;
+        rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.kolitha.com/hcdt/Status
+:Status rdf:type owl:Class ;
+        rdfs:comment "Represents the operational state of an Actor." .
+
+
+###  http://www.kolitha.com/hcdt/User
+:User rdf:type owl:Class ;
+      rdfs:comment "the User refers to the HumanActor who interacts with the system through an interface." .
+
+
+###  http://www.kolitha.com/hcdt/Visualization
+:Visualization rdf:type owl:Class ;
+               rdfs:comment """The visual representation of Digital Twin instances and their associated
+data""" .
+
+
+###  http://www.kolitha.com/hcdt/esco:Skill
+:esco:Skill rdf:type owl:Class ;
+            rdfs:comment "A capability or competence possessed by an actor" .
+
+
+###  http://www.kolitha.com/hcdt/sosa:Sensor
+:sosa:Sensor rdf:type owl:Class ;
+             rdfs:comment """Sensor - Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a Stimulus, e.g., a change in the environment, or Input data composed from the Results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.
+
+https://www.w3.org/TR/vocab-ssn/#SOSASensor""" .
+
+
+###  http://www.kolitha.com/hcdt/ssn-system:Latency
+:ssn-system:Latency rdf:type owl:Class ;
+                    rdfs:comment """Latency - The time between a command for an Observation (resp. Actuation) and the Sensor providing a Result (resp. the Actuator operating the Actuation), under the defined Conditions.
+
+https://www.w3.org/TR/vocab-ssn/#SSNSYSTEMFrequency""" .
+
+
+###  http://www.sws.org/sws/AIAcceptance
+<http://www.sws.org/sws/AIAcceptance> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Agency
+<http://www.sws.org/sws/Agency> rdf:type owl:Class ;
+                                rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/EaseOfUse
+<http://www.sws.org/sws/EaseOfUse> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Ergonomics
+<http://www.sws.org/sws/Ergonomics> rdf:type owl:Class ;
+                                    rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Explainability
+<http://www.sws.org/sws/Explainability> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Fairness
+<http://www.sws.org/sws/Fairness> rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/FeedbackFromOthers
+<http://www.sws.org/sws/FeedbackFromOthers> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/HumanCentricityFactor
+<http://www.sws.org/sws/HumanCentricityFactor> rdf:type owl:Class ;
+                                               rdfs:comment """A factor or condition that affects the experience, performance, or well-
+being of human actors within the system""" .
+
+
+###  http://www.sws.org/sws/Inclusivity
+<http://www.sws.org/sws/Inclusivity> rdf:type owl:Class ;
+                                     rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/InformationProcessingNeeds
+<http://www.sws.org/sws/InformationProcessingNeeds> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Interdependence
+<http://www.sws.org/sws/Interdependence> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Interpretability
+<http://www.sws.org/sws/Interpretability> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/MentalDemands
+<http://www.sws.org/sws/MentalDemands> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/PhysicalDemands
+<http://www.sws.org/sws/PhysicalDemands> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Privacy
+<http://www.sws.org/sws/Privacy> rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/ProblemSolving
+<http://www.sws.org/sws/ProblemSolving> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Satisfaction
+<http://www.sws.org/sws/Satisfaction> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/SkillVariety
+<http://www.sws.org/sws/SkillVariety> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/Stress
+<http://www.sws.org/sws/Stress> rdf:type owl:Class ;
+                                rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/TaskVariety
+<http://www.sws.org/sws/TaskVariety> rdf:type owl:Class ;
+                                     rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+###  http://www.sws.org/sws/WorkConditions
+<http://www.sws.org/sws/WorkConditions> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://www.sws.org/sws/HumanCentricityFactor> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.kolitha.com/hcdt/AugmentedRealityInterface
+:AugmentedRealityInterface rdf:type owl:NamedIndividual ,
+                                    :Interface .
+
+
+###  http://www.kolitha.com/hcdt/CommandLineInterface
+:CommandLineInterface rdf:type owl:NamedIndividual ,
+                               :Interface .
+
+
+###  http://www.kolitha.com/hcdt/GraphicalUserInterface
+:GraphicalUserInterface rdf:type owl:NamedIndividual ,
+                                 :Interface .
+
+
+###  http://www.kolitha.com/hcdt/VirtualRealityInterface
+:VirtualRealityInterface rdf:type owl:NamedIndividual ,
+                                  :Interface .
+
+
+###  http://www.kolitha.com/hcdt/Worker1
+:Worker1 rdf:type owl:NamedIndividual ,
+                  :HumanActor ;
+         :hasDigitalTwin :Worker1DT .
+
+
+###  http://www.kolitha.com/hcdt/Worker1DT
+:Worker1DT rdf:type owl:NamedIndividual ,
+                    :HumanDigitalTwin .
+
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "349.5388954817158"^^xsd:double ;
+  <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "1020.0527261751465"^^xsd:double ;
+  rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "643.3562171180356"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "131.64610522582066"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "208.0051516249181"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "291.3369547523279"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "621.7504679876805"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "222.5650647913749"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "179.00418897878433"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "221.04525642570886"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "37.76644296556776"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "159.5212246545486"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "60.26013664051915"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "730.1339929655369"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "249.41970251485884"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "690.1915665353059"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "450.21530301176824"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "859.8244131829491"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "593.7411377469589"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "169.94254147342315"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "690.4497050807857"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "690.1740263598009"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "460.45787159805263"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "610.4522380548324"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "520.0149206197915"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "990.3526570126105"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "149.8528448213492"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "959.5411488932568"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "132.6653591775449"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "269.8657549020317"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "150.09350911560108"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "1030.0432312318965"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "227.20943688299707"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "761.6320764227278"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "640.4550244317408"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "20.415746023646932"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "585.1265310472049"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "255.04531739751266"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "124.70238066733776"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "70.55835088724707"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "186.28169920124836"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "159.10126398906993"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "118.51100689243451"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "51.30189396152291"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "659.6562606558017"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "1000.2450238737072"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "86.4831980795508"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "17.72047206170261"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "33.37112067776456"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "94.05633169530623"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "70.10691505870284"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "839.7809771311606"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "1.542547203063724"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "119.14061112638026"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "479.6979744014784"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "615.5499507368929"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "219.60397479155463"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "738.6024586926977"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "529.9693699063644"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "839.8152290701676"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "584.4117302794309"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "125.25790258337997"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ <http://ontologydesignpatterns.org/opla-sd#entityPositionX> "9.965722168401868"^^xsd:double ;
+   <http://ontologydesignpatterns.org/opla-sd#entityPositionY> "569.6377147119933"^^xsd:double ;
+   rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+   owl:members ( <http://www.sws.org/sws/AIAcceptance>
+                 <http://www.sws.org/sws/Agency>
+                 <http://www.sws.org/sws/EaseOfUse>
+                 <http://www.sws.org/sws/Ergonomics>
+                 <http://www.sws.org/sws/Explainability>
+                 <http://www.sws.org/sws/Fairness>
+                 <http://www.sws.org/sws/FeedbackFromOthers>
+                 <http://www.sws.org/sws/Inclusivity>
+                 <http://www.sws.org/sws/InformationProcessingNeeds>
+                 <http://www.sws.org/sws/Interdependence>
+                 <http://www.sws.org/sws/Interpretability>
+                 <http://www.sws.org/sws/MentalDemands>
+                 <http://www.sws.org/sws/PhysicalDemands>
+                 <http://www.sws.org/sws/Privacy>
+                 <http://www.sws.org/sws/ProblemSolving>
+                 <http://www.sws.org/sws/Satisfaction>
+                 <http://www.sws.org/sws/SkillVariety>
+                 <http://www.sws.org/sws/Stress>
+                 <http://www.sws.org/sws/TaskVariety>
+                 <http://www.sws.org/sws/WorkConditions>
+               )
+ ] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

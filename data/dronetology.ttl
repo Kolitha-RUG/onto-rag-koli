@@ -1,0 +1,3953 @@
+@prefix : <http://www.dronetology.net/dronetology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.dronetology.net/dronetology#> .
+
+<http://www.dronetology.net/dronetology#> rdf:type owl:Ontology ;
+                                           owl:versionIRI <http://www.dronetology.net/dronetology#> ;
+                                           <http://purl.org/dc/elements/1.1/abstract> """Dronetology aims to define the knowledge necessary for a UAV to operate autonomously and infer new knowledge,
+necessary for a UAV to operate autonomously and to infer new knowledge to improve the efficiency and safety of the mission.""" ;
+                                           <http://purl.org/dc/elements/1.1/contributor> "Alberto Córdoba" ,
+                                                                                         "Jesús Villadangos" ,
+                                                                                         "José Javier Astrain" ;
+                                           <http://purl.org/dc/elements/1.1/creator> "David Martín-Lammerding" ;
+                                           <http://purl.org/dc/elements/1.1/rights> "" ;
+                                           <http://purl.org/dc/elements/1.1/title> "Dronetology" ;
+                                           <http://purl.org/dc/terms/license> :DronetologyLicenseTerms ;
+                                           owl:versionInfo "0.0.7" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/abstract
+<http://purl.org/dc/elements/1.1/abstract> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+<http://purl.org/dc/elements/1.1/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+<http://purl.org/dc/elements/1.1/rights> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/subject
+<http://purl.org/dc/elements/1.1/subject> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.dronetology.net/dronetology#hasInterval
+:hasInterval rdf:type owl:AnnotationProperty .
+
+
+###  http://www.dronetology.net/dronetology#hasLatLon
+:hasLatLon rdf:type owl:AnnotationProperty .
+
+
+###  http://www.dronetology.net/dronetology#hasMeasurementZValue
+:hasMeasurementZValue rdf:type owl:AnnotationProperty ;
+                      rdfs:range xsd:float ;
+                      rdfs:domain :Parameter ,
+                                  :VectorParameter .
+
+
+###  http://www.dronetology.net/dronetology#hasParameterName
+:hasParameterName rdf:type owl:AnnotationProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:domain :Parameter .
+
+
+###  http://www.dronetology.net/dronetology#hasParameterUnit
+:hasParameterUnit rdf:type owl:AnnotationProperty .
+
+
+###  http://www.dronetology.net/dronetology#hasType
+:hasType rdf:type owl:AnnotationProperty .
+
+
+###  http://www.dronetology.net/dronetology#hasTypeId
+:hasTypeId rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#satisfies
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#satisfies> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparqllat
+<http://www.opengis.net/ont/geosparqllat> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparqllat_long
+<http://www.opengis.net/ont/geosparqllat_long> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparqllong
+<http://www.opengis.net/ont/geosparqllong> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#subClassOf
+rdfs:subClassOf rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#maxCardinality
+owl:maxCardinality rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#minCardinality
+owl:minCardinality rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#qualifiedCardinality
+owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/01/geo/lat
+<http://www.w3.org/2003/01/geo/lat> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/01/geo/lat_long
+<http://www.w3.org/2003/01/geo/lat_long> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/01/geo/long
+<http://www.w3.org/2003/01/geo/long> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://qudt.org/schema/qudt/hasUnit
+<http://qudt.org/schema/qudt/hasUnit> rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf :isUnitOf ;
+                                      rdfs:domain <http://qudt.org/schema/qudt/Quantity> ;
+                                      rdfs:range <http://qudt.org/schema/qudt/Unit> ;
+                                      rdfs:comment "hasUnit. Relates a quantity with a unit of measurement."@en ;
+                                      rdfs:label "hasUnit"@en .
+
+
+###  http://qudt.org/schema/qudt/value
+<http://qudt.org/schema/qudt/value> rdf:type owl:ObjectProperty .
+
+
+###  http://www.dronetology.net/dronetology#activates
+:activates rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isActivatedBy ;
+           rdfs:domain :CommunicationMessage ;
+           rdfs:range :Alarm ;
+           rdfs:comment "activates. Relates a message with an alarm."@en ;
+           rdfs:label "activates"@en .
+
+
+###  http://www.dronetology.net/dronetology#collaboratedBy
+:collaboratedBy rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :isRelationshipOf ;
+                owl:inverseOf :collaborates ;
+                rdfs:domain :Drone ;
+                rdfs:range :Drone ;
+                rdfs:comment "collaboratedBy. Relates two drones that collaborate."@en ;
+                rdfs:label "collaboratedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#collaborates
+:collaborates rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasARelationshipWith ;
+              rdfs:domain :Drone ;
+              rdfs:range :Drone ;
+              rdfs:comment "collaborates. Relates two drones that collaborate."@en ;
+              rdfs:label "collaborates"@en .
+
+
+###  http://www.dronetology.net/dronetology#combinationOf
+:combinationOf rdf:type owl:ObjectProperty ;
+               owl:inverseOf :decompositionOf ;
+               rdfs:domain :Requirement ;
+               rdfs:range :Requirement ;
+               rdfs:comment "combinationOf. Relates a requirement with sub-requirements following a hierarchical structure."@en ;
+               rdfs:label "combinationOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#combinesTo
+:combinesTo rdf:type owl:ObjectProperty ;
+            owl:inverseOf :decomposesTo ;
+            rdfs:domain :Function ;
+            rdfs:range :Function ;
+            rdfs:comment "combinesTo. Relates a sub-functions with a high level function."@en ;
+            rdfs:label "combinesTo"@en .
+
+
+###  http://www.dronetology.net/dronetology#complyWith
+:complyWith rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isFulfilledBy ;
+            rdfs:domain :Drone ;
+            rdfs:range :Regulation ;
+            rdfs:comment "complyWith. Relates a Drone with a Regulation."@en ;
+            rdfs:label "complyWith"@en .
+
+
+###  http://www.dronetology.net/dronetology#constrainedBy
+:constrainedBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf :constrains ;
+               rdfs:domain :Parameter ;
+               rdfs:range :Constraint ;
+               rdfs:comment "constrainedBy. Relates a parameter that constrain a specific product constrain."@en ;
+               rdfs:label "constrainedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#constrains
+:constrains rdf:type owl:ObjectProperty ;
+            rdfs:domain :Constraint ;
+            rdfs:range :Parameter ;
+            rdfs:comment "constraint. Relates a producto constraint with a parameter"@en ;
+            rdfs:label "constrains"@en .
+
+
+###  http://www.dronetology.net/dronetology#cooperatedBy
+:cooperatedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :isRelationshipOf ;
+              owl:inverseOf :cooperates ;
+              rdfs:domain :Drone ;
+              rdfs:range :Drone ;
+              rdfs:comment "cooperatedBy. Relates two drones that cooperate."@en ;
+              rdfs:label "cooperatedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#cooperates
+:cooperates rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :hasARelationshipWith ;
+            rdfs:domain :Drone ;
+            rdfs:range :Drone ;
+            rdfs:comment "cooperates. Relates two drones that cooperate."@en ;
+            rdfs:label "cooperates"@en .
+
+
+###  http://www.dronetology.net/dronetology#coordinatedBy
+:coordinatedBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :isRelationshipOf ;
+               owl:inverseOf :coordinates ;
+               rdfs:domain :Drone ;
+               rdfs:range :Drone ;
+               rdfs:comment "coordinatedBy.  Relates two drones that coordinate."@en ;
+               rdfs:label "coordinatesBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#coordinates
+:coordinates rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :hasARelationshipWith ;
+             rdfs:domain :Drone ;
+             rdfs:range :Drone ;
+             rdfs:comment "coordinates.  Relates two drones that coordinate."@en ;
+             rdfs:label "coordinates"@en .
+
+
+###  http://www.dronetology.net/dronetology#decomposesTo
+:decomposesTo rdf:type owl:ObjectProperty ;
+              rdfs:domain :Function ;
+              rdfs:range :Function ;
+              rdfs:comment "decomposesTo. Relates a high level function with its sub-functions."@en ;
+              rdfs:label "decomposesTo"@en .
+
+
+###  http://www.dronetology.net/dronetology#decompositionOf
+:decompositionOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Requirement ;
+                 rdfs:range :Requirement ;
+                 rdfs:comment "decompositionOf. Relates sub-requirements with their ancestor requirement."@en ;
+                 rdfs:label "decompositionOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#derivedFrom
+:derivedFrom rdf:type owl:ObjectProperty ;
+             owl:inverseOf :derives ;
+             rdfs:domain :Component ;
+             rdfs:range :Component ;
+             rdfs:comment "derivedFrom. Relates a component with the initial component."@en ;
+             rdfs:label "derivedFrom"@en .
+
+
+###  http://www.dronetology.net/dronetology#derives
+:derives rdf:type owl:ObjectProperty ;
+         rdfs:domain :Component ;
+         rdfs:range :Component ;
+         rdfs:comment "derives. Relates a component with a newer version."@en ;
+         rdfs:label "derives"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasAPrioriRelationshipWith
+:hasAPrioriRelationshipWith rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :hasARelationshipWith ;
+                            owl:inverseOf :isAPrioriRelationshipOf ;
+                            rdfs:domain :Drone ;
+                            rdfs:range :Drone ;
+                            rdfs:comment "hasAPrioriRelationshipWith. Relates two drones when the relation is established before the mission."@en ;
+                            rdfs:label "hasAPrioriRelationshipWith"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasARelationshipWith
+:hasARelationshipWith rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :isRelationshipOf ;
+                      rdfs:domain :Drone ;
+                      rdfs:range :Drone ;
+                      rdfs:comment "hasARelationshipWith. Relates drones with any kind or relationship between them."@en ;
+                      rdfs:label "hasARelationshipWith"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasComponent
+:hasComponent rdf:type owl:ObjectProperty ;
+              owl:inverseOf :isComponentOf ;
+              rdfs:domain :Drone ;
+              rdfs:range :Component ;
+              rdfs:comment "hasComponent. Relates components with the drone."@en ;
+              rdfs:label "hasComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasComponentMovement
+:hasComponentMovement rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Component ;
+                      rdfs:range :Mission ;
+                      rdfs:comment "hasComponentMovement. Relates a moving drone component with its movement."@en ;
+                      rdfs:label "hasComponentMovement"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasComprehension
+:hasComprehension rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :usedInComprehension ;
+                  rdfs:domain :SituationalAwareness ;
+                  rdfs:range :MissionElement ;
+                  rdfs:comment "hasComprehension. Identifies any mission element that provides situational awareness at the level of comprehension."@en ;
+                  rdfs:label "hasComprehension"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasDetectionTime
+:hasDetectionTime rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasTimeInterval ;
+                  rdfs:domain :MissionObstacle ;
+                  rdfs:range <http://www.w3.org/2006/time#TemporalEntity> ;
+                  rdfs:comment "hasDetectionTime. Time wehn detected in a mission"@en ;
+                  rdfs:label "hasDetectionTime"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasDirectPart
+:hasDirectPart rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasPart ;
+               owl:inverseOf :isDirectPartOf ;
+               rdfs:domain :Component ;
+               rdfs:range :Component ;
+               rdfs:comment "hasDirectPart. Relates a part with its direct sub-part."@en ;
+               rdfs:label "hasDirectPart"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasDrone
+:hasDrone rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isDroneOf ;
+          rdfs:domain :Swarm ;
+          rdfs:range :Drone ;
+          rdfs:comment "hasDrone. Relates a swarm with a drone."@en ;
+          rdfs:label "hasDrone"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasElement
+:hasElement rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isElementOf ;
+            rdfs:domain :Mission ;
+            rdfs:range :MissionElement ;
+            rdfs:comment "hasElement. Relates a mission element with the mission"@en ;
+            rdfs:label "hasElement"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasExpression
+:hasExpression rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isExpressionOf ;
+               rdfs:domain :Requirement ;
+               rdfs:range :Constraint ;
+               rdfs:comment "hasExpresion. Relates a requirement with a constraint."@en ;
+               rdfs:label "hasExpresion"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasFeature
+:hasFeature rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isFeatureOf ;
+            rdfs:domain :Component ;
+            rdfs:range :Feature ;
+            rdfs:comment "hasFeature. Relates a component with a feature."@en ;
+            rdfs:label "hasFeature"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasFunction
+:hasFunction rdf:type owl:ObjectProperty ;
+             owl:inverseOf :isFunctionOf ;
+             rdfs:domain :Component ;
+             rdfs:range :Function ;
+             rdfs:comment "hasFunction. Relates a component with its function."@en ;
+             rdfs:label "hasFunction"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasGeometry
+:hasGeometry rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf <http://www.opengis.net/ont/geosparql#hasGeometry> ;
+             owl:inverseOf :isGeometryOf ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :ComponentMovementTrack
+                                         :MissionGeometryElement
+                                         :MissionGeometryPointElement
+                                       )
+                         ] ;
+             rdfs:range <http://www.opengis.net/ont/geosparql#Geometry> ;
+             rdfs:comment "hasGeometry. Relates a mission element with its geometry."@en ;
+             rdfs:label "hasGeometry"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasHeight
+:hasHeight rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isHeightOf ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( :MissionGeometryElement
+                                       :MissionGeometryPointElement
+                                     )
+                       ] ;
+           rdfs:range :Height ;
+           rdfs:comment "hasHeight. Relates mission elements with a height."@en ;
+           rdfs:label "hasHeight"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasImpact
+:hasImpact rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isImpactOf ;
+           rdfs:domain :Risk ;
+           rdfs:range :RiskImpact ;
+           rdfs:comment "hasImpact. Relates a risk with its impact."@en ;
+           rdfs:label "hasImpact"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasLicence
+:hasLicence rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isLicenceOf ;
+            rdfs:domain :MissionPilot ;
+            rdfs:range :PilotLicence ;
+            rdfs:comment "hasLicence. Relates a mission pilot with the legal licence to fly a drone."@en ;
+            rdfs:label "hasLicence"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasLikelihood
+:hasLikelihood rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isLikelihoodOf ;
+               rdfs:domain :Risk ;
+               rdfs:range :RiskLikelihood ;
+               rdfs:comment "hasLikelihood. Relates a risk wit its likelihood."@en ;
+               rdfs:label "hasLikelihood"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasManufacturer
+:hasManufacturer rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :isManufacturerOf ;
+                 rdfs:domain :Drone ;
+                 rdfs:range :Manufacturer ;
+                 rdfs:comment "hasManufacturer. Relates a component with its manufacturer."@en ;
+                 rdfs:label "hasManufacturer"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasMass
+:hasMass rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isMassOf ;
+         rdfs:domain :Component ;
+         rdfs:range :Mass ;
+         rdfs:comment "hasMass. Relates a component with its mass or weight."@en ;
+         rdfs:label "hasMass"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasMission
+:hasMission rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isMissionOf ;
+            rdfs:domain :Drone ;
+            rdfs:range :Mission ;
+            rdfs:comment "hasMission. Relates a drone with its missions"@en ;
+            rdfs:label "hasMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasMissionMode
+:hasMissionMode rdf:type owl:ObjectProperty ;
+                owl:inverseOf :isMissionModeOf ;
+                rdfs:domain :Mission ;
+                rdfs:range :MissionMode ;
+                owl:propertyDisjointWith :isMissionModeOf ;
+                rdfs:comment "hasMissionMode. Relates a mission with the mission mode."@en ;
+                rdfs:label "hasMissionMode"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasMissionPriority
+:hasMissionPriority rdf:type owl:ObjectProperty ;
+                    owl:inverseOf :isMissionPriorityOf ;
+                    rdfs:domain :Mission ;
+                    rdfs:range :MissionPriority ;
+                    rdfs:comment "hasMissionPriority. Relates a mission with its priority."@en ;
+                    rdfs:label "hasMissionPriority"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasMissionStatus
+:hasMissionStatus rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :isMissionStatusOf ;
+                  rdfs:domain :Mission ;
+                  rdfs:range :MissionStatus ;
+                  rdfs:comment "hasMissionStatus. Relates a mission with its status"@en ;
+                  rdfs:label "hasMissionStatus"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasNext
+:hasNext rdf:type owl:ObjectProperty ;
+         owl:inverseOf :hasPrevious ;
+         rdfs:domain :Waypoint ;
+         rdfs:range :Waypoint ;
+         rdfs:comment "hasNext. Relates a waypoint with the next one."@en ;
+         rdfs:label "hasNext"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasObjective
+:hasObjective rdf:type owl:ObjectProperty ;
+              owl:inverseOf :isObjectiveOf ;
+              rdfs:domain :Mission ;
+              rdfs:range :MissionObjective ;
+              rdfs:comment "hasObjective. Relates a mission with its objective"@en ;
+              rdfs:label "hasObjective"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasParameter
+:hasParameter rdf:type owl:ObjectProperty ;
+              owl:inverseOf :isParameterOf ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :Component
+                                          :Feature
+                                        )
+                          ] ;
+              rdfs:range :Parameter ;
+              rdfs:comment "hasParameter. Relates a component or a feature with a parameter."@en ;
+              rdfs:label "hasParameter"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasParameterQuantity
+:hasParameterQuantity rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :isParameterQuantityOf ;
+                      rdfs:domain :Parameter ;
+                      rdfs:range <http://qudt.org/schema/qudt/Quantity> ;
+                      rdfs:comment "hasParameterQuantity. Relates a parameter with a quantity."@en ;
+                      rdfs:label "hasParameterQuantity"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         owl:equivalentProperty <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart> ;
+         rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart> ;
+         owl:inverseOf :isPartOf ;
+         rdf:type owl:TransitiveProperty ;
+         rdfs:domain :Component ;
+         rdfs:range :Component ;
+         rdfs:comment "hasPart. Relates an element with its parts."@en ;
+         rdfs:label "hasPart"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasPerception
+:hasPerception rdf:type owl:ObjectProperty ;
+               owl:inverseOf :usedInPerception ;
+               rdfs:domain :SituationalAwareness ;
+               rdfs:range :MissionElement ;
+               rdfs:comment "hasPerception. Relates a mission element with the perception layer of the situational awareness."@en ;
+               rdfs:label "hasPerception"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasPilot
+:hasPilot rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isPilotOf ;
+          rdfs:domain :Mission ;
+          rdfs:range :Pilot ;
+          rdfs:comment "hasPilot. Relates a mission with a pilot."@en ;
+          rdfs:label "hasPilot"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasPrevious
+:hasPrevious rdf:type owl:ObjectProperty ;
+             rdfs:domain :Waypoint ;
+             rdfs:range :Waypoint ;
+             rdfs:comment "hasPrevious. Relates a waypoint with the previous one."@en ;
+             rdfs:label "hasPrevious"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasProduct
+:hasProduct rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isProductOf ;
+            rdfs:domain :Drone ;
+            rdfs:range :Product ;
+            rdfs:comment "hasProduct. Relates a drone with a product."@en ;
+            rdfs:label "hasProduct"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasProjection
+:hasProjection rdf:type owl:ObjectProperty ;
+               owl:inverseOf :usedInProjection ;
+               rdfs:domain :SituationalAwareness ;
+               rdfs:range :MissionElement ;
+               rdfs:comment "hasProjection. Relates a mission element with the projection layer of the situational awareness."@en ;
+               rdfs:label "hasProjection"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasQuantity
+:hasQuantity rdf:type owl:ObjectProperty ;
+             owl:inverseOf :isQuantityOf ;
+             rdfs:domain :Regulation ;
+             rdfs:range <http://qudt.org/schema/qudt/Quantity> ;
+             rdfs:comment "hasQuantity. Relates a drone regulation with a quantity."@en ;
+             rdfs:label "hasQuantity"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasRisk
+:hasRisk rdf:type owl:ObjectProperty ;
+         rdfs:domain :Mission ;
+         rdfs:range :Risk ;
+         rdfs:comment "hasRisk. Relates a mission and its risk"@en ;
+         rdfs:label "hasRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasSensedQuantity
+:hasSensedQuantity rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :isSensedQuantityOf ;
+                   rdfs:domain :MissionSensorData ;
+                   rdfs:range <http://qudt.org/schema/qudt/Quantity> ;
+                   rdfs:comment "hasSensedQuantity. Relates data obtained from a sensor during a mission with a quantity."@en ;
+                   rdfs:label "hasSensedQuantity"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasSensor
+:hasSensor rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isSensorOf ;
+           rdfs:domain :MissionSensorData ;
+           rdfs:range <http://www.w3.org/ns/sosa#Sensor> ;
+           rdfs:comment "hasSensor. Relates data obtained from a sensor and the sensor."@en ;
+           rdfs:label "hasSensor"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasTelemetryQuantity
+:hasTelemetryQuantity rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :isTelemetryQuantityOf ;
+                      rdfs:domain :Telemetry ;
+                      rdfs:range <http://qudt.org/schema/qudt/Quantity> ;
+                      rdfs:comment "hasTelemetryQuantity. Relates the drone telemetry with a quantity."@en ;
+                      rdfs:label "hasTelemetryQuantity"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasTimeInterval
+:hasTimeInterval rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :isTimeIntervalOf ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :ComponentMovementTrack
+                                             :MissionTemporalElement
+                                           )
+                             ] ;
+                 rdfs:range <http://www.w3.org/2006/time#TemporalEntity> ;
+                 rdfs:comment "hasTimeInterval. Relates mission elements that depends on time with a temporal entity."@en ;
+                 rdfs:label "hasTimeInterval"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasWaypoint
+:hasWaypoint rdf:type owl:ObjectProperty ;
+             owl:inverseOf :isWaypointOf ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :FlightPlan
+                                         :FlightSegments
+                                       )
+                         ] ;
+             rdfs:range :Waypoint ;
+             rdfs:comment "hasWaypoint. Relates a fligh plan or a fligh segment with a waypoint."@en ;
+             rdfs:label "hasWaypoint"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasWeatherParameter
+:hasWeatherParameter rdf:type owl:ObjectProperty ;
+                     owl:inverseOf :isWeatherParameterOf ;
+                     rdfs:domain :MissionWeatherReport ;
+                     rdfs:range <http://qudt.org/schema/qudt/Quantity> ;
+                     rdfs:comment "hasWeatherParameter, Relates a weather report with a parameter."@en ;
+                     rdfs:label "hasWeatherParameter"@en .
+
+
+###  http://www.dronetology.net/dronetology#installedAt
+:installedAt rdf:type owl:ObjectProperty ;
+             owl:inverseOf :instantOfInstallation ;
+             rdfs:domain :Component ;
+             rdfs:range <http://www.w3.org/2006/time#Instant> ;
+             rdfs:comment "installedAt. Relates a time instant and a component, i.e. when the component was installed."@en ;
+             rdfs:label "installedAt"@en .
+
+
+###  http://www.dronetology.net/dronetology#instantOfInstallation
+:instantOfInstallation rdf:type owl:ObjectProperty ;
+                       rdfs:domain <http://www.w3.org/2006/time#Instant> ;
+                       rdfs:range :Component ;
+                       rdfs:comment "instantOfInstallation. Relates the instant of the instalation with the component installed."@en ;
+                       rdfs:label "instantOfInstallation"@en .
+
+
+###  http://www.dronetology.net/dronetology#isAMissionElementRelatedWith
+:isAMissionElementRelatedWith rdf:type owl:ObjectProperty ;
+                              owl:inverseOf :relatedWithAMissionElement ;
+                              rdfs:domain :MissionElement ;
+                              rdfs:range owl:Thing ;
+                              rdfs:comment "isAMissionElementRelatedWith. Relates generically any instance of any type with a mission element."@en ;
+                              rdfs:label "isAMissionElementRelatedWith"@en .
+
+
+###  http://www.dronetology.net/dronetology#isAPrioriRelationshipOf
+:isAPrioriRelationshipOf rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :isRelationshipOf ;
+                         rdfs:domain :Drone ;
+                         rdfs:range :Drone ;
+                         rdfs:comment "isAPrioriRelationshipOf. Relates two drones with a relaton defined before the mission start."@en ;
+                         rdfs:label "isAPrioriRelationshipOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isActivatedBy
+:isActivatedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :Alarm ;
+               rdfs:range :CommunicationMessage ;
+               rdfs:comment "isActivatedBy. Relates an alarm with a communication message."@en ;
+               rdfs:label "isActivatedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#isComponentOf
+:isComponentOf rdf:type owl:ObjectProperty ;
+               rdfs:domain :Component ;
+               rdfs:range :Drone ;
+               rdfs:comment "isComponentOf. Relates a component with the drone."@en ;
+               rdfs:label "isComponentOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isDirectPartOf
+:isDirectPartOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :isPartOf ;
+                rdfs:domain :Component ;
+                rdfs:range :Component ;
+                rdfs:comment "isDirectPart. Relates a part and its direct ancestor part."@en ;
+                rdfs:label "isDirectPart"@en .
+
+
+###  http://www.dronetology.net/dronetology#isDroneOf
+:isDroneOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Drone ;
+           rdfs:range :Swarm ;
+           rdfs:comment "isDroneOf. Relates a drone with a swarm."@en ;
+           rdfs:label "isDroneOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isElementOf
+:isElementOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :MissionElement ;
+             rdfs:range :Mission ;
+             rdfs:comment "isElementOf. Relates a mission element with a mission."@en ;
+             rdfs:label "isElementOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isExpressionOf
+:isExpressionOf rdf:type owl:ObjectProperty ;
+                rdfs:domain :Constraint ;
+                rdfs:range :Requirement ;
+                rdfs:comment "isExpressionOf. Relates a constraint wit a requirement."@en ;
+                rdfs:label "isExpressionOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isFeatureOf
+:isFeatureOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :Feature ;
+             rdfs:range :Component ;
+             rdfs:comment "isFeatureOf. Relates a feature with the component."@en ;
+             rdfs:label "isFeatureOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isFulfilledBy
+:isFulfilledBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :Regulation ;
+               rdfs:range :Drone ;
+               rdfs:comment "isFulfilledBy. Relates a regulation with every drone that complies with."@en ;
+               rdfs:label "isFulfilledBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#isFunctionOf
+:isFunctionOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :Function ;
+              rdfs:range :Component ;
+              rdfs:comment "isFunctionOf. Relates a function with a component."@en ;
+              rdfs:label "isFunctionOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isGeometryOf
+:isGeometryOf rdf:type owl:ObjectProperty ;
+              rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
+              rdfs:range [ rdf:type owl:Class ;
+                           owl:unionOf ( :ComponentMovementTrack
+                                         :MissionGeometryElement
+                                         :MissionGeometryPointElement
+                                       )
+                         ] ;
+              rdfs:comment "isGeometryOf. Relates a geometry with a mission element with features."@en ;
+              rdfs:label "isGeometryOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isHeightOf
+:isHeightOf rdf:type owl:ObjectProperty ;
+            rdfs:domain :Height ;
+            rdfs:range [ rdf:type owl:Class ;
+                         owl:unionOf ( :MissionGeometryElement
+                                       :MissionGeometryPointElement
+                                     )
+                       ] ;
+            rdfs:comment "isHeightOf. Relates a height with a mission element with geometry"@en ;
+            rdfs:label "isHeightOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isImpactOf
+:isImpactOf rdf:type owl:ObjectProperty ;
+            rdfs:domain :RiskImpact ;
+            rdfs:range :Risk ;
+            rdfs:comment "isImpactOf. Relates a risk impact with the risk."@en ;
+            rdfs:label "isImpactOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isLicenceOf
+:isLicenceOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :PilotLicence ;
+             rdfs:range :MissionPilot ;
+             rdfs:comment "isLicenceOf. Relates a licence for drone flying with a mission pilot."@en ;
+             rdfs:label "isLicenceOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isLikelihoodOf
+:isLikelihoodOf rdf:type owl:ObjectProperty ;
+                rdfs:domain :RiskLikelihood ;
+                rdfs:range :Risk ;
+                rdfs:comment "isLikelihood. Relates a likelihood with the risk,"@en ;
+                rdfs:label "isLikelihood"@en .
+
+
+###  http://www.dronetology.net/dronetology#isManufacturerOf
+:isManufacturerOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Manufacturer ;
+                  rdfs:range :Component ;
+                  rdfs:comment "isManufacturerOf. Relates a manufaturer with its component/s."@en ;
+                  rdfs:label "isManufacturerOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isMassOf
+:isMassOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :Mass ;
+          rdfs:range :Component ;
+          rdfs:comment "isMassOf. Relates a mass with the component."@en ;
+          rdfs:label "isMassOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isMissionModeOf
+:isMissionModeOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :MissionMode ;
+                 rdfs:range :Mission ;
+                 rdfs:comment "isMissionModeOf. Relates a mode with the mission"@en ;
+                 rdfs:label "isMissionModeOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isMissionOf
+:isMissionOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :Mission ;
+             rdfs:range :Drone ;
+             rdfs:comment "isMissionOf. Relates a mission with the drone."@en ;
+             rdfs:label "isMissionOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isMissionPriorityOf
+:isMissionPriorityOf rdf:type owl:ObjectProperty ;
+                     rdfs:domain :MissionPriority ;
+                     rdfs:range :Mission ;
+                     rdfs:comment "isMissionPriorityOf. Relates a priority with the mission."@en ;
+                     rdfs:label "isMissionPriorityOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isMissionStatusOf
+:isMissionStatusOf rdf:type owl:ObjectProperty ;
+                   rdfs:domain :MissionStatus ;
+                   rdfs:range :Mission ;
+                   rdfs:comment "isMissionStatusOf. Relates a mission status with the mission."@en ;
+                   rdfs:label "isMissionStatusOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isMovementOfAComponent
+:isMovementOfAComponent rdf:type owl:ObjectProperty ;
+                        rdfs:comment "isMovementOfAComponent. Relates a mission that describes the movement of a drone component with the component."@en ;
+                        rdfs:label "isMovementOfAComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#isObjectiveOf
+:isObjectiveOf rdf:type owl:ObjectProperty ;
+               rdfs:domain :MissionObjective ;
+               rdfs:range :Mission ;
+               rdfs:comment "isObjectiveOf. Relates a mission objective with the mission."@en ;
+               rdfs:label "isObjectiveOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isParameterOf
+:isParameterOf rdf:type owl:ObjectProperty ;
+               rdfs:domain :Parameter ;
+               rdfs:range [ rdf:type owl:Class ;
+                            owl:unionOf ( :Component
+                                          <http://www.opengis.net/ont/geosparql#Feature>
+                                        )
+                          ] ;
+               rdfs:comment "isParameterOf. Relates a parameter with a component or feature."@en ;
+               rdfs:label "isParameterOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isParameterQuantityOf
+:isParameterQuantityOf rdf:type owl:ObjectProperty ;
+                       rdfs:domain <http://qudt.org/schema/qudt/Quantity> ;
+                       rdfs:range :Parameter ;
+                       rdfs:comment "isParameterQuantityOf. Relates a quantity with a parameter"@en ;
+                       rdfs:label "isParameterQuantityOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isPartOf
+:isPartOf rdf:type owl:ObjectProperty ,
+                   owl:TransitiveProperty ;
+          rdfs:domain :Component ;
+          rdfs:range :Component ;
+          rdfs:comment "isPartOf. Relates a part and its ancestor part."@en ;
+          rdfs:label "isPartOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isPilotOf
+:isPilotOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Pilot ;
+           rdfs:range :Mission ;
+           rdfs:comment "isPilotOf. Relates a pilot with a mission"@en ;
+           rdfs:label "isPilotOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isProductOf
+:isProductOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :Product ;
+             rdfs:range :Drone ;
+             rdfs:comment "isProductOf. Relates a product with the drone."@en ;
+             rdfs:label "isProductOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isQuantityOf
+:isQuantityOf rdf:type owl:ObjectProperty ;
+              rdfs:domain <http://qudt.org/schema/qudt/Quantity> ;
+              rdfs:range :Regulation ;
+              rdfs:comment "isQuantityOf. Relates a quantity with a drone regulation."@en ;
+              rdfs:label "isQuantityOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isRelatedWithMission
+:isRelatedWithMission rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :relatedWithAMission ;
+                      rdfs:domain :Mission ;
+                      rdfs:range owl:Thing ;
+                      rdfs:comment "isRelatedWithMission. Relates a mission with any instance of any type."@en ;
+                      rdfs:label "isRelatedWithMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#isRelationshipOf
+:isRelationshipOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Drone ;
+                  rdfs:range :Drone ;
+                  rdfs:comment "isRelationshipOf. Relates a drone with another."@en ;
+                  rdfs:label "isRelationshipOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isReqSatisfiedBy
+:isReqSatisfiedBy rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :satisfiesReq ;
+                  rdfs:domain :Requirement ;
+                  rdfs:range :Component ;
+                  rdfs:comment "isReqSatisfiedBy. Relates a requirement with a component."@en ;
+                  rdfs:label "isReqSatisfiedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#isRiskOf
+:isRiskOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :Risk ;
+          rdfs:range :Mission ;
+          rdfs:comment "isRiskOf. Relates a risk with a mission"@en ;
+          rdfs:label "isRiskOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isSensedQuantityOf
+:isSensedQuantityOf rdf:type owl:ObjectProperty ;
+                    rdfs:domain <http://qudt.org/schema/qudt/Quantity> ;
+                    rdfs:range :MissionSensorData ;
+                    rdfs:comment "isSensedQuantityOf. Relates a quantity with the sensor that provided the measurement."@en ;
+                    rdfs:label "isSensedQuantityOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isSensorOf
+:isSensorOf rdf:type owl:ObjectProperty ;
+            rdfs:domain <http://www.w3.org/ns/sosa#Sensor> ;
+            rdfs:range :MissionSensorData ;
+            rdfs:comment "isSensorOf. Relates a sensor with the data measured during a mission."@en ;
+            rdfs:label "isSensorOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isStoredIn
+:isStoredIn rdf:type owl:ObjectProperty ;
+            owl:inverseOf :stores ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :Photograph
+                                        :Video
+                                      )
+                        ] ;
+            rdfs:range :DataStorageDevice ;
+            rdfs:comment "isStoredIn. Relates a digital content like a photograph or video with a data storage device."@en ;
+            rdfs:label "isStoredIn"@en .
+
+
+###  http://www.dronetology.net/dronetology#isTelemetryQuantityOf
+:isTelemetryQuantityOf rdf:type owl:ObjectProperty ;
+                       rdfs:domain <http://qudt.org/schema/qudt/Quantity> ;
+                       rdfs:range :Telemetry ;
+                       rdfs:comment "isTelemetryQuantityOf. Relates a quantity with the telemetry."@en ;
+                       rdfs:label "isTelemetryQuantityOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isTimeIntervalOf
+:isTimeIntervalOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain <http://www.w3.org/2006/time#TemporalEntity> ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( :ComponentMovementTrack
+                                             :MissionTemporalElement
+                                           )
+                             ] ;
+                  rdfs:comment "isTimeIntervalOf. Relates a temporal entity with a mission element that varies during the mission execution."@en ;
+                  rdfs:label "isTimeIntervalOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isUnitOf
+:isUnitOf rdf:type owl:ObjectProperty ;
+          rdfs:domain <http://qudt.org/schema/qudt/Unit> ;
+          rdfs:range <http://qudt.org/schema/qudt/Quantity> ;
+          rdfs:comment "isUnitOf. Relates a measurement with a unit of quantity."@en ;
+          rdfs:label "isUnitOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isWaypointOf
+:isWaypointOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :Waypoint ;
+              rdfs:range [ rdf:type owl:Class ;
+                           owl:unionOf ( :FlightPlan
+                                         :FlightSegments
+                                       )
+                         ] ;
+              rdfs:comment "isWaypointOf. Relates a waypoint with a flight plan."@en ;
+              rdfs:label "isWaypointOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#isWeatherParameterOf
+:isWeatherParameterOf rdf:type owl:ObjectProperty ;
+                      rdfs:domain <http://qudt.org/schema/qudt/Quantity> ;
+                      rdfs:range :MissionWeatherReport ;
+                      rdfs:comment "isWeatherParameterOf. Relates a quantity with a weather report."@en ;
+                      rdfs:label "isWeatherParameterOf"@en .
+
+
+###  http://www.dronetology.net/dronetology#relatedWithAMission
+:relatedWithAMission rdf:type owl:ObjectProperty ;
+                     rdfs:domain owl:Thing ;
+                     rdfs:range :Mission ;
+                     rdfs:comment "relatedWithAMission. Relates any instance of any class with a drone mission."@en ;
+                     rdfs:label "relatedWithAMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#relatedWithAMissionElement
+:relatedWithAMissionElement rdf:type owl:ObjectProperty ;
+                            rdfs:domain owl:Thing ;
+                            rdfs:range :MissionElement ;
+                            rdfs:comment "relatedWithAMissionElement. Relates any instance of any class with a mission element."@en ;
+                            rdfs:label "relatedWithAMissionElement"@en .
+
+
+###  http://www.dronetology.net/dronetology#replacedBy
+:replacedBy rdf:type owl:ObjectProperty ;
+            owl:inverseOf :replaces ;
+            rdfs:domain :Component ;
+            rdfs:range :Component ;
+            rdfs:comment "replacedBy. Relates a component with another after a replacement after a required maintenance task."@en ;
+            rdfs:label "replacedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#replaces
+:replaces rdf:type owl:ObjectProperty ;
+          rdfs:domain :Component ;
+          rdfs:range :Component ;
+          rdfs:comment "replaces. Relates a component with another after a maintenance."@en ;
+          rdfs:label "replaces"@en .
+
+
+###  http://www.dronetology.net/dronetology#satisfiedBy
+:satisfiedBy rdf:type owl:ObjectProperty ;
+             owl:inverseOf :satisfies ;
+             rdfs:domain :Requirement ;
+             rdfs:range :Function ;
+             rdfs:comment "satisfiedBy. Relates a requirement with a function."@en ;
+             rdfs:label "satisfiedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#satisfies
+:satisfies rdf:type owl:ObjectProperty ;
+           rdfs:domain :Function ;
+           rdfs:range :Requirement ;
+           rdfs:comment "satisfies. Relates a function with a requirement."@en ;
+           rdfs:label "satisfies"@en .
+
+
+###  http://www.dronetology.net/dronetology#satisfiesReq
+:satisfiesReq rdf:type owl:ObjectProperty ;
+              rdfs:domain :Component ;
+              rdfs:range :Requirement ;
+              rdfs:comment "satisfiesReq. Relates a component with a requirement."@en ;
+              rdfs:label "satisfiesReq"@en .
+
+
+###  http://www.dronetology.net/dronetology#stores
+:stores rdf:type owl:ObjectProperty ;
+        rdfs:domain :DataStorageDevice ;
+        rdfs:range [ rdf:type owl:Class ;
+                     owl:unionOf ( :Photograph
+                                   :Video
+                                 )
+                   ] ;
+        rdfs:comment "stores. Relates a storage device with a digital content."@en ;
+        rdfs:label "stores"@en .
+
+
+###  http://www.dronetology.net/dronetology#usedInComprehension
+:usedInComprehension rdf:type owl:ObjectProperty ;
+                     rdfs:domain :MissionElement ;
+                     rdfs:range :SituationalAwareness ;
+                     rdfs:comment "usedInComprehension. Relates a mission element that provides situational awareness at the comprehension layer."@en ;
+                     rdfs:label "usedInComprehension"@en .
+
+
+###  http://www.dronetology.net/dronetology#usedInPerception
+:usedInPerception rdf:type owl:ObjectProperty ;
+                  rdfs:domain :MissionElement ;
+                  rdfs:range :SituationalAwareness ;
+                  rdfs:comment "usedInPerception. Relates a mission element with situational awareness at the perception layer."@en ;
+                  rdfs:label "usedInPerception"@en .
+
+
+###  http://www.dronetology.net/dronetology#usedInProjection
+:usedInProjection rdf:type owl:ObjectProperty ;
+                  rdfs:domain :MissionElement ;
+                  rdfs:range :SituationalAwareness ;
+                  rdfs:comment "usedInProjection. Relates a mission element with situational awareness at the projection layer."@en ;
+                  rdfs:label "usedInProjection"@en .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart> rdf:type owl:ObjectProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasGeometry
+<http://www.opengis.net/ont/geosparql#hasGeometry> rdf:type owl:ObjectProperty ;
+                                                   rdfs:domain :Feature ;
+                                                   rdfs:range <http://www.opengis.net/ont/geosparql#Geometry> ;
+                                                   rdfs:label "hasGeometry"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.dronetology.net/dronetology#hasAirspaceAuthorization
+:hasAirspaceAuthorization rdf:type owl:DatatypeProperty ;
+                          rdfs:domain [ owl:intersectionOf ( :Mission
+                                                             [ rdf:type owl:Class ;
+                                                               owl:complementOf :CancelledMission
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "hasAirspaceAuthorization. Defines the airspace authorization"@en ;
+                          rdfs:label "hasAirspaceAuthorization"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasAlarmLevel
+:hasAlarmLevel rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Alarm ;
+               rdfs:range xsd:int ;
+               rdfs:comment "hasAlarmLevel. Defines the alarm level as an integer."@en ;
+               rdfs:label "hasAlarmLevel"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasAlarmMessage
+:hasAlarmMessage rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Alarm ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "hasAlarmMessage. Provides a message explainning the alarm."@en ;
+                 rdfs:label "hasAlarmMessage"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasAltitude
+:hasAltitude rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :MissionGeometryElement
+                                         :MissionGeometryPointElement
+                                       )
+                         ] ;
+             rdfs:range xsd:float ;
+             rdfs:comment "hasAltitude. Defines the altitude from the terrain surface."@en ;
+             rdfs:label "hasAltitude"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasComponentDescription
+:hasComponentDescription rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :Component ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "hasComponentDescription. Defines a description for the component."@en ;
+                         rdfs:label "hasComponentDescription"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasConstraintDescription
+:hasConstraintDescription rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :Constraint ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "hasConstraintDescription. Defines a description for a constraint."@en ;
+                          rdfs:label "hasConstraintDescription"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasConstraintPostedBy
+:hasConstraintPostedBy rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Constraint ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "hasConstraintPostedBy. Defines the origin of a constraint."@en ;
+                       rdfs:label "hasConstraintPostedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasConstraintStatus
+:hasConstraintStatus rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Constraint ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "hasConstraintStatus. Defines the status of a constraint."@en ;
+                     rdfs:label "hasConstraintStatus"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasFeatureDescription
+:hasFeatureDescription rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Feature ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "hasFeatureDescription. Defines the description of a feature."@en ;
+                       rdfs:label "hasFeatureDescription"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasFeatureType
+:hasFeatureType rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Feature ;
+                rdfs:range xsd:string ;
+                rdfs:comment "hasFeatureType. Defines the type of a feature."@en ;
+                rdfs:label "hasFeatureType"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasFlightAuthorization
+:hasFlightAuthorization rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Mission ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "hasFlightAuthorization. Defines the authorization given by an Agency for a drone flight."@en ;
+                        rdfs:label "hasFlightAuthorization"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasFlightCancellationCode
+:hasFlightCancellationCode rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :CancelledMission ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "hasFlightCancellationCode. Defines the code of the reason of cancellation."@en ;
+                           rdfs:label "hasFlightCancellationCode"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasFunctionNoun
+:hasFunctionNoun rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Function ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "hasFunctionNoun. Defines the noun of the function."@en ;
+                 rdfs:label "hasFunctionNoun"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasFunctionVerb
+:hasFunctionVerb rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Function ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "hasFunctionVerb. Provides the verb of the function."@en ;
+                 rdfs:label "hasFunctionVerb"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasIdentificator
+:hasIdentificator rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Drone ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "hasIdentificator. Provides the drone identificator"@en ;
+                  rdfs:label "hasIdentificator"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasMissionId
+:hasMissionId rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Mission ;
+              rdfs:range xsd:string ;
+              rdfs:comment "hasMissionId. Provides the identificator of a drone mission."@en ;
+              rdfs:label "hasMissionId"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasParameterDescription
+:hasParameterDescription rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :Parameter ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "hasParameterDescription. Provides the description of a parameter."@en ;
+                         rdfs:label "hasParameterDescription"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasProbability
+:hasProbability rdf:type owl:DatatypeProperty ;
+                rdfs:domain :RiskLikelihood ;
+                rdfs:range [ rdf:type rdfs:Datatype ;
+                             owl:onDatatype xsd:float ;
+                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                    ]
+                                                    [ xsd:maxInclusive "1.0"^^xsd:float
+                                                    ]
+                                                  )
+                           ] ;
+                rdfs:comment "hasProbability. Provides the probability of a risk"@en ;
+                rdfs:label "hasProbability"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasRawHEXContent
+:hasRawHEXContent rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :CommunicationMessage ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "hasRawHexContent. Provides the raw content of a communication message."@en ;
+                  rdfs:label "hasRawHEXContent"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasRequirementDescription
+:hasRequirementDescription rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :Requirement ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "hasRequirementDescription. Defines the description of a requirement."@en ;
+                           rdfs:label "hasRequirementDescription"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasRequirementPostedBy
+:hasRequirementPostedBy rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Requirement ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "hasRequirementPostedBy. Provides the origin of a requirement."@en ;
+                        rdfs:label "hasRequirementPostedBy"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasRequirementStatus
+:hasRequirementStatus rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Requirement ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "hasRequirementStatus. Defines the status of the requirement."@en ;
+                      rdfs:label "hasRequirementStatus"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasRequirementValue
+:hasRequirementValue rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Requirement ;
+                     rdfs:range xsd:float ;
+                     rdfs:comment "hasRequirementValue. Provides the value of the requirement."@en ;
+                     rdfs:label "hasRequirementValue"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasRiskImpact
+:hasRiskImpact rdf:type owl:DatatypeProperty ;
+               rdfs:domain :RiskImpact ;
+               rdfs:range xsd:float ;
+               rdfs:comment "hasRiskImpact. Provides the impact of a mission risk"@en ;
+               rdfs:label "hasRiskImpact"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasSKU
+:hasSKU rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Component ;
+        rdfs:range xsd:string ;
+        rdfs:comment "hasSKU. Provides the SKU identificator of a drone component."@en ;
+        rdfs:label "hasSKU"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasSerialNumber
+:hasSerialNumber rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Drone ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "hasSerialNumber. Provides the serial number of a drone."@en ;
+                 rdfs:label "hasSerialNumber"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasVerifyMethod
+:hasVerifyMethod rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Requirement ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "hasVerifyMethod. Describes the method used to verify the requirement."@en ;
+                 rdfs:label "hasVerifyMethod"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasVersionNumber
+:hasVersionNumber rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Component ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "hasVersionNumber. Provides the serial number of a drone component."@en ;
+                  rdfs:label "hasVersionNumber"@en .
+
+
+###  http://www.dronetology.net/dronetology#hasWeatherProvider
+:hasWeatherProvider rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :MissionWeatherReport ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "hasWeatherProvider. Defines the weather report provider."@en ;
+                    rdfs:label "hasWeatherProvider"@en .
+
+
+###  http://www.dronetology.net/dronetology#inferred
+:inferred rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Command ;
+          rdfs:range xsd:boolean ;
+          rdfs:comment "inferred. Defines if the command has been obtained from an inference."@en ;
+          rdfs:label "inferred"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/LicenseDocument
+<http://purl.org/dc/terms/LicenseDocument> rdf:type owl:Class ;
+                                           rdfs:comment "LicenseDocument. Used for defining licence terms"@en ;
+                                           rdfs:label "LicenseDocument"@en .
+
+
+###  http://qudt.org/schema/qudt/Quantity
+<http://qudt.org/schema/qudt/Quantity> rdf:type owl:Class .
+
+
+###  http://qudt.org/schema/qudt/Unit
+<http://qudt.org/schema/qudt/Unit> rdf:type owl:Class .
+
+
+###  http://www.dronetology.net/DroneRegulationEU2019P945
+<http://www.dronetology.net/DroneRegulationEU2019P945> rdf:type owl:Class ;
+                                                       rdfs:subClassOf :Regulation ;
+                                                       rdfs:comment "DroneRegulationEU2019P945. EU regulation approved at 2019."@en ;
+                                                       rdfs:label "DroneRegulationEU2019P945"@en .
+
+
+###  http://www.dronetology.net/dronetology#AA
+:AA rdf:type owl:Class ;
+    rdfs:subClassOf :Drone ;
+    rdfs:comment "AA. Autonomous Aircraft"@en ;
+    rdfs:label "AA"@en .
+
+
+###  http://www.dronetology.net/dronetology#AAS
+:AAS rdf:type owl:Class ;
+     rdfs:subClassOf :AA ;
+     rdfs:comment "AAS. Autonomous Aerial System"@en ;
+     rdfs:label "AAS"@en .
+
+
+###  http://www.dronetology.net/dronetology#ADSBMessage
+:ADSBMessage rdf:type owl:Class ;
+             rdfs:subClassOf :CommunicationMessage ;
+             owl:disjointWith :RemoteIDMessage ;
+             rdfs:isDefinedBy "ADSBMessage. Message received from an ADSB Automatic Dependent Surveillance Broadcast transponder."@en ;
+             rdfs:label "ADSBMessage"@en .
+
+
+###  http://www.dronetology.net/dronetology#AUAS
+:AUAS rdf:type owl:Class ;
+      rdfs:subClassOf [ owl:intersectionOf ( :UAS
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasMission ;
+                                               owl:someValuesFrom :AutonomousMission
+                                             ]
+                                           ) ;
+                        rdf:type owl:Class
+                      ] ;
+      rdfs:comment "Autonomous Unmanned Aircraft System" ;
+      rdfs:label "AUAS"@en .
+
+
+###  http://www.dronetology.net/dronetology#Acceleration
+:Acceleration rdf:type owl:Class ;
+              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+              rdfs:comment "Acceleration. A drone capacity to gain speed."@en ;
+              rdfs:label "Acceleration"@en .
+
+
+###  http://www.dronetology.net/dronetology#Accelerometer
+:Accelerometer rdf:type owl:Class ;
+               rdfs:subClassOf :InertialNavigationUnit ;
+               rdfs:comment "Accelerometer. Accelerometers are used for flight stabilisation in UAVs and drones, being able to measure the orientation of the aircraft as well as the effects of sudden acceleration due to wind or sharp turns."@en ;
+               rdfs:label "Accelerometer"@en .
+
+
+###  http://www.dronetology.net/dronetology#Advisory
+:Advisory rdf:type owl:Class ;
+          rdfs:subClassOf :Regulation ;
+          rdfs:comment "Advisory. An official announcement or warning about air traffic."@en ;
+          rdfs:label "Advisory"@en .
+
+
+###  http://www.dronetology.net/dronetology#AerialDevelopmentFramework
+:AerialDevelopmentFramework rdf:type owl:Class ;
+                            rdfs:subClassOf :SoftwareComponent ;
+                            rdfs:comment "AerialDevelopmentFramework. A framework that helps researchers and developers build and reuse code between drone applications."@en ;
+                            rdfs:label "AerialDevelopmentFramework"@en .
+
+
+###  http://www.dronetology.net/dronetology#AerialVehicle
+:AerialVehicle rdf:type owl:Class ;
+               rdfs:subClassOf [ owl:intersectionOf ( :HardwareComponent
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasDirectPart ;
+                                                        owl:someValuesFrom :AircraftComponent
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+               owl:disjointWith :GroundStation ,
+                                :GroundStationComponent ,
+                                :LaunchSystem ;
+               rdfs:comment "AerialVehicle. Pilotless Aircraft"@en ;
+               rdfs:label "AerialVehicle"@en .
+
+
+###  http://www.dronetology.net/dronetology#Ailerons
+:Ailerons rdf:type owl:Class ;
+          rdfs:subClassOf :WingComponent ;
+          rdfs:comment "Aileron. Located near the outer edge of the wing, ailerons are used to control the roll of the aircraft. By moving the ailerons up or down, the pilot can bank the aircraft, enabling it to turn left or right."@en ;
+          rdfs:label "Aileron"@en .
+
+
+###  http://www.dronetology.net/dronetology#AirSpaceVolume
+:AirSpaceVolume rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> ;
+                rdfs:comment "AirSpaceVolume. The airspace is the portion of the atmosphere controlled by a country above its territory, including its territorial waters or, more generally, any specific three-dimensional portion of the atmosphere."@en ;
+                rdfs:label "AirSpaceVolume"@en .
+
+
+###  http://www.dronetology.net/dronetology#AirSpeed
+:AirSpeed rdf:type owl:Class ;
+          rdfs:subClassOf :Speed ;
+          rdfs:comment "Airspeed. The speed that the drone is facing the air which is moving over the wings."@en ;
+          rdfs:label "Airspeed"@en .
+
+
+###  http://www.dronetology.net/dronetology#AircraftComponent
+:AircraftComponent rdf:type owl:Class ;
+                   rdfs:subClassOf :HardwareComponent ;
+                   owl:disjointWith :GroundStation ,
+                                    :GroundStationComponent ,
+                                    :LaunchSystem ;
+                   rdfs:comment "AircraftComponent. Aircraft component."@en ;
+                   rdfs:label "AircraftComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#AirportNoFlyZone
+:AirportNoFlyZone rdf:type owl:Class ;
+                  rdfs:subClassOf :NoFlyZone ;
+                  rdfs:comment "AirportNoFlyZone. Restricted fly zone around an airport."@en ;
+                  rdfs:label "AirportNoFlyZone"@en .
+
+
+###  http://www.dronetology.net/dronetology#AirportSecurityNoFlyDistance
+:AirportSecurityNoFlyDistance rdf:type owl:Class ;
+                              rdfs:subClassOf :Distance ;
+                              rdfs:comment "AirportSecurityNoFlyDistance. Minimum distance to an airport that is required for flying a drone."@en ;
+                              rdfs:label "AirportSecurityNoFlyDistance"@en .
+
+
+###  http://www.dronetology.net/dronetology#Alarm
+:Alarm rdf:type owl:Class ;
+       rdfs:subClassOf owl:Thing ;
+       rdfs:comment "Alarm. A warning of danger."@en ;
+       rdfs:label "Alarm"@en .
+
+
+###  http://www.dronetology.net/dronetology#Antenna
+:Antenna rdf:type owl:Class ;
+         rdfs:subClassOf :AircraftComponent ;
+         owl:disjointWith :CommunicationSystem ,
+                          :DataProcessingBoard ,
+                          :DataStorageDevice ,
+                          :EnergyStorageComponent ,
+                          :Engine ,
+                          :FlightControllerUnit ,
+                          :Fuselage ,
+                          :InertialNavigationUnit ,
+                          :LandingComponent ,
+                          :LiftGeneratorComponent ,
+                          :Payload ;
+         rdfs:comment "Antenna. A rod, wire, or other device used to transmit or receive radio signals."@en ;
+         rdfs:label "Antenna"@en .
+
+
+###  http://www.dronetology.net/dronetology#AntiDroneWeapon
+:AntiDroneWeapon rdf:type owl:Class ;
+                 rdfs:subClassOf :AuxiliaryComponent ;
+                 rdfs:comment "AntiDroneWeapon.  Used to detect and/or intercept unwanted drones and unmanned aerial vehicles (UAVs)."@en ;
+                 rdfs:label "AntiDroneWeapon"@en ,
+                            "C-UAS" .
+
+
+###  http://www.dronetology.net/dronetology#AntiVibrationComponent
+:AntiVibrationComponent rdf:type owl:Class ;
+                        rdfs:subClassOf :AircraftComponent ;
+                        rdfs:comment "AntiVibrationComponent.  A flexible support for an engine that reduces the amount of noise and vibration that passes to the vehicle chassis."@en ;
+                        rdfs:label "AntiVibrationComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#Arm
+:Arm rdf:type owl:Class ;
+     rdfs:subClassOf :FuselagePart ;
+     rdfs:comment "Arm. The arms of a drone are the components that support the motors and are attached to the frame or base structure of the drone."@en ;
+     rdfs:label "Arm"@en .
+
+
+###  http://www.dronetology.net/dronetology#Authorization
+:Authorization rdf:type owl:Class ;
+               rdfs:subClassOf :RegulationRequirement ;
+               rdfs:comment "Authorization. A requirement that identifies the drone and the drone operator before a fly."@en ;
+               rdfs:label "Authorization"@en .
+
+
+###  http://www.dronetology.net/dronetology#AutonomousMission
+:AutonomousMission rdf:type owl:Class ;
+                   rdfs:subClassOf :Mission ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasElement ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :FlightPlan
+                                   ] ;
+                   owl:disjointWith :RemoteGuided ;
+                   rdfs:comment "AutonomousMission. A mission performed independently, without direct pilot involvement."@en ;
+                   rdfs:label "AutonomousMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#AuxiliaryCommand
+:AuxiliaryCommand rdf:type owl:Class ;
+                  rdfs:subClassOf :Command ;
+                  owl:disjointWith [ rdf:type owl:Class ;
+                                     owl:unionOf ( :GoToCommand
+                                                   :NEDVelocityCommand
+                                                 )
+                                   ] ;
+                  rdfs:comment "AuxiliaryCommand. Any command that controls the payload and functions that does not relate with drone movement"@en ;
+                  rdfs:label "AuxiliaryCommand"@en .
+
+
+###  http://www.dronetology.net/dronetology#AuxiliaryComponent
+:AuxiliaryComponent rdf:type owl:Class ;
+                    rdfs:subClassOf :Component ;
+                    owl:disjointWith :DataLink ,
+                                     :SoftwareComponent ;
+                    rdfs:comment "AuxiliaryComponent.  Any device, materials or equipment which is used to give assistance or aid to the drone but is not a permanent or enclosed part of the drone."@en ;
+                    rdfs:label "AuxiliaryComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#BVLOSMission
+:BVLOSMission rdf:type owl:Class ;
+              rdfs:subClassOf [ owl:intersectionOf ( :Mission
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasElement ;
+                                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass :NoFlyZone
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+              rdfs:comment "BVLOSMission. A mission beyond the visual line of sight of the pilot."@en ;
+              rdfs:label "BVLOSMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#BarometricPressure
+:BarometricPressure rdf:type owl:Class ;
+                    rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+                    rdfs:comment "BarometricPressure. The measurement of air pressure in the atmosphere."@en ;
+                    rdfs:label "BarometricPressure"@en .
+
+
+###  http://www.dronetology.net/dronetology#BasicComplaince
+:BasicComplaince rdf:type owl:Class ;
+                 rdfs:subClassOf :Regulation ,
+                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasPilot ;
+                                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass :Pilot
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :isElementOf ;
+                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass :Mission
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+                 rdfs:comment "BasicComplaince. Basic and most common safety rules that apply to most countries."@en ;
+                 rdfs:label "BasicComplaince"@en .
+
+
+###  http://www.dronetology.net/dronetology#Battery
+:Battery rdf:type owl:Class ;
+         rdfs:subClassOf :EnergyStorageComponent ;
+         owl:disjointWith :FuelTank ;
+         rdfs:comment "Battery. A container consisting of one or more cells, in which chemical energy is converted into electricity and used as a source of power."@en ;
+         rdfs:label "Battery"@en .
+
+
+###  http://www.dronetology.net/dronetology#BatteryAlarm
+:BatteryAlarm rdf:type owl:Class ;
+              rdfs:subClassOf :Alarm ;
+              owl:disjointWith :CollisionAlarm ,
+                               :NoFlyZoneAlarm ;
+              rdfs:comment "BatteryAlarm. A warning provoked by a low battery level."@en ;
+              rdfs:label "BatteryAlarm"@en .
+
+
+###  http://www.dronetology.net/dronetology#Beidou
+:Beidou rdf:type owl:Class ;
+        rdfs:subClassOf :GlobalNavigationSatelliteSystem ;
+        rdfs:comment "Beidu. BeiDou, or BDS, is a global GNSS owned and operated by the People's Republic of China."@en ;
+        rdfs:label "Beidu"@en .
+
+
+###  http://www.dronetology.net/dronetology#C2Link
+:C2Link rdf:type owl:Class ;
+        rdfs:subClassOf :DataLink ;
+        rdfs:comment "C2Link.  A communications link between a UAV (unmanned aerial vehicle) and its ground station that is responsible for the management and control of the aircraft."@en ;
+        rdfs:label "C2Link"@en .
+
+
+###  http://www.dronetology.net/dronetology#Cabin
+:Cabin rdf:type owl:Class ;
+       rdfs:subClassOf :FuselagePart ;
+       rdfs:comment "Cabin. A separate space in an aircraft for passengers."@en ;
+       rdfs:label "Cabin"@en .
+
+
+###  http://www.dronetology.net/dronetology#Cable
+:Cable rdf:type owl:Class ;
+       rdfs:subClassOf :AuxiliaryComponent ;
+       rdfs:comment "Cable. A cable is a thick wire, or a group of wires inside a rubber or plastic covering, which is used to carry electricity or electronic signals."@en ;
+       rdfs:label "Cable"@en .
+
+
+###  http://www.dronetology.net/dronetology#Camera
+:Camera rdf:type owl:Class ;
+        rdfs:subClassOf :Payload ;
+        rdfs:comment "Camera. A device for recording visual images in the form of photographs, film, or video signals."@en ;
+        rdfs:label "Camera"@en .
+
+
+###  http://www.dronetology.net/dronetology#CancelledMission
+:CancelledMission rdf:type owl:Class ;
+                  rdfs:subClassOf :Mission ;
+                  rdfs:comment "CancelledMission. Mission cancelled due to a high impact risk."@en ;
+                  rdfs:label "CancelledMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#Capacity
+:Capacity rdf:type owl:Class ;
+          rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+          rdfs:comment "Capacity. The total amount that can be contained in a drone."@en ;
+          rdfs:label "Capacity"@en .
+
+
+###  http://www.dronetology.net/dronetology#Catapult
+:Catapult rdf:type owl:Class ;
+          rdfs:subClassOf :LaunchSystem ;
+          rdfs:comment "Catapult. A combination of rails, elastic bands, etc. used to launch a drone. It provides longer launch ranges by providing a initial boost of speed and altitude."@en ;
+          rdfs:label "Catapult"@en .
+
+
+###  http://www.dronetology.net/dronetology#ChargingStation
+:ChargingStation rdf:type owl:Class ;
+                 rdfs:subClassOf :AuxiliaryComponent ;
+                 owl:disjointWith :RefuelingSystem ;
+                 rdfs:comment "ChargingStation. A power supply device that supplies electrical power for recharging plug-in electric vehicles."@en ;
+                 rdfs:label "ChargingStation"@en .
+
+
+###  http://www.dronetology.net/dronetology#CivilManufacturer
+:CivilManufacturer rdf:type owl:Class ;
+                   rdfs:subClassOf :Manufacturer ;
+                   rdfs:comment "Drone manufacturers of civil drones either produce drones for two types: commercial purposes (e.g. drones used in the energy, construction, agriculture or transport industry) and/or for private individuals for hobby flights." ;
+                   rdfs:label "CivilManufacturer"@en .
+
+
+###  http://www.dronetology.net/dronetology#CollaborativeDrone
+:CollaborativeDrone rdf:type owl:Class ;
+                    rdfs:subClassOf :Drone ;
+                    rdfs:comment "CollaborativeDrone. Drone with specific equipment that allows to collaborate with others."@en ;
+                    rdfs:label "CollaborativeDrone"@en .
+
+
+###  http://www.dronetology.net/dronetology#CollisionAlarm
+:CollisionAlarm rdf:type owl:Class ;
+                rdfs:subClassOf :Alarm ;
+                owl:disjointWith :NoFlyZoneAlarm ;
+                rdfs:comment "CollisionAlarm. A warning provoked when two aircraft are flying below a security distance."@en ;
+                rdfs:label "CollisionAlarm"@en .
+
+
+###  http://www.dronetology.net/dronetology#CollisionRisk
+:CollisionRisk rdf:type owl:Class ;
+               rdfs:subClassOf :Risk ;
+               rdfs:comment "CollisionRisk. Collision risk can be defined as the potential for UAS  to encounter and collide with other UAS, aircraft or obstacle."@en ;
+               rdfs:label "CollisionRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#CombustionEngine
+:CombustionEngine rdf:type owl:Class ;
+                  rdfs:subClassOf :Engine ;
+                  owl:disjointWith :ElectricalEngine ;
+                  rdfs:comment "CombustionEngine. A heat engine in which the combustion of a fuel occurs with an oxidizer (usually air)."@en ;
+                  rdfs:label "CombustionEngine"@en .
+
+
+###  http://www.dronetology.net/dronetology#Command
+:Command rdf:type owl:Class ;
+         rdfs:comment "Command. A logical order, instruction or signal causing a computer or control unit to perform one of its basic functions."@en ;
+         rdfs:label "Command"@en .
+
+
+###  http://www.dronetology.net/dronetology#CommunicationMessage
+:CommunicationMessage rdf:type owl:Class ;
+                      rdfs:comment "CommunicationMessage. A formal description of format and rules that allows to transmit information via any variation of a physical quantity."@en ;
+                      rdfs:label "CommunicationMessage"@en .
+
+
+###  http://www.dronetology.net/dronetology#CommunicationSystem
+:CommunicationSystem rdf:type owl:Class ;
+                     rdfs:subClassOf :AircraftComponent ;
+                     owl:disjointWith :DataProcessingBoard ,
+                                      :DataStorageDevice ,
+                                      :EnergyStorageComponent ,
+                                      :Engine ,
+                                      :FlightControllerUnit ,
+                                      :Fuselage ,
+                                      :InertialNavigationUnit ,
+                                      :LandingComponent ,
+                                      :LiftGeneratorComponent ,
+                                      :Payload ;
+                     rdfs:comment "CommunicationSystem. A system which describes the information exchange between two points."@en ;
+                     rdfs:label "CommunicationSystem"@en .
+
+
+###  http://www.dronetology.net/dronetology#Component
+:Component rdf:type owl:Class ;
+           rdfs:comment "Component. A part of the artifact being designed."@en ;
+           rdfs:label "Component"@en .
+
+
+###  http://www.dronetology.net/dronetology#ComponentMalfunctionRisk
+:ComponentMalfunctionRisk rdf:type owl:Class ;
+                          rdfs:subClassOf :Risk ;
+                          rdfs:comment "ComponentMalfunctionRisk. Component failures risk due to  poor design, incorrect material selection, manufacturing defects or environmental factors."@en ;
+                          rdfs:label "ComponentMalfunctionRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#ComponentMovementTrack
+:ComponentMovementTrack rdf:type owl:Class ;
+                        rdfs:subClassOf :MissionElement ;
+                        rdfs:comment "ComponentMovementTrack. Description of the movement of a part of the drone."@en ;
+                        rdfs:label "ComponentMovementTrack"@en .
+
+
+###  http://www.dronetology.net/dronetology#ComponentTemperature
+:ComponentTemperature rdf:type owl:Class ;
+                      rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+                      rdfs:comment "ComponentTemperature. The degree or intensity of heat present in a drone component."@en ;
+                      rdfs:label "ComponentTemperature"@en .
+
+
+###  http://www.dronetology.net/dronetology#Conflict
+:Conflict rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> ;
+          rdfs:comment "Conflict. A conflict is an infringement, or potential infringement, of the required separation between aircraft." ;
+          rdfs:label "Conflict"@en .
+
+
+###  http://www.dronetology.net/dronetology#CongestedAirSpaceVolume
+:CongestedAirSpaceVolume rdf:type owl:Class ;
+                         rdfs:subClassOf :AirSpaceVolume ;
+                         rdfs:comment "CongestedAirSpace. Air volume with at least two aircraft in conflict."@en ;
+                         rdfs:label "CongestedAirSpace"@en .
+
+
+###  http://www.dronetology.net/dronetology#Connector
+:Connector rdf:type owl:Class ;
+           rdfs:subClassOf :AuxiliaryComponent ;
+           rdfs:comment "Connector. A device for keeping two parts of an electric circuit in contact."@en ;
+           rdfs:label "Connector"@en .
+
+
+###  http://www.dronetology.net/dronetology#Constraint
+:Constraint rdf:type owl:Class ;
+            rdfs:comment "Constraint. The leaves of the requirement decomposition tree, and embody physical laws, equations etc."@en ;
+            rdfs:label "Constraint"@en .
+
+
+###  http://www.dronetology.net/dronetology#CooperativeDrone
+:CooperativeDrone rdf:type owl:Class ;
+                  rdfs:subClassOf :Drone ;
+                  rdfs:comment "CooperativeDrone. Drone with equipment that allows to cooperate with others."@en ;
+                  rdfs:label "CooperativeDrone"@en .
+
+
+###  http://www.dronetology.net/dronetology#Copter
+:Copter rdf:type owl:Class ;
+        rdfs:subClassOf [ owl:intersectionOf ( :VTOLCraft
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :hasComponent ;
+                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                 owl:onClass :Rotor
+                                               ]
+                                             ) ;
+                          rdf:type owl:Class
+                        ] ;
+        owl:disjointWith :FixedWingCraft ;
+        rdfs:comment "Copter. A type of aircraft which derives both lift and propulsion from one or more sets of horizontally revolving overhead rotors."@en ;
+        rdfs:label "Copter"@en .
+
+
+###  http://www.dronetology.net/dronetology#CruisePlan
+:CruisePlan rdf:type owl:Class ;
+            rdfs:subClassOf :FlightPlan ;
+            owl:disjointWith :LandingPlan ,
+                             :TakeoffPlan ;
+            rdfs:comment "CruisePlan. A part of the flightplan that starts when the aircraft levels off after a climb, until it begins to descend for landing."@en ;
+            rdfs:label "CruisePlan"@en .
+
+
+###  http://www.dronetology.net/dronetology#CruiseSpeed
+:CruiseSpeed rdf:type owl:Class ;
+             rdfs:subClassOf :Speed ;
+             rdfs:comment "CruiseSpeed. The maximum speed at which a drone is able to travel continuously without using a large amount of energy."@en ;
+             rdfs:label "CruiseSpeed"@en .
+
+
+###  http://www.dronetology.net/dronetology#DataLink
+:DataLink rdf:type owl:Class ;
+          rdfs:subClassOf :Component ;
+          owl:disjointWith :HardwareComponent ,
+                           :SoftwareComponent ;
+          rdfs:comment "DataLink. A telecommunications link over which data is transmitted."@en ;
+          rdfs:label "DataLink"@en .
+
+
+###  http://www.dronetology.net/dronetology#DataProcessingBoard
+:DataProcessingBoard rdf:type owl:Class ;
+                     rdfs:subClassOf :AircraftComponent ;
+                     owl:disjointWith :DataStorageDevice ,
+                                      :EnergyStorageComponent ,
+                                      :Engine ,
+                                      :FlightControllerUnit ,
+                                      :Fuselage ,
+                                      :InertialNavigationUnit ,
+                                      :LandingComponent ,
+                                      :LiftGeneratorComponent ,
+                                      :Payload ;
+                     rdfs:comment "DataProcessingBoard. Hardware dedicated to data and information processing."@en ;
+                     rdfs:label "DataProcessingBoard"@en .
+
+
+###  http://www.dronetology.net/dronetology#DataProcessingSystem
+:DataProcessingSystem rdf:type owl:Class ;
+                      rdfs:subClassOf :GroundStationComponent ;
+                      owl:disjointWith :DataStorageSystem ,
+                                       :GroundStationAntenna ,
+                                       :GroundStationCommunicationSystem ,
+                                       :MissionCommanderStation ,
+                                       :PayloadOperatorStation ,
+                                       :RemotePilotConsole ;
+                      rdfs:comment "DataProcessingSystem. The data processing system implements a series of steps where raw data (input) is fed into a system to produce actionable insights (output)."@en ;
+                      rdfs:label "DataProcessingSystem"@en .
+
+
+###  http://www.dronetology.net/dronetology#DataStorageDevice
+:DataStorageDevice rdf:type owl:Class ;
+                   rdfs:subClassOf :AircraftComponent ;
+                   owl:disjointWith :EnergyStorageComponent ,
+                                    :Engine ,
+                                    :FlightControllerUnit ,
+                                    :Fuselage ,
+                                    :InertialNavigationUnit ,
+                                    :LandingComponent ,
+                                    :LiftGeneratorComponent ,
+                                    :Payload ;
+                   rdfs:comment "DataStorageDevice. Hardware that is used for storing, porting or extracting data files and objects."@en ;
+                   rdfs:label "DataStorageDevice"@en .
+
+
+###  http://www.dronetology.net/dronetology#DataStorageSystem
+:DataStorageSystem rdf:type owl:Class ;
+                   rdfs:subClassOf :GroundStationComponent ;
+                   owl:disjointWith :GroundStationAntenna ,
+                                    :GroundStationCommunicationSystem ,
+                                    :MissionCommanderStation ,
+                                    :PayloadOperatorStation ,
+                                    :RemotePilotConsole ;
+                   rdfs:comment "DataStorageSystem. Refers to magnetic, optical or mechanical media that records and preserves digital information for ongoing or future operations."@en ;
+                   rdfs:label "DataStorageSystem"@en .
+
+
+###  http://www.dronetology.net/dronetology#Dimension
+:Dimension rdf:type owl:Class ;
+           rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+           rdfs:comment "Dimension. A measurable extent of a particular kind, such as length, breadth, depth, or height."@en ;
+           rdfs:label "Dimension"@en .
+
+
+###  http://www.dronetology.net/dronetology#Distance
+:Distance rdf:type owl:Class ;
+          rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+          rdfs:comment "Distance.The length of the space between two points."@en ;
+          rdfs:label "Distance"@en .
+
+
+###  http://www.dronetology.net/dronetology#DownfallRisk
+:DownfallRisk rdf:type owl:Class ;
+              rdfs:subClassOf :CollisionRisk ;
+              rdfs:comment "DownfallRisk. Risk of collision with the ground."@en ;
+              rdfs:label "DownfallRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#Drone
+:Drone rdf:type owl:Class ;
+       rdfs:subClassOf [ owl:intersectionOf ( <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasComponent ;
+                                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                owl:onClass :AerialVehicle
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ] ;
+       owl:disjointWith :MannedAircraft ;
+       rdfs:comment "Drone. Unmanned aircraft remotely piloted or controlled autonomously ."@en ;
+       rdfs:label "Drone"@en .
+
+
+###  http://www.dronetology.net/dronetology#DroneRegulation_EU_2019_945
+:DroneRegulation_EU_2019_945 rdf:type owl:Class ;
+                             rdfs:subClassOf :Regulation ;
+                             rdfs:comment "DroneRegulation_EU_2019_945" ;
+                             rdfs:label "DroneRegulation_EU_2019_945" ;
+                             owl:deprecated "true"^^xsd:boolean ;
+                             owl:versionInfo "Deprecated due to not following naming conventions" .
+
+
+###  http://www.dronetology.net/dronetology#ElectricalEngine
+:ElectricalEngine rdf:type owl:Class ;
+                  rdfs:subClassOf :Engine ;
+                  rdfs:comment "ElectricalEngine. An electrical machine that converts electrical energy into mechanical energy."@en ;
+                  rdfs:label "ElectricalEngine"@en .
+
+
+###  http://www.dronetology.net/dronetology#ElectronicSpeedController
+:ElectronicSpeedController rdf:type owl:Class ;
+                           rdfs:subClassOf :AircraftComponent ;
+                           owl:disjointWith :Payload ;
+                           rdfs:comment "ElectronicSpeedController. An electronic circuit that controls and regulates the speed of an electric motor."@en ;
+                           rdfs:label "ElectronicSpeedController"@en .
+
+
+###  http://www.dronetology.net/dronetology#Elevator
+:Elevator rdf:type owl:Class ;
+          rdfs:subClassOf :WingComponent ;
+          rdfs:comment "Elevator. Positioned at the trailing edge of the horizontal stabilizer, the elevators control the pitch of the aircraft. By moving the elevators up or down, the pilot can raise or lower the nose of the plane, controlling its altitude."@en ;
+          rdfs:label "Elevator"@en .
+
+
+###  http://www.dronetology.net/dronetology#EmergencyMission
+:EmergencyMission rdf:type owl:Class ;
+                  rdfs:subClassOf :Mission ;
+                  rdfs:comment "EmergencyMission. A mission with high priority."@en ;
+                  rdfs:label "EmergencyMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#EnergyProducerComponent
+:EnergyProducerComponent rdf:type owl:Class ;
+                         rdfs:subClassOf :AircraftComponent ;
+                         rdfs:comment "EnergyProducerComponent. A component that generates electric power."@en ;
+                         rdfs:label "EnergyProducerComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#EnergyStorageComponent
+:EnergyStorageComponent rdf:type owl:Class ;
+                        rdfs:subClassOf :AircraftComponent ;
+                        owl:disjointWith :Engine ,
+                                         :FlightControllerUnit ,
+                                         :Fuselage ,
+                                         :InertialNavigationUnit ,
+                                         :LandingComponent ,
+                                         :LiftGeneratorComponent ,
+                                         :Payload ;
+                        rdfs:comment "EnergyStorageComponent. A device or group of devices assembled together, capable of storing energy."@en ;
+                        rdfs:label "EnergyStorageComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#Engine
+:Engine rdf:type owl:Class ;
+        rdfs:subClassOf :AircraftComponent ;
+        owl:disjointWith :FlightControllerUnit ,
+                         :Fuselage ,
+                         :InertialNavigationUnit ,
+                         :LandingComponent ,
+                         :LiftGeneratorComponent ,
+                         :Payload ;
+        rdfs:comment "Engine. A machine for converting any of various forms of energy into mechanical force and motion."@en ;
+        rdfs:label "Engine"@en .
+
+
+###  http://www.dronetology.net/dronetology#ExternalSensor
+:ExternalSensor rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.w3.org/ns/ssn/SensingDevice> ;
+                owl:disjointWith :OnboardSensor ;
+                rdfs:comment "Sensors located outside the aircraft." ;
+                rdfs:label "ExternalSensor"@en .
+
+
+###  http://www.dronetology.net/dronetology#Feature
+:Feature rdf:type owl:Class ;
+         rdfs:comment "Feature. A feature is used to describe geometrical, functional and other characteristics associated with a part."@en ;
+         rdfs:label "Feature"@en .
+
+
+###  http://www.dronetology.net/dronetology#FireRisk
+:FireRisk rdf:type owl:Class ;
+          rdfs:subClassOf :Risk ;
+          rdfs:comment "FireRisk. Risk of harm to property or people due to fire provoked by a UAS"@en ;
+          rdfs:label "FireRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#FixedWingCraft
+:FixedWingCraft rdf:type owl:Class ;
+                rdfs:subClassOf [ owl:intersectionOf ( :Drone
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasComponent ;
+                                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                         owl:onClass :Wing
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+                rdfs:comment "FixedWingCraft. An aircraft with wings that stay in the same position."@en ;
+                rdfs:label "FixedWingCraft"@en .
+
+
+###  http://www.dronetology.net/dronetology#FixedWingVTOLCraft
+:FixedWingVTOLCraft rdf:type owl:Class ;
+                    rdfs:subClassOf [ owl:intersectionOf ( :FixedWingCraft
+                                                           :VTOLCraft
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                    rdfs:comment "FixedWingVTOLCraft. An aircraft with wings that stay in the same position but can take off and land vertically without relying on a runway."@en ;
+                    rdfs:label "FixedWingVTOLCraft"@en .
+
+
+###  http://www.dronetology.net/dronetology#Flap
+:Flap rdf:type owl:Class ;
+      rdfs:subClassOf :WingComponent ;
+      rdfs:comment "Flap. The flaps are found along the trailing edge of the wing, closer to the fuselage. They are used to increase the lift of the wing during takeoff and landing, allowing the aircraft to fly at slower speeds."@en ;
+      rdfs:label "Flap"@en .
+
+
+###  http://www.dronetology.net/dronetology#FlightAreaMission
+:FlightAreaMission rdf:type owl:Class ;
+                   rdfs:subClassOf :Mission ;
+                   rdfs:comment "FlightAreaMission. A mission defined by a fligh area."@en ;
+                   rdfs:label "FlightAreaMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#FlightControlApp
+:FlightControlApp rdf:type owl:Class ;
+                  rdfs:subClassOf :SoftwareComponent ;
+                  rdfs:comment "FlightControlApp. A software installed on a mobile device that allows the pilot to control the drone and to manage data from the mission."@en ;
+                  rdfs:label "FlightControlApp"@en .
+
+
+###  http://www.dronetology.net/dronetology#FlightControlFirmware
+:FlightControlFirmware rdf:type owl:Class ;
+                       rdfs:subClassOf :SoftwareComponent ;
+                       rdfs:comment "FlightControlFirmware. The software that runs on the drone flight controller and defines its features, settings, and capabilities."@en ;
+                       rdfs:label "FlightControlFirmware"@en .
+
+
+###  http://www.dronetology.net/dronetology#FlightControllerUnit
+:FlightControllerUnit rdf:type owl:Class ;
+                      rdfs:subClassOf :AircraftComponent ;
+                      owl:disjointWith :Fuselage ,
+                                       :InertialNavigationUnit ,
+                                       :LandingComponent ,
+                                       :LiftGeneratorComponent ,
+                                       :Payload ;
+                      rdfs:comment "FlightControllerUnit. Controls the motors and ESCs in the drone to fly following the pilot commands or a stored flight plan."@en ;
+                      rdfs:label "FlighControllerUnit"@en .
+
+
+###  http://www.dronetology.net/dronetology#FlightPlan
+:FlightPlan rdf:type owl:Class ;
+            rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasWaypoint ;
+                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                     owl:onClass :Waypoint
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasWaypoint ;
+                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                     owl:onClass :HomeLocation
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+            rdfs:comment "FlightPlan. A flightplan defines the details of an intended flight."@en ;
+            rdfs:label "FlightPlan"@en .
+
+
+###  http://www.dronetology.net/dronetology#FlightSegments
+:FlightSegments rdf:type owl:Class ;
+                rdfs:subClassOf :MissionGeometryElement ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasWaypoint ;
+                                  owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Waypoint
+                                ] ;
+                rdfs:comment "FlightSegments. The fly path between two wayopints."@en ;
+                rdfs:label "FlightSegments"@en .
+
+
+###  http://www.dronetology.net/dronetology#FlightTime
+:FlightTime rdf:type owl:Class ;
+            rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+            rdfs:comment "FlightTime. The time from the moment a drone leaves the surface until it comes into contact with the surface at the next point of landing"@en ;
+            rdfs:label "FlighTime"@en .
+
+
+###  http://www.dronetology.net/dronetology#FlyZone
+:FlyZone rdf:type owl:Class ;
+         rdfs:subClassOf :AirSpaceVolume ;
+         owl:disjointWith :NoFlyZone ;
+         rdfs:comment "FlyZone. Part of the airspace available to aircraft to fly in."@en ;
+         rdfs:label "FlyZone"@en .
+
+
+###  http://www.dronetology.net/dronetology#ForcedLandingRisk
+:ForcedLandingRisk rdf:type owl:Class ;
+                   rdfs:subClassOf :Risk ;
+                   rdfs:comment "ForcedLandingRisk. A forced landing, on or off an airport, necessitated by the inability to continue further flight."@en ;
+                   rdfs:label "ForcedLandingRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#FrameKit
+:FrameKit rdf:type owl:Class ;
+          rdfs:subClassOf :FuselagePart ;
+          owl:disjointWith :Nose ,
+                           :Tail ;
+          rdfs:comment "FrameKit. The main structure in a drone where the rest of the components are installed."@en ;
+          rdfs:label "FrameKit"@en .
+
+
+###  http://www.dronetology.net/dronetology#FuelTank
+:FuelTank rdf:type owl:Class ;
+          rdfs:subClassOf :EnergyStorageComponent ;
+          rdfs:comment "FuelTank. A container inside a vehicle that holds fuel."@en ;
+          rdfs:label "FuelTank"@en .
+
+
+###  http://www.dronetology.net/dronetology#Function
+:Function rdf:type owl:Class ;
+          rdfs:comment "Function. Drones have many functions, ranging from monitoring climate change to carrying out search operations after natural disasters, photography, filming, etc."@en ;
+          rdfs:label "Function"@en .
+
+
+###  http://www.dronetology.net/dronetology#Fuselage
+:Fuselage rdf:type owl:Class ;
+          rdfs:subClassOf [ owl:intersectionOf ( :AircraftComponent
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasPart ;
+                                                   owl:someValuesFrom :FuselagePart
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ;
+          owl:disjointWith :InertialNavigationUnit ,
+                           :LandingComponent ,
+                           :LiftGeneratorComponent ,
+                           :Payload ;
+          rdfs:comment "Fuselage. The central body portion of an aircraft."@en ;
+          rdfs:label "Fuselage"@en .
+
+
+###  http://www.dronetology.net/dronetology#FuselagePart
+:FuselagePart rdf:type owl:Class ;
+              rdfs:subClassOf :AircraftComponent ;
+              rdfs:comment "FuselagePart. Part of the fuselage."@en ;
+              rdfs:label "FuselagePart"@en .
+
+
+###  http://www.dronetology.net/dronetology#GLONASS
+:GLONASS rdf:type owl:Class ;
+         rdfs:subClassOf :GlobalNavigationSatelliteSystem ;
+         rdfs:comment "GLONASS. GLONASS (Globalnaya Navigazionnaya Sputnikovaya Sistema, or Global Navigation Satellite System) is a global GNSS owned and operated by the Russian Federation. The fully operational system consists of 24+ satellites." ;
+         rdfs:label "GLONASS"@en .
+
+
+###  http://www.dronetology.net/dronetology#GPS
+:GPS rdf:type owl:Class ;
+     rdfs:subClassOf :GlobalNavigationSatelliteSystem ;
+     rdfs:comment "GPS. Global positioning system is a space-based navigation system owned by the US government and operated by the US Air Force that consists of satellites, receivers and other technologies that provide accurate location and time information for civil and military use."@en ;
+     rdfs:label "GPS"@en .
+
+
+###  http://www.dronetology.net/dronetology#Galileo
+:Galileo rdf:type owl:Class ;
+         rdfs:subClassOf :GlobalNavigationSatelliteSystem ;
+         rdfs:comment "Galileo. Galileo is a global GNSS owned and operated by the European Union."@en ;
+         rdfs:label "Galileo"@en .
+
+
+###  http://www.dronetology.net/dronetology#GearBox
+:GearBox rdf:type owl:Class ;
+         rdfs:subClassOf :RotorComponent ;
+         owl:disjointWith :Propeller ,
+                          :Rotor ;
+         rdfs:comment "GearBox.  A set of gears and their casing to transferr energy from one device to another."@en ;
+         rdfs:label "GearBox"@en .
+
+
+###  http://www.dronetology.net/dronetology#Gimbal
+:Gimbal rdf:type owl:Class ;
+        rdfs:subClassOf :Payload ;
+        rdfs:comment "Gimbal.  This part of the drone is for stabilising the camera during drone flight to prevent the vibrations of the motors from affecting the quality of the images captured with the drone."@en ;
+        rdfs:label "Gimbal"@en .
+
+
+###  http://www.dronetology.net/dronetology#GlobalNavigationSatelliteSystem
+:GlobalNavigationSatelliteSystem rdf:type owl:Class ;
+                                 rdfs:subClassOf :AircraftComponent ;
+                                 rdfs:comment "GlobalNavigationSatelliteSystem. Global navigation satellite system (GNSS) is a general term describing any satellite constellation that provides positioning, navigation, and timing (PNT) services on a global or regional basis."@en ;
+                                 rdfs:label "GlobalNavigationSatelliteSystem"@en .
+
+
+###  http://www.dronetology.net/dronetology#GoToCommand
+:GoToCommand rdf:type owl:Class ;
+             rdfs:subClassOf :Command ;
+             owl:disjointWith [ rdf:type owl:Class ;
+                                owl:unionOf ( :AuxiliaryCommand
+                                              :NEDVelocityCommand
+                                            )
+                              ] ;
+             rdfs:comment "GoToCommand. A command that order the UAS to go a specific location."@en ;
+             rdfs:label "GoToCommand"@en .
+
+
+###  http://www.dronetology.net/dronetology#GroundStation
+:GroundStation rdf:type owl:Class ;
+               rdfs:subClassOf :HardwareComponent ;
+               owl:disjointWith :GroundStationComponent ,
+                                :LaunchSystem ;
+               rdfs:comment "GroundStation. Land-based communications and control systems typically used for direct piloting and communication between the crew and a UAV."@en ;
+               rdfs:label "GroundStation"@en .
+
+
+###  http://www.dronetology.net/dronetology#GroundStationAntenna
+:GroundStationAntenna rdf:type owl:Class ;
+                      rdfs:subClassOf :GroundStationComponent ;
+                      owl:disjointWith :GroundStationCommunicationSystem ,
+                                       :MissionCommanderStation ,
+                                       :PayloadOperatorStation ,
+                                       :RemotePilotConsole ;
+                      rdfs:comment "GroundStationAntenna. Antenna installed in the ground station."@en ;
+                      rdfs:label "GroundStationAntenna"@en .
+
+
+###  http://www.dronetology.net/dronetology#GroundStationCommunicationSystem
+:GroundStationCommunicationSystem rdf:type owl:Class ;
+                                  rdfs:subClassOf :GroundStationComponent ;
+                                  owl:disjointWith :MissionCommanderStation ,
+                                                   :PayloadOperatorStation ,
+                                                   :RemotePilotConsole ;
+                                  rdfs:comment "GroundStationCommunicationSystem. Communication systems used to communicate with the drone."@en ;
+                                  rdfs:label "GroundStationCommunicationSystem"@en .
+
+
+###  http://www.dronetology.net/dronetology#GroundStationComponent
+:GroundStationComponent rdf:type owl:Class ;
+                        rdfs:subClassOf :HardwareComponent ;
+                        owl:disjointWith :LaunchSystem ;
+                        rdfs:comment "GroundStationComponent. Any component of the ground station."@en ;
+                        rdfs:label "GroundStationComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#Group1
+:Group1 rdf:type owl:Class ;
+        rdfs:subClassOf :Drone ;
+        rdfs:comment "Group1. A drone-category for small drone defined by the U.S. Department of Defense (DoD)."@en ;
+        rdfs:label "Group1"@en .
+
+
+###  http://www.dronetology.net/dronetology#Group2
+:Group2 rdf:type owl:Class ;
+        rdfs:subClassOf :Drone ;
+        rdfs:comment "Group2. A drone-category for medium drone defined by the U.S. Department of Defense (DoD)."@en ;
+        rdfs:label "Group2"@en .
+
+
+###  http://www.dronetology.net/dronetology#Group3
+:Group3 rdf:type owl:Class ;
+        rdfs:subClassOf :Drone ;
+        rdfs:comment "Group3. A drone-category for large drone defined by the U.S. Department of Defense (DoD)."@en ;
+        rdfs:label "Group3"@en .
+
+
+###  http://www.dronetology.net/dronetology#Group4
+:Group4 rdf:type owl:Class ;
+        rdfs:subClassOf :Drone ;
+        rdfs:comment "Group4. A drone-category for larger drone defined by the U.S. Department of Defense (DoD)."@en ;
+        rdfs:label "Group4"@en .
+
+
+###  http://www.dronetology.net/dronetology#Group5
+:Group5 rdf:type owl:Class ;
+        rdfs:subClassOf :Drone ;
+        rdfs:comment "Group5. A drone-category for the largest drone defined by the U.S. Department of Defense (DoD)."@en ;
+        rdfs:label "Group5"@en .
+
+
+###  http://www.dronetology.net/dronetology#Gyroscope
+:Gyroscope rdf:type owl:Class ;
+           rdfs:subClassOf :InertialNavigationUnit ;
+           rdfs:comment "Gyroscope. A gyroscope is a sensor that measures rotational movement and provides feedback to maintain stability in an aircraft."@en ;
+           rdfs:label "Gyroscope"@en .
+
+
+###  http://www.dronetology.net/dronetology#HALE
+:HALE rdf:type owl:Class ;
+      rdfs:subClassOf :Drone ;
+      rdfs:comment "HALE. High-Altitude Long Endurance drone."@en ;
+      rdfs:label "HALE"@en .
+
+
+###  http://www.dronetology.net/dronetology#HardwareComponent
+:HardwareComponent rdf:type owl:Class ;
+                   rdfs:subClassOf [ owl:intersectionOf ( :Component
+                                                          <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject>
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+                   owl:disjointWith :SoftwareComponent ;
+                   rdfs:comment "HardwareComponent. Hardware component."@en ;
+                   rdfs:label "HardwareComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#Height
+:Height rdf:type owl:Class ;
+        rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+        rdfs:comment "Height. The vertical distance of a drone above whatever surface."@en ;
+        rdfs:label "Height"@en .
+
+
+###  http://www.dronetology.net/dronetology#HighImpact
+:HighImpact rdf:type owl:Class ;
+            rdfs:subClassOf :RiskImpact ;
+            rdfs:comment "HighImpact. High-impact risks are those that have a significant probability of occurring and a large negative effect on a UAS flight."@en ;
+            rdfs:label "HighImpact"@en .
+
+
+###  http://www.dronetology.net/dronetology#HighLikelihood
+:HighLikelihood rdf:type owl:Class ;
+                rdfs:subClassOf :RiskLikelihood ;
+                rdfs:comment "HighLikelihood. A high level of probability the risk will occur or be realized."@en ;
+                rdfs:label "HighLikelihood"@en .
+
+
+###  http://www.dronetology.net/dronetology#HighPriorityMission
+:HighPriorityMission rdf:type owl:Class ;
+                     rdfs:subClassOf :MissionPriority ;
+                     rdfs:comment "HighPriorityMission. Immediate mission that takes precedence over others."@en ;
+                     rdfs:label "HighPriorityMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#HomeLocation
+:HomeLocation rdf:type owl:Class ;
+              rdfs:subClassOf :Waypoint ;
+              rdfs:comment "HomeLocation. Drone's location before taking off"@en ;
+              rdfs:label "HomeLocation"@en .
+
+
+###  http://www.dronetology.net/dronetology#IRNSS
+:IRNSS rdf:type owl:Class ;
+       rdfs:subClassOf :GlobalNavigationSatelliteSystem ;
+       rdfs:comment "IRNSS. IRNSS is a regional GNSS owned and operated by the Government of India. IRNSS is an autonomous system designed to cover the Indian region and 1500 km around the Indian mainland."@en ;
+       rdfs:label "IRNSS"@en .
+
+
+###  http://www.dronetology.net/dronetology#InertialNavigationUnit
+:InertialNavigationUnit rdf:type owl:Class ;
+                        rdfs:subClassOf :AircraftComponent ;
+                        owl:disjointWith :LandingComponent ,
+                                         :LiftGeneratorComponent ,
+                                         :Payload ;
+                        rdfs:comment "InertialNavigationUnit. The INS provides the drone with data on linear acceleration across three axes, as well as measurements of pitch, roll, and yaw."@en ;
+                        rdfs:label "InertialNavigationUnit"@en .
+
+
+###  http://www.dronetology.net/dronetology#InjuryRisk
+:InjuryRisk rdf:type owl:Class ;
+            rdfs:subClassOf :Risk ;
+            rdfs:comment "InjuryRisk. Risk of injury means a risk of death or personal injury provoked by a UAS."@en ;
+            rdfs:label "InjuryRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#InterComponentMessage
+:InterComponentMessage rdf:type owl:Class ;
+                       rdfs:subClassOf :CommunicationMessage ;
+                       rdfs:comment "InterComponentMessage. A message used internally between drone components."@en ;
+                       rdfs:label "InterComponentMessage"@en .
+
+
+###  http://www.dronetology.net/dronetology#InventorySoftware
+:InventorySoftware rdf:type owl:Class ;
+                   rdfs:subClassOf :SoftwareComponent ;
+                   rdfs:comment "InventorySoftware. A business applications that are designed to track and manage drone product, material purchases, delivery of goods, etc."@en ;
+                   rdfs:label "InventorySoftware"@en .
+
+
+###  http://www.dronetology.net/dronetology#Iteration
+:Iteration rdf:type owl:Class ;
+           rdfs:subClassOf :MissionTemporalElement ;
+           rdfs:comment "Iteration. An auto-incremental number that increases in each repetition of a computational procedure that involves Dronetology during a mission."@en ;
+           rdfs:label "Iteration"@en .
+
+
+###  http://www.dronetology.net/dronetology#LALE
+:LALE rdf:type owl:Class ;
+      rdfs:subClassOf :Drone ;
+      rdfs:comment "LALE. Low Altitude Large Endurance drone."@en ;
+      rdfs:label "LALE"@en .
+
+
+###  http://www.dronetology.net/dronetology#LASE
+:LASE rdf:type owl:Class ;
+      rdfs:subClassOf :Drone ;
+      rdfs:comment "LASE. Low Altitude Short Endurance drone."@en ;
+      rdfs:label "LASE"@en .
+
+
+###  http://www.dronetology.net/dronetology#LandingComponent
+:LandingComponent rdf:type owl:Class ;
+                  rdfs:subClassOf :AircraftComponent ;
+                  owl:disjointWith :LiftGeneratorComponent ,
+                                   :Payload ;
+                  rdfs:comment "LandingComponent. This is one of the most important parts to ensure the integrity of the drone when it comes into contact with the ground."@en ;
+                  rdfs:label "LandingComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#LandingGear
+:LandingGear rdf:type owl:Class ;
+             rdfs:subClassOf :LandingComponent ;
+             rdfs:comment "LandingGear. A structure that goes on the bottom of the drone, which allows you to maintain an adequate distance between the body of the drone and the ground. Synonym of landing leg."@en ;
+             rdfs:label "LandingGear"@en .
+
+
+###  http://www.dronetology.net/dronetology#LandingPlan
+:LandingPlan rdf:type owl:Class ;
+             rdfs:subClassOf :FlightPlan ;
+             owl:disjointWith :TakeoffPlan ;
+             rdfs:comment "LandingPlan. A part of the flightplan that starts when the aircraft is climbing until it levels off."@en ;
+             rdfs:label "LandingPlan"@en .
+
+
+###  http://www.dronetology.net/dronetology#LandingPlatform
+:LandingPlatform rdf:type owl:Class ;
+                 rdfs:subClassOf :AuxiliaryComponent .
+
+
+###  http://www.dronetology.net/dronetology#LandingSpeed
+:LandingSpeed rdf:type owl:Class ;
+              rdfs:subClassOf :Speed ;
+              rdfs:comment "LandingSpeed. The speed at which a drone lands."@en ;
+              rdfs:label "LandingSpeed"@en .
+
+
+###  http://www.dronetology.net/dronetology#LandingSurface
+:LandingSurface rdf:type owl:Class ;
+                rdfs:subClassOf :MissionGeometryElement .
+
+
+###  http://www.dronetology.net/dronetology#LandingWheel
+:LandingWheel rdf:type owl:Class ;
+              rdfs:subClassOf :LandingComponent ;
+              rdfs:comment "LandingWheel. Wheel used to takeoff or land in a runway. The fixed tricycle arrangement with one nose wheel (NLG) and two main wheels (MLG) at the rear is very common."@en ;
+              rdfs:label "LandingWheel"@en .
+
+
+###  http://www.dronetology.net/dronetology#LargeUA
+:LargeUA rdf:type owl:Class ;
+         rdfs:subClassOf :Drone ;
+         owl:disjointWith :MediumUA ,
+                          :SmallUA ,
+                          :VerySmallUA ;
+         rdfs:comment "LargeUA. Unmmaned aircraft with a wingspan greater than 10 m."@en ;
+         rdfs:label "LargeUA"@en .
+
+
+###  http://www.dronetology.net/dronetology#LaunchSystem
+:LaunchSystem rdf:type owl:Class ;
+              rdfs:subClassOf :AuxiliaryComponent ;
+              rdfs:comment "LaunchSystem. A system that allows the drone takeoff."@en ;
+              rdfs:label "LaunchSystem"@en .
+
+
+###  http://www.dronetology.net/dronetology#LiIonBattery
+:LiIonBattery rdf:type owl:Class ;
+              rdfs:subClassOf :Battery ;
+              rdfs:comment "LiIonBattery. A lithium-ion is a type of rechargeable battery that uses the reversible intercalation of Li+ ions into electronically conducting solids to store energy."@en ;
+              rdfs:label "LiIonBattery"@en .
+
+
+###  http://www.dronetology.net/dronetology#LiPoBattery
+:LiPoBattery rdf:type owl:Class ;
+             rdfs:subClassOf :Battery ;
+             rdfs:comment "LiPoBattery. A lithium polymer battery is a rechargeable battery of lithium-ion technology using a polymer electrolyte instead of a liquid electrolyte."@en ;
+             rdfs:label "LiPoBattery"@en .
+
+
+###  http://www.dronetology.net/dronetology#LiftGeneratorComponent
+:LiftGeneratorComponent rdf:type owl:Class ;
+                        rdfs:subClassOf :AircraftComponent ;
+                        owl:disjointWith :Payload ;
+                        rdfs:comment "LiftGeneratorComponent. A component that generates lift that holds the airplane in the air."@en ;
+                        rdfs:label "LiftGeneratorComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#LossCommunicationsRisk
+:LossCommunicationsRisk rdf:type owl:Class ;
+                        rdfs:subClassOf :Risk ;
+                        rdfs:comment "LossCommunicationRisk. Loss of communication implies risk like loss of aircraft control, missing clearence info, etc."@en ;
+                        rdfs:label "LossCommunicationRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#LossRisk
+:LossRisk rdf:type owl:Class ;
+          rdfs:subClassOf :Risk ;
+          rdfs:comment "LossRisk. Risk of loss is the allocation of responsibility for covering the risk of damage to or loss of goods."@en ;
+          rdfs:label "LossRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#LowAltitudeCollisionRisk
+:LowAltitudeCollisionRisk rdf:type owl:Class ;
+                          rdfs:subClassOf :CollisionRisk ;
+                          rdfs:comment "LowAltitudeCollisionRisk. Collision risk in low altitude flights."@en ;
+                          rdfs:label "LowAltitudeCollisionRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#LowImpact
+:LowImpact rdf:type owl:Class ;
+           rdfs:subClassOf :RiskImpact ;
+           rdfs:comment "LowImpact. Low-impact risks are those that have a low probability of occurring and a limited negative effect on a UAS flight."@en ;
+           rdfs:label "LowImpact"@en .
+
+
+###  http://www.dronetology.net/dronetology#LowLikelihood
+:LowLikelihood rdf:type owl:Class ;
+               rdfs:subClassOf :RiskLikelihood ;
+               rdfs:comment "LowLikelihood. A low level of probability the risk will occur or be realized."@en ;
+               rdfs:label "LowLikelihood"@en .
+
+
+###  http://www.dronetology.net/dronetology#LowPriorityMission
+:LowPriorityMission rdf:type owl:Class ;
+                    rdfs:subClassOf :MissionPriority ;
+                    rdfs:comment "LowPriorityMission. Mission without any precedence."@en ;
+                    rdfs:label "LowPriorityMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#MALE
+:MALE rdf:type owl:Class ;
+      rdfs:subClassOf :Drone ;
+      rdfs:comment "MALE. Medium Altitude Long Endurance drone."@en ;
+      rdfs:label "MALE"@en .
+
+
+###  http://www.dronetology.net/dronetology#MAV
+:MAV rdf:type owl:Class ;
+     rdfs:subClassOf :Drone ;
+     rdfs:comment "MAV. Micro Air Vehicle. Unmanned aircraft bellow 2 kg of weight."@en ;
+     rdfs:label "MAV"@en .
+
+
+###  http://www.dronetology.net/dronetology#MTOM
+:MTOM rdf:type owl:Class ;
+      rdfs:subClassOf :Mass ;
+      rdfs:comment "MTOM. It is the maximum mass at which the drone is certified for take off due to structural or other limits."@en ;
+      rdfs:label "MTOM"@en .
+
+
+###  http://www.dronetology.net/dronetology#MTOW
+:MTOW rdf:type owl:Class ;
+      rdfs:subClassOf :Mass ;
+      rdfs:comment "MTOW. The maximum takeoff weight (MTOW) is the maximum takeoff mass."@en ;
+      rdfs:label "MTOW"@en .
+
+
+###  http://www.dronetology.net/dronetology#MannedAircraft
+:MannedAircraft rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject> ;
+                rdfs:comment "MannedAircraft. Manned aricraft."@en ;
+                rdfs:label "MannedAircraft"@en .
+
+
+###  http://www.dronetology.net/dronetology#Manufacturer
+:Manufacturer rdf:type owl:Class ;
+              rdfs:comment "Manufacturer. A drone manufacturer is a company or individual involved in the various aspects of designing, building, testing, selling, and maintaining aircraft or aircraft parts."@en ;
+              rdfs:label "Manufacturer"@en .
+
+
+###  http://www.dronetology.net/dronetology#Mass
+:Mass rdf:type owl:Class ;
+      rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+      rdfs:comment "Mass. The drone weight."@en ;
+      rdfs:label "Mass"@en .
+
+
+###  http://www.dronetology.net/dronetology#MaxDimension
+:MaxDimension rdf:type owl:Class ;
+              rdfs:subClassOf :Dimension ;
+              rdfs:comment "MaxDimension. Maximun dimension permitted or regulated"@en ;
+              rdfs:label "MaxDimension"@en .
+
+
+###  http://www.dronetology.net/dronetology#MaxFlightRange
+:MaxFlightRange rdf:type owl:Class ;
+                rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+                rdfs:comment "MaxFlightRange. The maximum distance that the aircraft can fly is equal to the ground speed times the maximum time."@en ;
+                rdfs:label "MaxFlightRange"@en .
+
+
+###  http://www.dronetology.net/dronetology#MaxHeight
+:MaxHeight rdf:type owl:Class ;
+           rdfs:subClassOf :Height ;
+           rdfs:comment "MaxHeight. Maximun height a drone can fly."@en ;
+           rdfs:label "MaxHeight"@en .
+
+
+###  http://www.dronetology.net/dronetology#MaxLandingSpeed
+:MaxLandingSpeed rdf:type owl:Class ;
+                 rdfs:subClassOf :LandingSpeed ;
+                 rdfs:comment "MaxLandingSpeed. Maximum safe landing speed."@en ;
+                 rdfs:label "MaxLandingSpeed"@en .
+
+
+###  http://www.dronetology.net/dronetology#MaxPayloadMass
+:MaxPayloadMass rdf:type owl:Class ;
+                rdfs:subClassOf :PayloadMass ;
+                rdfs:comment "MaxPayloadMass. Maximun payload weight."@en ;
+                rdfs:label "MaxPayloadMass"@en .
+
+
+###  http://www.dronetology.net/dronetology#MaxVerticalTakeoffSpeed
+:MaxVerticalTakeoffSpeed rdf:type owl:Class ;
+                         rdfs:subClassOf :VerticalTakeoffSpeed ;
+                         rdfs:comment "MaxVerticalTakeoffSpeed. Maximun safe vertical takeoff speed."@en ;
+                         rdfs:label "MaxVerticalTakeoffSpeed"@en .
+
+
+###  http://www.dronetology.net/dronetology#MediumImpact
+:MediumImpact rdf:type owl:Class ;
+              rdfs:subClassOf :RiskImpact ;
+              rdfs:comment "MediumImpact.  Medium-impact risks are those that have a medium probability of occurring and a limited negative effect on a UAS flight."@en ;
+              rdfs:label "MediumImpact"@en .
+
+
+###  http://www.dronetology.net/dronetology#MediumLikelihood
+:MediumLikelihood rdf:type owl:Class ;
+                  rdfs:subClassOf :RiskLikelihood ;
+                  rdfs:comment "MediumLikelihood. A medium level of probability the risk will occur or be realized."@en ;
+                  rdfs:label "MediumLikelihood"@en .
+
+
+###  http://www.dronetology.net/dronetology#MediumUA
+:MediumUA rdf:type owl:Class ;
+          rdfs:subClassOf :Drone ;
+          owl:disjointWith :SmallUA ,
+                           :VerySmallUA ;
+          rdfs:comment "MediumUA. Unmanned aircraft with a wingspan of about 5-10 m that can carry payloads of 100 to 200 kg."@en ;
+          rdfs:label "MediumUA"@en .
+
+
+###  http://www.dronetology.net/dronetology#MessageReceived
+:MessageReceived rdf:type owl:Class ;
+                 rdfs:subClassOf :CommunicationMessage ;
+                 rdfs:comment "MessageReceived. A communication message received in any radio receiver."@en ;
+                 rdfs:label "MessageReceived"@en .
+
+
+###  http://www.dronetology.net/dronetology#MessageSent
+:MessageSent rdf:type owl:Class ;
+             rdfs:subClassOf :CommunicationMessage ;
+             rdfs:comment "MessageSent. Any message sent using a radio transmitter."@en ;
+             rdfs:label "MessageSent"@en .
+
+
+###  http://www.dronetology.net/dronetology#MicroUAS
+:MicroUAS rdf:type owl:Class ;
+          rdfs:subClassOf :Drone ;
+          rdfs:comment "MicroUAS. UAS bellow 2.5 kg."@en ;
+          rdfs:label "MicroUAS"@en .
+
+
+###  http://www.dronetology.net/dronetology#MilitaryManufacturer
+:MilitaryManufacturer rdf:type owl:Class ;
+                      rdfs:subClassOf :Manufacturer ;
+                      rdfs:comment "Manufacturers that focus exclusively towards military drones." ;
+                      rdfs:label "MilitaryManufacturer"@en .
+
+
+###  http://www.dronetology.net/dronetology#Mission
+:Mission rdf:type owl:Class ;
+         rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasObjective ;
+                                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                  owl:onClass :MissionObjective
+                                                ]
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasElement ;
+                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                  owl:onClass :MissionPilot
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ;
+         rdfs:comment "Mission. A  mission is a drone flight planned or unplanned, with one or multiple objetives and a pilot."@en ;
+         rdfs:label "Mission"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionAdvisory
+:MissionAdvisory rdf:type owl:Class ;
+                 rdfs:subClassOf :MissionTemporalElement ;
+                 rdfs:comment "MissionAdvisory. Mission recommendations."@en ;
+                 rdfs:label "MissionAdvisory"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionAirSpace
+:MissionAirSpace rdf:type owl:Class ;
+                 rdfs:subClassOf [ owl:intersectionOf ( :FlyZone
+                                                        :MissionGeometryElement
+                                                        :MissionTemporalElement
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+                 rdfs:comment "MissionAirSpace. The portion of the atmosphere directly above the land or water, used by aircraft during a mission."@en ;
+                 rdfs:label "MissionAirSpace"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionAlarm
+:MissionAlarm rdf:type owl:Class ;
+              rdfs:subClassOf :MissionEventElement ;
+              rdfs:comment "MissionAlarm. Alarm during a drone mission."@en ;
+              rdfs:label "MissionAlarm"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionCommand
+:MissionCommand rdf:type owl:Class ;
+                rdfs:subClassOf [ owl:intersectionOf ( :MissionGeometryPointElement
+                                                       :MissionTemporalElement
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+                rdfs:comment "MissionCommand. A flight command assigned to a mission."@en ;
+                rdfs:label "MissionCommand"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionCommanderStation
+:MissionCommanderStation rdf:type owl:Class ;
+                         rdfs:subClassOf :GroundStationComponent ;
+                         owl:disjointWith :PayloadOperatorStation ,
+                                          :RemotePilotConsole ;
+                         rdfs:comment "MissionCommanderStation. Workstation used to control the drone."@en ;
+                         rdfs:label "MissionCommanderStation"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionCommunicationMessage
+:MissionCommunicationMessage rdf:type owl:Class ;
+                             rdfs:subClassOf [ owl:intersectionOf ( :MissionGeometryPointElement
+                                                                    :MissionTemporalElement
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                             rdfs:comment "MissionCommunicationMessage. A communication message received or transmitted during a mission."@en ;
+                             rdfs:label "MissionCommunicationMessage"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionComplaince
+:MissionComplaince rdf:type owl:Class ;
+                   rdfs:subClassOf :MissionElement ;
+                   rdfs:comment "MissionCompliance. Any compliance regulation that may affect the UAS mission."@en ;
+                   rdfs:label "MissionCompliance"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionConflict
+:MissionConflict rdf:type owl:Class ;
+                 rdfs:subClassOf [ owl:intersectionOf ( :Conflict
+                                                        :MissionGeometryElement
+                                                        :MissionTemporalElement
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+                 rdfs:comment "MissionConflict. A conflict identified in a specific UAS mission with the position and the time when ocurred."@en ;
+                 rdfs:label "MissionConflict"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionElement
+:MissionElement rdf:type owl:Class ;
+                rdfs:comment "MissionElement. Any related UAS mission element, like an time interval, a point, etc."@en ;
+                rdfs:label "MissionElement"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionEventElement
+:MissionEventElement rdf:type owl:Class ;
+                     rdfs:subClassOf [ owl:intersectionOf ( :MissionElement
+                                                            :MissionTemporalElement
+                                                            <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event>
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                     rdfs:comment "MissionEventElement. A mission related things that are happening in a particular situation."@en ;
+                     rdfs:label "MissionEventElement"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionEventualRelationship
+:MissionEventualRelationship rdf:type owl:Class ;
+                             rdfs:subClassOf [ owl:intersectionOf ( :MissionRelationship
+                                                                    <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event>
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                             rdfs:comment "MissionEventualRelationship. A relationship between two UAS defined after an event."@en ;
+                             rdfs:label "MissionEventualRelationship"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionFlightPlan
+:MissionFlightPlan rdf:type owl:Class ;
+                   rdfs:subClassOf :MissionTemporalElement ;
+                   rdfs:comment "MissionFlightPlan. A fligh plan assigned to a drone mission."@en ;
+                   rdfs:label "MissionFlightPlan"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionFlightTrack
+:MissionFlightTrack rdf:type owl:Class ;
+                    rdfs:subClassOf [ owl:intersectionOf ( :MissionGeometryPointElement
+                                                           :MissionTemporalElement
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                    rdfs:comment "MissionFlightTrack. A sequence of locations of the aircraft during a mission."@en ;
+                    rdfs:label "MissionFlightTrack"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionGeometryElement
+:MissionGeometryElement rdf:type owl:Class ;
+                        rdfs:subClassOf :MissionElement ;
+                        rdfs:comment "MissionGeometryElement. Any mission element that has a geometry."@en ;
+                        rdfs:label "MissionGeometryElement"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionGeometryPointElement
+:MissionGeometryPointElement rdf:type owl:Class ;
+                             rdfs:subClassOf :MissionElement ;
+                             rdfs:comment "MissionGeometryPointElement. A mission element located at a single location in a defined coordinate space."@en ;
+                             rdfs:label "MissionGeometryPointElement"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionManagementSoftware
+:MissionManagementSoftware rdf:type owl:Class ;
+                           rdfs:subClassOf :SoftwareComponent ;
+                           rdfs:comment "MissionManagementSoftware. A software capable to prepare a drone mission with usually interfaces with mission planning and flight management systems."@en ;
+                           rdfs:label "MissionManagementSoftware"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionMode
+:MissionMode rdf:type owl:Class ;
+             rdfs:subClassOf :MissionElement ;
+             rdfs:comment "MissionMode. Defines the way the vehicle execute a mission."@en ;
+             rdfs:label "MissionMode"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionObjective
+:MissionObjective rdf:type owl:Class ;
+                  rdfs:subClassOf [ owl:intersectionOf ( :MissionTemporalElement
+                                                         <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+                  rdfs:comment "MissionObjective. A mission goal is a measurable indicator that must be achieved during the aircraft flight"@en ;
+                  rdfs:label "MissionObjective"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionObstacle
+:MissionObstacle rdf:type owl:Class ;
+                 rdfs:subClassOf [ owl:intersectionOf ( :MissionGeometryElement
+                                                        :MissionTemporalElement
+                                                        :Obstacle
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+                 rdfs:comment "MissionObstacle. An obstacle in a mission."@en ;
+                 rdfs:label "MissionObstacle"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionPilot
+:MissionPilot rdf:type owl:Class ;
+              rdfs:subClassOf [ owl:intersectionOf ( :MissionGeometryPointElement
+                                                     :MissionTemporalElement
+                                                     :Pilot
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+              rdfs:comment "MissionPilot. A pilot assigned to a specific mission."@en ;
+              rdfs:label "MissionPilot"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionPriority
+:MissionPriority rdf:type owl:Class ;
+                 rdfs:subClassOf :MissionElement ;
+                 rdfs:comment "MissionPriority. Stablish the fact or condition of a mission being regarded or treated as more important than others."@en ;
+                 rdfs:label "MissionPriority"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionRelationship
+:MissionRelationship rdf:type owl:Class ;
+                     rdfs:subClassOf [ owl:intersectionOf ( :MissionElement
+                                                            :MissionEventElement
+                                                            :Relationship
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                     rdfs:comment "MissionRelationship. The way in which two or more UAS are connected, or the state of being connected."@en ;
+                     rdfs:label "MissionRelationship"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionRisk
+:MissionRisk rdf:type owl:Class ;
+             rdfs:subClassOf [ owl:intersectionOf ( :MissionElement
+                                                    :Risk
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+             rdfs:comment "MissionRisk. A situation involving exposure to danger during a UAS mission."@en ;
+             rdfs:label "MissionRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionSensorData
+:MissionSensorData rdf:type owl:Class ;
+                   rdfs:subClassOf :MissionEventElement ;
+                   rdfs:comment "MissionSensorData. Observation made by a sensor harvested during a UAS mission."@en ;
+                   rdfs:label "MissionSensorData"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionStatus
+:MissionStatus rdf:type owl:Class ;
+               rdfs:subClassOf :MissionElement ;
+               rdfs:comment "MissionStatus. The situation of a UAS mission at a particular time during a process."@en ;
+               rdfs:label "MissionStatus"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionTemporalElement
+:MissionTemporalElement rdf:type owl:Class ;
+                        rdfs:subClassOf [ owl:intersectionOf ( :MissionElement
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hasTimeInterval ;
+                                                                 owl:someValuesFrom <http://www.w3.org/2006/time#TemporalEntity>
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                        rdfs:comment "MissionTemporalElement. Any mission element that has a time interval relation."@en ;
+                        rdfs:label "MissionTemporalElement"@en .
+
+
+###  http://www.dronetology.net/dronetology#MissionWeatherReport
+:MissionWeatherReport rdf:type owl:Class ;
+                      rdfs:subClassOf [ owl:intersectionOf ( :MissionGeometryElement
+                                                             :MissionTemporalElement
+                                                             :WeatherReport
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                      rdfs:comment "MissionWeatherReport. A weather report related to a UAS mission"@en ;
+                      rdfs:label "MissionWeatherReport"@en .
+
+
+###  http://www.dronetology.net/dronetology#NEDVelocityCommand
+:NEDVelocityCommand rdf:type owl:Class ;
+                    rdfs:subClassOf :Command ;
+                    owl:disjointWith [ rdf:type owl:Class ;
+                                       owl:unionOf ( :AuxiliaryCommand
+                                                     :GoToCommand
+                                                   )
+                                     ] ;
+                    rdfs:comment "NEDVelocityCommand. A command that changes the velocity using the North-East-Down Coordinates."@en ;
+                    rdfs:label "NEDVelocityCommand"@en .
+
+
+###  http://www.dronetology.net/dronetology#NiCdBattery
+:NiCdBattery rdf:type owl:Class ;
+             rdfs:subClassOf :Battery ;
+             rdfs:comment "NiCdBattery. The nickel–cadmium battery is a type of rechargeable battery using nickel oxide hydroxide and metallic cadmium as electrodes."@en ;
+             rdfs:label "NiCdBattery"@en .
+
+
+###  http://www.dronetology.net/dronetology#NiMHBattery
+:NiMHBattery rdf:type owl:Class ;
+             rdfs:subClassOf :Battery ;
+             rdfs:comment "NiMHBattery. A type of rechargeable battery that negative electrodes use a hydrogen-absorbing alloy."@en ;
+             rdfs:label "NiMHBattery"@en .
+
+
+###  http://www.dronetology.net/dronetology#NoFlyZone
+:NoFlyZone rdf:type owl:Class ;
+           rdfs:subClassOf :AirSpaceVolume ;
+           rdfs:comment "NoFlyZone. A restricted area of airspace over a landmark, event or geographic region in which aircraft are forbidden to fly, unless they have special authorization."@en ;
+           rdfs:label "NoFlyZone"@en .
+
+
+###  http://www.dronetology.net/dronetology#NoFlyZoneAlarm
+:NoFlyZoneAlarm rdf:type owl:Class ;
+                rdfs:subClassOf :Alarm ;
+                rdfs:comment "NoFlyZoneAlarm. A warning provoked when the UAS overflown a restricted area or no-fly zone."@en ;
+                rdfs:label "NoFlyZoneAlarm"@en .
+
+
+###  http://www.dronetology.net/dronetology#NonComplianceRisk
+:NonComplianceRisk rdf:type owl:Class ;
+                   rdfs:subClassOf :Risk ;
+                   rdfs:comment "NonComplianceRisk. Occurs when a UAS mission fails to comply with the policies, standards, regulations or laws relevant to its operations."@en ;
+                   rdfs:label "NonComplianceRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#Nose
+:Nose rdf:type owl:Class ;
+      rdfs:subClassOf :FuselagePart ;
+      owl:disjointWith :Tail ;
+      rdfs:comment "Nose. The nose structure is the forward part of the fuselage and includes critical parts, such as the windshield, canopy, side sheet, and radome."@en ;
+      rdfs:label "Nose"@en .
+
+
+###  http://www.dronetology.net/dronetology#Obstacle
+:Obstacle rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> ;
+          rdfs:comment "Obstacle. All fixed (whether temporary or permanent) and mobile objects, or parts thereof, that are located on an area intended for the surface movement of aircraft."@en ;
+          rdfs:label "Obstacle"@en .
+
+
+###  http://www.dronetology.net/dronetology#OnboardComputer
+:OnboardComputer rdf:type owl:Class ;
+                 rdfs:subClassOf :Payload ;
+                 rdfs:comment "OnboardComputer. Any unit flying on board a drone which provides processing capability."@en ;
+                 rdfs:label "OnboardComputer"@en .
+
+
+###  http://www.dronetology.net/dronetology#OnboardSensor
+:OnboardSensor rdf:type owl:Class ;
+               rdfs:subClassOf :AircraftComponent ,
+                               <http://www.w3.org/ns/ssn/SensingDevice> ;
+               rdfs:comment "OnboardSensor. Sensors integrated in the aircraft or carried as part of the drone payload."@en ;
+               rdfs:label "OnboardSensor"@en .
+
+
+###  http://www.dronetology.net/dronetology#Parameter
+:Parameter rdf:type owl:Class ;
+           rdfs:comment "Parameter. A numerical or other measurable factor forming one of a set that defines a system or sets the conditions of its operation."@en ;
+           rdfs:label "Parameter"@en .
+
+
+###  http://www.dronetology.net/dronetology#PartialAutonomousMission
+:PartialAutonomousMission rdf:type owl:Class ;
+                          rdfs:subClassOf :Mission ;
+                          rdfs:comment "PartialAutonomousMission. A mission with parts that do not require a pilot."@en ;
+                          rdfs:label "PartialAutonomousMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#Payload
+:Payload rdf:type owl:Class ;
+         rdfs:subClassOf :AircraftComponent ;
+         owl:disjointWith :PowerDistributionBoard ;
+         rdfs:comment "Payload. The part of a vehicle's load, especially an aircraft's."@en ;
+         rdfs:label "Payload"@en .
+
+
+###  http://www.dronetology.net/dronetology#PayloadLink
+:PayloadLink rdf:type owl:Class ;
+             rdfs:subClassOf :DataLink ;
+             rdfs:comment "PayloadLink. A communications link between a UAV (unmanned aerial vehicle) and its ground station that is responsible for the management and control of the payload."@en ;
+             rdfs:label "PayloadLink"@en .
+
+
+###  http://www.dronetology.net/dronetology#PayloadLossRisk
+:PayloadLossRisk rdf:type owl:Class ;
+                 rdfs:subClassOf :LossRisk ;
+                 rdfs:comment "PayloadLossRisk. Risk of loss of the payload."@en ;
+                 rdfs:label "PayloadLossRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#PayloadMass
+:PayloadMass rdf:type owl:Class ;
+             rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+             rdfs:comment "PayloadMass. Weight of the drone payload"@en ;
+             rdfs:label "PayloadMass"@en .
+
+
+###  http://www.dronetology.net/dronetology#PayloadOperatorStation
+:PayloadOperatorStation rdf:type owl:Class ;
+                        rdfs:subClassOf :GroundStationComponent ;
+                        owl:disjointWith :RemotePilotConsole ;
+                        rdfs:comment "PayloadOperatorStation. Workstation to control the payload."@en ;
+                        rdfs:label "PayloadOperatorStation"@en .
+
+
+###  http://www.dronetology.net/dronetology#Photograph
+:Photograph rdf:type owl:Class ;
+            rdfs:subClassOf [ owl:intersectionOf ( :MissionTemporalElement
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :isStoredIn ;
+                                                     owl:someValuesFrom :DataStorageDevice
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+            owl:disjointWith :Video ;
+            rdfs:comment "Photograph. A picture made using a camera installed as payload of the UAS during a mission."@en ;
+            rdfs:label "Photograph"@en .
+
+
+###  http://www.dronetology.net/dronetology#Pilot
+:Pilot rdf:type owl:Class ;
+       rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson> ;
+       rdfs:comment "Pilot. A person who operates the flying controls of an aircraft, onboard or remotely."@en ;
+       rdfs:label "Pilot"@en .
+
+
+###  http://www.dronetology.net/dronetology#PilotIncapacitationRisk
+:PilotIncapacitationRisk rdf:type owl:Class ;
+                         rdfs:subClassOf :Risk ;
+                         rdfs:comment "PilotIncapacitationRisk. Risk provoked by a pilot disease during the flight."@en ;
+                         rdfs:label "PilotIncapacitationRisk"@en .
+
+
+###  http://www.dronetology.net/dronetology#PilotLicence
+:PilotLicence rdf:type owl:Class ;
+              rdfs:subClassOf :RegulationRequirement ;
+              rdfs:comment "PilotLicence. A competency certificate required for some drone mission."@en ;
+              rdfs:label "PilotLicence"@en .
+
+
+###  http://www.dronetology.net/dronetology#Pitch
+:Pitch rdf:type owl:Class ;
+       rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+       rdfs:comment "Pitch. The forward and backward tilt of the drone."@en ;
+       rdfs:label "Pitch"@en .
+
+
+###  http://www.dronetology.net/dronetology#PlannedMission
+:PlannedMission rdf:type owl:Class ;
+                rdfs:subClassOf :Mission ;
+                rdfs:comment "PlannedMission. A mission with a planned fligh."@en ;
+                rdfs:label "PlannedMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#PowerDistributionBoard
+:PowerDistributionBoard rdf:type owl:Class ;
+                        rdfs:subClassOf :AircraftComponent ;
+                        rdfs:comment "PowerDistributionBoard. It distributes power to different areas of the drone."@en ;
+                        rdfs:label "PowerDistributionBoard"@en .
+
+
+###  http://www.dronetology.net/dronetology#Product
+:Product rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :isProductOf ;
+                           owl:someValuesFrom :Drone
+                         ] ;
+         rdfs:comment "Product. The drone model defined by the manufacturer as a whole."@en ;
+         rdfs:label "Product"@en .
+
+
+###  http://www.dronetology.net/dronetology#Propeller
+:Propeller rdf:type owl:Class ;
+           rdfs:subClassOf :RotorComponent ;
+           owl:disjointWith :Rotor ;
+           rdfs:comment "Propeller. Are in charge of rotating to provide lift to the drone,"@en ;
+           rdfs:label "Propeller"@en .
+
+
+###  http://www.dronetology.net/dronetology#QZSS
+:QZSS rdf:type owl:Class ;
+      rdfs:subClassOf :GlobalNavigationSatelliteSystem ;
+      rdfs:comment "QZSS. QZSS is a regional GNSS owned by the Government of Japan and operated by QZS System Service Inc. (QSS). QZSS complements GPS to improve coverage in East Asia and Oceania."@en ;
+      rdfs:label "QZSS"@en .
+
+
+###  http://www.dronetology.net/dronetology#RainFall
+:RainFall rdf:type owl:Class ;
+          rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+          rdfs:comment "RainFall. The amount of water falling in rain, snow, etc., within a given time and area,"@en ;
+          rdfs:label "RainFall"@en .
+
+
+###  http://www.dronetology.net/dronetology#RecoveryNet
+:RecoveryNet rdf:type owl:Class ;
+             rdfs:subClassOf :AuxiliaryComponent ;
+             rdfs:comment "RecoveryNet. Safety net in which a drone can land."@en ;
+             rdfs:label "RecoveryNet"@en .
+
+
+###  http://www.dronetology.net/dronetology#RefuelingSystem
+:RefuelingSystem rdf:type owl:Class ;
+                 rdfs:subClassOf :AuxiliaryComponent ;
+                 rdfs:comment "RefuelingSystem. A facility that provides fuel and engine lubricants for motor vehicles."@en ;
+                 rdfs:label "RefuelingSystem"@en .
+
+
+###  http://www.dronetology.net/dronetology#Regulation
+:Regulation rdf:type owl:Class ;
+            rdfs:comment "Regulation. Regulation of unmanned aerial vehicles (UAVs) involves setting safety requirements, outlining regulations for the safe flying of drones, and enforcing action against errant users."@en ;
+            rdfs:label "Regulation"@en .
+
+
+###  http://www.dronetology.net/dronetology#RegulationRequirement
+:RegulationRequirement rdf:type owl:Class ;
+                       rdfs:comment "RegulationRequirement. Groups drone rules that a drone operator must comply with in a specific geographic area"@en ;
+                       rdfs:label "RegulationRequirement"@en .
+
+
+###  http://www.dronetology.net/dronetology#Relationship
+:Relationship rdf:type owl:Class ;
+              rdfs:comment "Relationship. The way two or more UAS are connected, or the way they behave toward each other."@en ;
+              rdfs:label "Relationship"@en .
+
+
+###  http://www.dronetology.net/dronetology#RemoteGuided
+:RemoteGuided rdf:type owl:Class ;
+              rdfs:subClassOf :Mission ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasElement ;
+                                owl:someValuesFrom :FlightPlan
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasElement ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Pilot
+                              ] ;
+              rdfs:comment "RemoteGuided. A mission guided remotely by a pilot."@en ;
+              rdfs:label "RemotedGuided"@en .
+
+
+###  http://www.dronetology.net/dronetology#RemoteIDMessage
+:RemoteIDMessage rdf:type owl:Class ;
+                 rdfs:subClassOf :CommunicationMessage ;
+                 rdfs:comment "RemoteIDMessage. A message sent by a wireless technology that broadcast drone identificator."@en ;
+                 rdfs:label "RemoteIDMessage"@en .
+
+
+###  http://www.dronetology.net/dronetology#RemoteIDModule
+:RemoteIDModule rdf:type owl:Class ;
+                rdfs:subClassOf :CommunicationSystem ;
+                rdfs:comment "RemoteIDModule. A radio module that allows drones to transmit identification and location information."@en ;
+                rdfs:label "RemoteIDModule"@en .
+
+
+###  http://www.dronetology.net/dronetology#RemoteIdentification
+:RemoteIdentification rdf:type owl:Class ;
+                      rdfs:subClassOf :RegulationRequirement ;
+                      rdfs:comment "RemoteIdentification. A rquired system that allows to identify remotely the drone."@en ;
+                      rdfs:label "RemoteIdentification"@en .
+
+
+###  http://www.dronetology.net/dronetology#RemotePilotConsole
+:RemotePilotConsole rdf:type owl:Class ;
+                    rdfs:subClassOf :GroundStationComponent ;
+                    rdfs:comment "RemotePilotConsole. Worksapce for a remote pilot."@en ;
+                    rdfs:label "RemotePilotConsole"@en .
+
+
+###  http://www.dronetology.net/dronetology#Requirement
+:Requirement rdf:type owl:Class ;
+             rdfs:comment "Requirement. A requirement specify the properties (functional, structural, physical, etc.) of the artifact being designed."@en ;
+             rdfs:label "Requirement"@en .
+
+
+###  http://www.dronetology.net/dronetology#Risk
+:Risk rdf:type owl:Class ;
+      rdfs:comment "Risk. A situation involving exposure to danger."@en ;
+      rdfs:label "Risk"@en .
+
+
+###  http://www.dronetology.net/dronetology#RiskImpact
+:RiskImpact rdf:type owl:Class ;
+            rdfs:comment "RiskImpact. The level of severity the risk will have if the risk is realized."@en ;
+            rdfs:label "RiskImpact"@en .
+
+
+###  http://www.dronetology.net/dronetology#RiskLikelihood
+:RiskLikelihood rdf:type owl:Class ;
+                rdfs:comment "RiskLikelihood. Risk likelihood means the possibility of a potential risk occurring, interpreted using qualitative values."@en ;
+                rdfs:label "RiskLikelihood"@en .
+
+
+###  http://www.dronetology.net/dronetology#Roll
+:Roll rdf:type owl:Class ;
+      rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+      rdfs:comment "Roll. The rotation of the drone along the x-axis, i.e. the side to side motion of the drone."@en ;
+      rdfs:label "Roll"@en .
+
+
+###  http://www.dronetology.net/dronetology#Rotor
+:Rotor rdf:type owl:Class ;
+       rdfs:subClassOf :LiftGeneratorComponent ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:allValuesFrom :RotorComponent
+                       ] ;
+       owl:disjointWith :Wing ;
+       rdfs:comment "Rotor. A rotor is the rotating cylindrical part of a machine, placed inside the stator with a narrow air gap."@en ;
+       rdfs:label "Rotor"@en .
+
+
+###  http://www.dronetology.net/dronetology#RotorComponent
+:RotorComponent rdf:type owl:Class ;
+                rdfs:subClassOf :LiftGeneratorComponent ;
+                rdfs:comment "RotorComponent. Parts of the rotor."@en ;
+                rdfs:label "RotorComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#Runway
+:Runway rdf:type owl:Class ;
+        rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> ;
+        rdfs:comment "Runway. A runway is a defined rectangular area on a land aerodrome prepared for the landing and takeoff of aircraft."@en ;
+        rdfs:label "Runway"@en .
+
+
+###  http://www.dronetology.net/dronetology#STOLCraft
+:STOLCraft rdf:type owl:Class ;
+           rdfs:subClassOf :Drone ;
+           owl:disjointWith :VTOLCraft ;
+           rdfs:comment "STOLCraft. A short takeoff and landing (STOL) aircraft is a conventional fixed-wing aircraft that has short runway requirements for takeoff and landing."@en ;
+           rdfs:label "STOLCraft"@en .
+
+
+###  http://www.dronetology.net/dronetology#ScheduledFlightPlan
+:ScheduledFlightPlan rdf:type owl:Class ;
+                     rdfs:subClassOf :FlightPlan ;
+                     rdfs:comment "ScheduledFlightPlan. A flightplan that includes time references in different aircraft locations."@en ;
+                     rdfs:label "ScheduledFlightPlan"@en .
+
+
+###  http://www.dronetology.net/dronetology#SensorHarvestingMission
+:SensorHarvestingMission rdf:type owl:Class ;
+                         rdfs:subClassOf :Mission ;
+                         rdfs:comment "SensorHarvestingMission. Mission that harvest data from sensors using the dorne as a sink data."@en ;
+                         rdfs:label "SensorHarvestingMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#SimulatedTelemetry
+:SimulatedTelemetry rdf:type owl:Class ;
+                    rdfs:subClassOf :Telemetry ;
+                    rdfs:comment "SimulatedTelemetry. Telemetry generated by a drone simulator."@en ;
+                    rdfs:label "SimulatedTelemetry"@en .
+
+
+###  http://www.dronetology.net/dronetology#SituationalAwareness
+:SituationalAwareness rdf:type owl:Class ;
+                      rdfs:comment "SituationalAwareness. Situational awareness is the ability to perceive, understand, and effectively respond to one's situation."@en ;
+                      rdfs:label "SituationalAwareness"@en .
+
+
+###  http://www.dronetology.net/dronetology#SmallUA
+:SmallUA rdf:type owl:Class ;
+         rdfs:subClassOf :Drone ;
+         owl:disjointWith :VerySmallUA ;
+         rdfs:comment "SmallUA. Unmanned aircraft that have at least one dimension greater than 50 cm and no larger than 2 meters."@en ;
+         rdfs:label "SmallUA"@en .
+
+
+###  http://www.dronetology.net/dronetology#SoftwareComponent
+:SoftwareComponent rdf:type owl:Class ;
+                   rdfs:subClassOf :Component ;
+                   rdfs:comment "SoftwareComponent. A software package or a module that encapsulates a set of related functions for the operation or management of a drone."@en ;
+                   rdfs:label "SoftwareComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#SolarPannel
+:SolarPannel rdf:type owl:Class ;
+             rdfs:subClassOf :EnergyProducerComponent ;
+             rdfs:comment "SolarPannel. A solar panel is a device that converts sunlight into electricity by using photovoltaic cells."@en ;
+             rdfs:label "SolarPannel"@en .
+
+
+###  http://www.dronetology.net/dronetology#Speed
+:Speed rdf:type owl:Class ;
+       rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+       rdfs:comment "Speed. The rate at which a drone moves or operates or is able to move or operate."@en ;
+       rdfs:label "Speed"@en .
+
+
+###  http://www.dronetology.net/dronetology#StallSpeed
+:StallSpeed rdf:type owl:Class ;
+            rdfs:subClassOf :Speed ;
+            rdfs:comment "StallSpeed. Stall speed refers to the minimum speed at which an airplane must fly to produce lift."@en ;
+            rdfs:label "StallSpeed"@en .
+
+
+###  http://www.dronetology.net/dronetology#Strator
+:Strator rdf:type owl:Class ;
+         rdfs:subClassOf :RotorComponent ;
+         rdfs:comment "Strator.  The stationary part of an electrical motor."@en ;
+         rdfs:label "Strator"@en .
+
+
+###  http://www.dronetology.net/dronetology#Swarm
+:Swarm rdf:type owl:Class ;
+       rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> ;
+       rdfs:comment "Swarm. A swarm or fleet of Unmanned Aerial Vehicles (UAVs) is a set of aerial robots i.e., drones that work together to achieve a specific goal."@en ;
+       rdfs:label "Swarm"@en .
+
+
+###  http://www.dronetology.net/dronetology#Tail
+:Tail rdf:type owl:Class ;
+      rdfs:subClassOf :FuselagePart ;
+      rdfs:comment "Tail. Part of the fuselage located at the rear of an aircraft that provides stability during flight."@en ;
+      rdfs:label "Tail"@en .
+
+
+###  http://www.dronetology.net/dronetology#TakeoffPlan
+:TakeoffPlan rdf:type owl:Class ;
+             rdfs:subClassOf :FlightPlan ;
+             rdfs:comment "TakeoffPlan. A part of the flighplan that starts when the aircraft begins to descend for landing."@en ;
+             rdfs:label "TakeoffPlan"@en .
+
+
+###  http://www.dronetology.net/dronetology#Telemetry
+:Telemetry rdf:type owl:Class ;
+           rdfs:subClassOf [ owl:intersectionOf ( :MissionGeometryPointElement
+                                                  :MissionTemporalElement
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+           rdfs:comment "Telemetry. Data gathered about the aircraft and its surroundings that is sent back to the operator or ground control station during a mission."@en ;
+           rdfs:label "Telemetry"@en .
+
+
+###  http://www.dronetology.net/dronetology#TelemetryRadioSystem
+:TelemetryRadioSystem rdf:type owl:Class ;
+                      rdfs:subClassOf :CommunicationSystem ;
+                      rdfs:comment "TelemetryRadioSystem. Send data from the vehicle to the GCS.."@en ;
+                      rdfs:label "TelemetryRadioSystem"@en .
+
+
+###  http://www.dronetology.net/dronetology#TiltRotorCraft
+:TiltRotorCraft rdf:type owl:Class ;
+                rdfs:subClassOf :FixedWingVTOLCraft ;
+                owl:disjointWith :TiltWingCraft ;
+                rdfs:comment "TiltRotorCraft. Aircraft that convert from vertical to horizontal flight by rotating propellers or ducted fans from horizontal positions like conventional aircraft propellers to vertical like a helicopter's rotors."@en ;
+                rdfs:label "TiltRotorCraft"@en .
+
+
+###  http://www.dronetology.net/dronetology#TiltWingCraft
+:TiltWingCraft rdf:type owl:Class ;
+               rdfs:subClassOf :FixedWingVTOLCraft ;
+               rdfs:comment "TiltWingCraft. A tiltwing aircraft features a wing that is horizontal for conventional forward flight and rotates up for vertical takeoff and landing."@en ;
+               rdfs:label "TiltWingCraft"@en .
+
+
+###  http://www.dronetology.net/dronetology#TrailingEdge
+:TrailingEdge rdf:type owl:Class ;
+              rdfs:subClassOf :WingComponent ;
+              rdfs:comment "TrailingEdge. The rear part of the wing that extends from the wing root to the wingtip. The trailing edge plays a crucial role in the overall aerodynamic performance of the aircraft."@en ;
+              rdfs:label "TrailingEdge"@en .
+
+
+###  http://www.dronetology.net/dronetology#UA
+:UA rdf:type owl:Class ;
+    rdfs:subClassOf :Drone ;
+    rdfs:comment "UA. Unmanned aircraft."@en ;
+    rdfs:label "UA"@en .
+
+
+###  http://www.dronetology.net/dronetology#UAS
+:UAS rdf:type owl:Class ;
+     rdfs:subClassOf [ owl:intersectionOf ( :Drone
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasComponent ;
+                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :DataLink
+                                            ]
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasComponent ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :GroundStation
+                                            ]
+                                          ) ;
+                       rdf:type owl:Class
+                     ] ;
+     rdfs:comment "UAS. Unmanned aircraft system (UAS) means an unmanned aircraft and the equipment to control it remotely."@en ,
+                  "RPAS. Remote Piloted Aircraft System" ;
+     rdfs:label "UAS"@en ,
+                "RPAS" .
+
+
+###  http://www.dronetology.net/dronetology#UAV
+:UAV rdf:type owl:Class ;
+     rdfs:subClassOf :Drone ;
+     rdfs:comment "UAV. An unmanned aerial vehicle (UAV) is a powered, aerial vehicle that does not carry a human pilot."@en ,
+                  "RPA. Remoted Piloted Aircraft" ;
+     rdfs:label "UAV"@en ,
+                "RPA" .
+
+
+###  http://www.dronetology.net/dronetology#UnidentifiedAircraft
+:UnidentifiedAircraft rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject> ;
+                      rdfs:comment "UnidentifiedAircraft. An aircraft which has been observed or reported to be operating in a given area but whose identity has not been established."@en ;
+                      rdfs:label "UnidentifiedAircraft"@en .
+
+
+###  http://www.dronetology.net/dronetology#VLOSMission
+:VLOSMission rdf:type owl:Class ;
+             rdfs:subClassOf :Mission ;
+             rdfs:comment "VLOSMission. Mission in the visual line of sight of the pilot."@en ;
+             rdfs:label "VLOSMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#VTOLCraft
+:VTOLCraft rdf:type owl:Class ;
+           rdfs:subClassOf :Drone ;
+           rdfs:comment "VTOLCraft. Any aircraft that can take off and land vertically without relying on a runway."@en ;
+           rdfs:label "VTOLCraft"@en .
+
+
+###  http://www.dronetology.net/dronetology#VectorParameter
+:VectorParameter rdf:type owl:Class ;
+                 rdfs:comment "VectorParameter. A collection of parameters (numbers) which forms a vector"@en ;
+                 rdfs:label "VectorParameter"@en .
+
+
+###  http://www.dronetology.net/dronetology#VerticalTakeOffLandingMission
+:VerticalTakeOffLandingMission rdf:type owl:Class ;
+                               rdfs:subClassOf :Mission ;
+                               rdfs:comment "VerticalTakeOffLandingMission. Mission defined using vertical takeoff and anding."@en ;
+                               rdfs:label "VerticalTakeOffLandingMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#VerticalTakeoffSpeed
+:VerticalTakeoffSpeed rdf:type owl:Class ;
+                      rdfs:subClassOf :Speed ;
+                      rdfs:comment "VerticalTakeoffSpeed. The minimum speed at which climb shall be achieved with the critical engine inoperative, the remaining engines operating within approved operating limits."@en ;
+                      rdfs:label "VerticalTakeoffSpeed"@en .
+
+
+###  http://www.dronetology.net/dronetology#Vertiport
+:Vertiport rdf:type owl:Class ;
+           rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Feature> ;
+           rdfs:comment "Vertiport. A vertiport is a defined area that can support the landing and take-off of eVTOL aircrafts during flight operations."@en ;
+           rdfs:label "Vertiport"@en .
+
+
+###  http://www.dronetology.net/dronetology#VerySmallUA
+:VerySmallUA rdf:type owl:Class ;
+             rdfs:subClassOf :Drone ;
+             rdfs:comment "VerySmallUA. Unmanned aircraft with size of a large insect to 30-50 cm long."@en ;
+             rdfs:label "VerySmallUA"@en .
+
+
+###  http://www.dronetology.net/dronetology#Video
+:Video rdf:type owl:Class ;
+       rdfs:subClassOf [ owl:intersectionOf ( :MissionGeometryElement
+                                              :MissionTemporalElement
+                                            ) ;
+                         rdf:type owl:Class
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isStoredIn ;
+                         owl:someValuesFrom :DataStorageDevice
+                       ] ;
+       rdfs:comment "Video. A recording of moving visual images made digitally using an onboard camera during a mission."@en ;
+       rdfs:label "Video"@en .
+
+
+###  http://www.dronetology.net/dronetology#Visibility
+:Visibility rdf:type owl:Class ;
+            rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+            rdfs:comment "Visibility. The distance a drone pilot can see as determined by light and weather conditions."@en ;
+            rdfs:label "Visibility"@en .
+
+
+###  http://www.dronetology.net/dronetology#Waiver
+:Waiver rdf:type owl:Class ;
+        rdfs:subClassOf :RegulationRequirement ;
+        rdfs:comment "Waiver. Allow drone pilots to deviate from certain rules by demonstrating they can still fly safely using alternative methods, applied only in USA."@en ;
+        rdfs:label "Waiver"@en .
+
+
+###  http://www.dronetology.net/dronetology#Waypoint
+:Waypoint rdf:type owl:Class ;
+          rdfs:subClassOf :MissionGeometryPointElement ;
+          rdfs:comment "Waypoint. Points predefined on the map by the pilot or a planning software that define the drone flight during a mission."@en ;
+          rdfs:label "Waypoint"@en .
+
+
+###  http://www.dronetology.net/dronetology#WaypointMission
+:WaypointMission rdf:type owl:Class ;
+                 rdfs:subClassOf :Mission ;
+                 rdfs:comment "WaypointMission. A mission defined using waypoints."@en ;
+                 rdfs:label "WaypointMission"@en .
+
+
+###  http://www.dronetology.net/dronetology#Weapon
+:Weapon rdf:type owl:Class ;
+        rdfs:subClassOf :Payload ;
+        rdfs:comment "Weapon. A thing designed or used for inflicting bodily harm or physical damage, carried by the drone."@en ;
+        rdfs:label "Weapon"@en .
+
+
+###  http://www.dronetology.net/dronetology#WeatherReport
+:WeatherReport rdf:type owl:Class ;
+               rdfs:comment "WeatherReport. A systematic statement of the existing and usually the predicted meteorological conditions over a particular area."@en ;
+               rdfs:label "WeatherReport"@en .
+
+
+###  http://www.dronetology.net/dronetology#WeatherTemperature
+:WeatherTemperature rdf:type owl:Class ;
+                    rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+                    rdfs:comment "WeatherTemperature. The temperature that is manifested in the several layers of the atmosphere."@en ;
+                    rdfs:label "WeatherTemperature"@en .
+
+
+###  http://www.dronetology.net/dronetology#WindSpeed
+:WindSpeed rdf:type owl:Class ;
+           rdfs:subClassOf :Speed ;
+           rdfs:comment "WindSpeed. The speed of the weather related air movement from one place to the next."@en ;
+           rdfs:label "WindSpeed"@en .
+
+
+###  http://www.dronetology.net/dronetology#Wing
+:Wing rdf:type owl:Class ;
+      rdfs:subClassOf :LiftGeneratorComponent ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:allValuesFrom :WingComponent
+                      ] ;
+      rdfs:comment "Wing. A rigid horizontal structure that projects from both sides of an aircraft and supports it in the air."@en ;
+      rdfs:label "Wing"@en .
+
+
+###  http://www.dronetology.net/dronetology#WingComponent
+:WingComponent rdf:type owl:Class ;
+               rdfs:subClassOf :LiftGeneratorComponent ;
+               rdfs:comment "WingComponent. Parts of a wing."@en ;
+               rdfs:label "WingComponent"@en .
+
+
+###  http://www.dronetology.net/dronetology#WingRoot
+:WingRoot rdf:type owl:Class ;
+          rdfs:subClassOf :WingComponent ;
+          rdfs:comment "WingRoot.  The thickest part of the wing."@en ;
+          rdfs:label "WingRoot"@en .
+
+
+###  http://www.dronetology.net/dronetology#WingTip
+:WingTip rdf:type owl:Class ;
+         rdfs:subClassOf :WingComponent ;
+         rdfs:comment "WingTip. The wing tip refers to the outward ends of each wing. It is the part of the wing that is farthest away from the fuselage of the aircraft. The wing tip is designed to improve the aerodynamic performance of the aircraft and reduce drag."@en ;
+         rdfs:label "WingTip"@en .
+
+
+###  http://www.dronetology.net/dronetology#Yaw
+:Yaw rdf:type owl:Class ;
+     rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+     rdfs:comment "Yaw. A spin on the Z axis to face a direction. The ability to point the drone in a direction before making it go that way."@en ;
+     rdfs:label "Yaw"@en .
+
+
+###  http://www.dronetology.net/dronetology#eVTOL
+:eVTOL rdf:type owl:Class ;
+       rdfs:subClassOf [ owl:intersectionOf ( :VTOLCraft
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasComponent ;
+                                                owl:someValuesFrom :ElectricalEngine
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ] ;
+       rdfs:comment "eVTOL. An electric Vertical Take-Off and Landing aircraft."@en ;
+       rdfs:label "eVTOL"@en .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event> rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal> rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson> rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#Feature
+<http://www.opengis.net/ont/geosparql#Feature> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+<http://www.opengis.net/ont/geosparql#Geometry> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#SpatialObject
+<http://www.opengis.net/ont/geosparql#SpatialObject> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/sf#Point
+<http://www.opengis.net/ont/sf#Point> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2003/01/geo/SpatialThing
+<http://www.w3.org/2003/01/geo/SpatialThing> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#Instant
+<http://www.w3.org/2006/time#Instant> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#Interval
+<http://www.w3.org/2006/time#Interval> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#TemporalEntity
+<http://www.w3.org/2006/time#TemporalEntity> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa#Sensor
+<http://www.w3.org/ns/sosa#Sensor> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/ssn/SensingDevice
+<http://www.w3.org/ns/ssn/SensingDevice> rdf:type owl:Class .
+
+
+###  https://qudt.org/vocab/unit/KiloM
+<https://qudt.org/vocab/unit/KiloM> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.dronetology.net/dronetology#DronetologyLicenseTerms
+:DronetologyLicenseTerms rdf:type owl:NamedIndividual ,
+                                  <http://purl.org/dc/terms/LicenseDocument> ;
+                         <http://purl.org/dc/elements/1.1/description> """Release Terms, Information, and Acknowledgments
+Dronetology: the UAS domain ontology
+
+Dronetology was developed as a key component of a semantic data integration system built to support integration, query, and search over multiple sources of heterogeneous UAS data.
+
+Dronetology serves as the backbone upon which to overlay data from multiple sources. 
+
+Dronetology incorporates data (provided under any applicable distribution terms and conditions) from the following sources, and we gratefully acknowledges their contribution: Fuvex, NASA, Enaire.
+
+THE DATA IS PROVIDED \"AS IS\" WITHOUT ANY WARRANTY OF ANY KIND, EITHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO, ANY WARRANTY THAT THE DATA WILL CONFORM TO SPECIFICATIONS, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, FREEDOM FROM INFRINGEMENT, OR ANY WARRANTY THAT THE DATA WILL BE ERROR FREE OR ANY WARRANTY THAT RELATED DOCUMENTATION/RELEASE NOTES WILL CONFORM TO THE DATA PROVIDED. 
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES, ARISING OUT OF OR RESULTING FROM OR IN ANY WAY CONNECTED WITH THIS DATA.  
+""" ;
+                         rdfs:comment """DronetologyLicenseTerms. Release Terms, Information, and Acknowledgments
+Dronetology: the UAS domain ontology
+
+Dronetology was developed as a key component of a semantic data integration system built to support integration, query, and search over multiple sources of heterogeneous UAS data.
+
+Dronetology serves as the backbone upon which to overlay data from multiple sources. 
+
+Dronetology incorporates data (provided under any applicable distribution terms and conditions) from the following sources, and we gratefully acknowledges their contribution: Fuvex, NASA, Enaire.
+
+THE DATA IS PROVIDED \"AS IS\" WITHOUT ANY WARRANTY OF ANY KIND, EITHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO, ANY WARRANTY THAT THE DATA WILL CONFORM TO SPECIFICATIONS, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, FREEDOM FROM INFRINGEMENT, OR ANY WARRANTY THAT THE DATA WILL BE ERROR FREE OR ANY WARRANTY THAT RELATED DOCUMENTATION/RELEASE NOTES WILL CONFORM TO THE DATA PROVIDED. 
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES, ARISING OUT OF OR RESULTING FROM OR IN ANY WAY CONNECTED WITH THIS DATA.  
+"""@en ;
+                         rdfs:label "DronetologyLicenseTerms"@en .
+
+
+[ owl:maxCardinality "500"^^xsd:nonNegativeInteger
+] .
+
+[ owl:minCardinality "100"^^xsd:nonNegativeInteger
+ ] .
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+   owl:members ( :Beidou
+                 :GLONASS
+                 :GPS
+                 :Galileo
+                 :IRNSS
+                 :QZSS
+               )
+ ] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Group1
+                :Group2
+                :Group3
+                :Group4
+                :Group5
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :HALE
+                :LALE
+                :LASE
+                :MALE
+                :MAV
+              )
+] .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
